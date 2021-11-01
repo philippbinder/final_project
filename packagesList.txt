@@ -1,0 +1,7 @@
+installed packages:
+- postgres
+- ley https://www.npmjs.com/package/ley
+- dotenv-safe https://www.npmjs.com/package/dotenv-safe ?
+- dotenv-cli https://www.npmjs.com/package/dotenv-cli?activeTab=dependents
+- emotion/react and emotion/styled https://www.npmjs.com/package/@emotion/styled
+- noch nicht: bcrypt
