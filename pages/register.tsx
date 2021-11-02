@@ -15,8 +15,20 @@ export default function RegisterPage() {
       <h1> Register </h1>
       <form
         css={formStyles}
-        onSubmit={(event) => {
+        onSubmit={async (event) => {
           event.preventDefault(); // will prevent the default behavior on submit, instead the following code lines will be executed
+          await fetch('/api/register', {
+            method: 'POST', // weil ich Information senden will und etwas neues kreieren möchte / http methods - POST is to create, GET is to get some information, PUT is to update some information and DELETE is to delete information
+            headers: {
+              'Content-Type': 'application/json', // tells the program that I am sending JSON data
+            },
+            body: JSON.stringify({
+              // die data die ich passen will, also an register.ts, schreibe ich den body
+              // body needs to be send in JSON
+              username: username,
+              password: password,
+            }),
+          });
           console.log(
             'Submitting username:',
             username,
