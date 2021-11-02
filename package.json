@@ -10,8 +10,8 @@
     "migrate": "dotenv ley"
   },
   "dependencies": {
+    "@emotion/babel-plugin": "^11.3.0",
     "@emotion/react": "^11.5.0",
-    "@emotion/styled": "^11.3.0",
     "dotenv-cli": "^4.1.0",
     "dotenv-safe": "^8.2.0",
     "ley": "^0.7.1",
