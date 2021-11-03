@@ -13,8 +13,8 @@ export async function getAllUsers() {
   console.log('users:', users);
 }
 
-// this function can be called to get a single user based on the passed id
-export async function getSingleUser(id) {
+// this function can be called to get a single user based on the passed id - problem with id
+export async function getSingleUser(id: number) {
   const users = await sql`
     SELECT * FROM users WHERE ID = ${id};
     `;
@@ -30,11 +30,12 @@ export async function getSingleUser(id) {
 // => somit wird ein neuer Account samt Password ans Backend gepassed
 // - Wäre mit Migrations nicht möglich, da der User ja keinen Zugriff auf das Backend hat? Zumindestens soll er "normal" mit dem Interface interagieren.
 
-export async function insertUser({ username, password_hash }) {
+export async function insertUser(username: string, password_hash: string) {
   const users = await sql`
-  INSERT INTO users
-    (username, password_hash)
-  VALUES
-(${username}, ${password_hash})
-  `;
+    INSERT INTO users
+      (username, password_hash)
+    VALUES
+      (${username}, ${password_hash})
+    `;
+  return users; // Do I need to return users or anything at all?
 }

@@ -23,8 +23,8 @@ export default function RegisterPage() {
               'Content-Type': 'application/json', // tells the program that I am sending JSON data
             },
             body: JSON.stringify({
-              // die data die ich passen will, also an register.ts, schreibe ich den body
               // body needs to be send in JSON
+              // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in reigsterHandler von register.ts"
               username: username,
               password: password,
             }),
