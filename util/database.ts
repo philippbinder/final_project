@@ -1,9 +1,17 @@
+import camelcaseKeys from 'camelcase-keys';
 import dotenvSafe from 'dotenv-safe';
 import postgres from 'postgres';
 
 dotenvSafe.config(); // will read the environment variables in the .env file and this line needs to before any lines related to postgres, if not, the database will not be connected
 
 const sql = postgres();
+
+// for the   const [user] = await sql<[User]>` in the insertUser function down below
+export type User = {
+  id: number;
+  username: string;
+  name: string | null;
+};
 
 // I can only see the use of this function being being called upton for the stretch goal of the leaderboard
 export async function getAllUsers() {
@@ -21,7 +29,7 @@ export async function getSingleUser(id: number) {
   const singleUser = users[0];
   console.log('singleUser:', singleUser);
 
-  return singleUser;
+  return camelcaseKeys(singleUser);
 }
 
 // functions die hier in der Database geschrieben haben bieten folgende Vorteile:
@@ -30,12 +38,24 @@ export async function getSingleUser(id: number) {
 // => somit wird ein neuer Account samt Password ans Backend gepassed
 // - Wäre mit Migrations nicht möglich, da der User ja keinen Zugriff auf das Backend hat? Zumindestens soll er "normal" mit dem Interface interagieren.
 
-export async function insertUser(username: string, password_hash: string) {
-  const users = await sql`
+export async function insertUser({
+  username,
+  passwordHash,
+}: {
+  username: string;
+  passwordHash: string;
+}) {
+  // const users = await sql`
+  const [user] = await sql<[User]>`
     INSERT INTO users
       (username, password_hash)
     VALUES
-      (${username}, ${password_hash})
+      (${username}, ${passwordHash})
+    RETURNING
+      id,
+      username,
+      name;
     `;
-  return users; // Do I need to return users or anything at all?
+  // do I need RETURNING?
+  return camelcaseKeys(user); // Do I need to return users or anything at all?
 }

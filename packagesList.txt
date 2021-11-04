@@ -5,3 +5,4 @@ installed packages:
 - dotenv-cli https://www.npmjs.com/package/dotenv-cli?activeTab=dependents
 - @emotion/react https://www.npmjs.com/package/@emotion/react and @emotion/babel-plugin https://www.npmjs.com/package/@emotion/babel-plugin + babel.config.js in root + changes to tsconfig.json (in "next": "12.0.1" Version "jsxImportSource": "@emotion/react" unter tsconfig.json hinzugefügt werden, da sonst css von emotion nicht funktioniert (JSX set to preserve in 12.0.1))
 - bcrypt https://www.npmjs.com/package/bcrypt als yarn add --dev @types/bcrypt
+- camelCase-keys https://www.npmjs.com/package/camelcase-keys
