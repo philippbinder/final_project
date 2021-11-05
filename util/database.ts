@@ -2,16 +2,17 @@ import camelcaseKeys from 'camelcase-keys';
 import dotenvSafe from 'dotenv-safe';
 import postgres from 'postgres';
 
-dotenvSafe.config(); // will read the environment variables in the .env file and this line needs to before any lines related to postgres, if not, the database will not be connected
-
-const sql = postgres();
-
-// for the   const [user] = await sql<[User]>` in the insertUser function down below
 export type User = {
   id: number;
   username: string;
   name: string | null;
 };
+
+dotenvSafe.config(); // will read the environment variables in the .env file and this line needs to before any lines related to postgres, if not, the database will not be connected
+
+const sql = postgres();
+
+// for the   const [user] = await sql<[User]>` in the insertUser function down below
 
 // I can only see the use of this function being being called upton for the stretch goal of the leaderboard
 export async function getAllUsers() {

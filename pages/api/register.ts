@@ -2,7 +2,7 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import { hashPassword } from '../../util/auth';
-import { insertUser } from '../../util/database';
+import { insertUser, User } from '../../util/database';
 import { Errors } from '../../util/types';
 
 export type RegisterRequest = {
@@ -19,16 +19,18 @@ export default async function registerHandler(
     res.status(400).send({
       errors: [
         {
-          message: 'Request does not contain the account and/or the apassword.',
+          message: 'Request does not contain the account and/or the password.',
         },
       ],
     });
     return;
   }
-  console.log(req.body);
+
+  // console.log(req.body);
   const username = req.body.username;
   const passwordHash = await hashPassword(req.body.password);
-
+  console.log(username);
+  console.log(passwordHash);
   const user = await insertUser({
     username: username,
     passwordHash: passwordHash,

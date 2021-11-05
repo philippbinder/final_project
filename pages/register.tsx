@@ -36,6 +36,8 @@ export default function RegisterPage() {
               password: password,
             }),
           });
+          console.log(registerResponse);
+
           const registerJson =
             (await registerResponse.json()) as RegisterResponse;
 
@@ -44,13 +46,14 @@ export default function RegisterPage() {
             return;
           }
           // RegisterRespone is from register.ts
-          console.log(registerJson.user);
-          console.log(
-            'Submitting username:',
-            username,
-            'and password:',
-            password,
-          );
+
+          // console.log(registerJson.user);
+          // console.log(
+          //   'Submitting username:',
+          //   username,
+          //   'and password:',
+          //   password,
+          // );
         }}
       >
         <label>
