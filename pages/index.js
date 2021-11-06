@@ -64,47 +64,77 @@ const headingStyle = css`
 `;
 
 const loginButton = css`
+  /* border: solid black;
+  border-radius: 20px; */
+  align-self: center;
+  justify-self: center;
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
   grid-row-end: 3;
   margin-left: 14vw;
-  border-radius: 20px;
-  border: 3px solid brown;
   display: flex;
   justify-content: center;
   align-items: center;
+  /* border: 3px solid brown; */
   font-size: 4vh;
   font-style: normal;
   font-weight: 500;
   line-height: 54px;
-  letter-spacing: 0em;
-  text-align: center;
-  font-family: MedievalSharp;
   letter-spacing: 0.5vw;
+  font-family: MedievalSharp;
+  text-decoration: underline;
+  &:hover {
+    color: #faebd7;
+  }
+  /* &:hover {
+    color: #654321;
+  } */
+  /* background: #fffafa; */
 `;
 
 const createAccountButton = css`
+  border: solid black;
+  border-radius: 20px;
+  align-self: center;
+  justify-self: center;
   grid-column-start: 4;
   grid-column-end: 5;
   grid-row-start: 2;
   grid-row-end: 3;
-  border: 3px solid brown;
   margin-right: 14vw;
-  border-radius: 20px;
+  /* border-radius: 20px; */
+  /* border: 3px solid brown; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 4vh;
   font-style: normal;
   font-weight: 500;
   line-height: 54px;
-  letter-spacing: 0em;
-  text-align: center;
-  font-family: MedievalSharp;
   letter-spacing: 0.5vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* line-height: 1vh; */
+  font-family: MedievalSharp;
+  /* text-decoration: underline; */
+  &:hover {
+    color: #faebd7;
+  }
+  /* &:hover {
+    color: #654321;
+  } */
+  /* background: #fffafa; */
 `;
+
+// const logInText = css`
+//   font-family: MedievalSharp;
+//   text-decoration: underline;
+//   &:hover {
+//     color: #faebd7;
+//   }
+//   /* &:hover {
+//     color: #654321;
+//   } */
+//   /* background: #fffafa; */
+// `;
 
 const imageContainer = css`
   /* width: 100%;
@@ -126,9 +156,13 @@ export default function LandingPage() {
         <div css={headingStyle}>
           The Friendly Medieval Neighborhood Simulator
         </div>
-        <div css={loginButton}>Log in</div>
+        <div css={loginButton}>
+          <Link href="/login"> Log in</Link>
+        </div>
         {/* <div css={whiteSpaceMiddle} /> */}
-        <div css={createAccountButton}> Register </div>
+        <div css={createAccountButton}>
+          <Link href="/login"> Register</Link>
+        </div>
         <div css={imageContainer} />
         {/* <div css={whiteSpaceRight} /> */}
       </div>
