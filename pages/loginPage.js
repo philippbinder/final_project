@@ -28,7 +28,7 @@ const bigContainerStyle = css`
   /* grid-template-columns: 10vw, 30vw, 20vw, 30vw, 10vw; */
   /* grid-template-rows: 20%, 15%, 65%; */
   /* grid-template-rows: 5%, 10%, 5%, 10%, 10%, 50%, 10%; */
-  grid-template-rows: 0.5fr 1fr 0.5fr 1fr 1fr 5fr 1fr;
+  grid-template-rows: 0.5fr 1fr 0.5fr 1fr 1fr 5fr 0.5fr;
   row-gap: 2vh;
   /* grid-template-rows: 1fr, 0.5fr, 1fr, 0.5fr, 5fr; */
   /* grid-template-rows: auto; */
@@ -113,7 +113,7 @@ const imageContainer = css`
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 3;
-  grid-row-end: 8;
+  grid-row-end: 7;
   border-radius: 20px;
   background-color: blue;
 `;

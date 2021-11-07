@@ -16,7 +16,7 @@ const headerStyles = css`
   );
 `;
 
-const bigContainerStyle = css`
+const mainContainer = css`
   height: 100vh;
   width: 100vw;
   display: grid;
@@ -28,7 +28,7 @@ const bigContainerStyle = css`
   /* grid-template-columns: 10vw, 30vw, 20vw, 30vw, 10vw; */
   /* grid-template-rows: 20%, 15%, 65%; */
   /* grid-template-rows: 5%, 10%, 5%, 10%, 10%, 50%, 10%; */
-  grid-template-rows: 0.5fr 1fr 0.5fr 1fr 1fr 5fr 1fr;
+  grid-template-rows: 0.5fr 1fr 0.5fr 1fr 1fr 5fr 0.5fr;
   row-gap: 2vh;
   /* grid-template-rows: 1fr, 0.5fr, 1fr, 0.5fr, 5fr; */
   /* grid-template-rows: auto; */
@@ -58,14 +58,14 @@ const headingStyle = css`
   font-style: normal;
   font-weight: 500;
   line-height: 72px;
-  letter-spacing: 0em;
+  /* letter-spacing: 0em; */
   text-align: center;
   letter-spacing: 0.5vw;
 `;
 
 const loginButton = css`
-  /* border: solid black;
-  border-radius: 20px; */
+  border: solid black;
+  border-radius: 20px;
   align-self: center;
   justify-self: center;
   grid-column-start: 2;
@@ -82,10 +82,12 @@ const loginButton = css`
   font-weight: 500;
   line-height: 54px;
   letter-spacing: 0.5vw;
+  padding-left: 0.5vw;
   font-family: MedievalSharp;
-  text-decoration: underline;
+  /* text-decoration: underline; */
   &:hover {
     color: #faebd7;
+    border-color: #faebd7;
   }
   /* &:hover {
     color: #654321;
@@ -93,7 +95,7 @@ const loginButton = css`
   /* background: #fffafa; */
 `;
 
-const createAccountButton = css`
+const registerButton = css`
   border: solid black;
   border-radius: 20px;
   align-self: center;
@@ -113,10 +115,12 @@ const createAccountButton = css`
   font-weight: 500;
   line-height: 54px;
   letter-spacing: 0.5vw;
+  padding-left: 0.5vw;
   font-family: MedievalSharp;
   /* text-decoration: underline; */
   &:hover {
     color: #faebd7;
+    border-color: #faebd7;
   }
   /* &:hover {
     color: #654321;
@@ -143,27 +147,30 @@ const imageContainer = css`
   grid-column-start: 2;
   grid-column-end: 5;
   grid-row-start: 3;
-  grid-row-end: 8;
+  grid-row-end: 7;
   border-radius: 20px;
   background-color: blue;
+  text-align: center;
+  color: white;
+  font-size: 20vh;
 `;
 
 export default function LandingPage() {
   return (
     <header css={headerStyles}>
-      <div css={bigContainerStyle}>
+      <div css={mainContainer}>
         {/* <div css={whiteSpaceLeft} /> */}
         <div css={headingStyle}>
           The Friendly Medieval Neighborhood Simulator
         </div>
         <div css={loginButton}>
-          <Link href="/login"> Log in</Link>
+          <Link href="/loginPage"> Log in</Link>
         </div>
         {/* <div css={whiteSpaceMiddle} /> */}
-        <div css={createAccountButton}>
-          <Link href="/login"> Register</Link>
+        <div css={registerButton}>
+          <Link href="/registerPage"> Register</Link>
         </div>
-        <div css={imageContainer} />
+        <div css={imageContainer}>Import image from database</div>
         {/* <div css={whiteSpaceRight} /> */}
       </div>
     </header>
