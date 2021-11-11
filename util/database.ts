@@ -54,8 +54,7 @@ export async function insertUser({
       (${username}, ${passwordHash})
     RETURNING
       id,
-      username,
-      name;
+      username
     `;
   // do I need RETURNING?
   return camelcaseKeys(user); // Do I need to return users or anything at all?

@@ -23,7 +23,9 @@ export default function RegisterPage() {
       <form
         css={formStyles}
         onSubmit={async (event) => {
-          event.preventDefault(); // will prevent the default behavior on submit, instead the following code lines will be executed
+          event.preventDefault();
+          console.log(username, password);
+          // will prevent the default behavior on submit, instead the following code lines will be executed
           const registerResponse = await fetch('/api/register', {
             method: 'POST', // weil ich Information senden will und etwas neues kreieren möchte / http methods - POST is to create, GET is to get some information, PUT is to update some information and DELETE is to delete information
             headers: {

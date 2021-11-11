@@ -15,6 +15,8 @@ export default async function registerHandler(
   req: NextApiRequest,
   res: NextApiResponse<RegisterResponse>, // responses are allways of the ReigsterResponse type -> Errors types
 ) {
+  console.log(req.body.username); // what is req body
+
   if (!req.body.username || !req.body.password) {
     res.status(400).send({
       errors: [

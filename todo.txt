@@ -1,0 +1,18 @@
+Registration and Database
+  - JSON error message if I enter a username on the registration page that I have allready exists and try create it as a new user
+  - such failed usernames still take up one ID number despite not existing => ID 2-4 wont show up again in the dt
+  - hide acutal password with *******
+
+Presentation of Log in and Registration
+  - make the register page look like the registrarionPage page
+  - use components for the background layout
+
+Cookies
+  - cookies for the session?
+
+CRF Token ?
+
+Deployment
+  - Preflight and all that lovely stuff
+  - these test runs that are demanded
+  - deployment on Heroku
