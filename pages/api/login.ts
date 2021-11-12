@@ -1,19 +1,19 @@
-// data from ../register.tsx will be send to this API route
+// data from ../login.tsx will be send to this API route
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import { hashPassword } from '../../util/auth';
 import { insertUser, User } from '../../util/database';
 import { Errors } from '../../util/types';
 
-export type RegisterRequest = {
+export type LoginRequest = {
   username: string;
   password: string;
 };
-export type RegisterResponse = { errors: Errors } | { user: User };
+export type LoginResponse = { errors: Errors } | { user: User };
 
-export default async function registerHandler(
+export default async function loginHandler(
   req: NextApiRequest,
-  res: NextApiResponse<RegisterResponse>, // responses are allways of the ReigsterResponse type -> Errors types
+  res: NextApiResponse<LoginResponse>, // responses are allways of the ReigsterResponse type -> Errors types
 ) {
   console.log(req.body.username); // what is req body
 

@@ -2,7 +2,7 @@ import { css } from '@emotion/react'; // emotion not working
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Errors } from '../util/types';
-import { RegisterResponse } from './api/register';
+import { LoginResponse } from './api/login';
 
 const formStyles = css`
   label {
@@ -14,7 +14,7 @@ const errorStyles = css`
   color: red;
 `;
 
-export default function RegisterPage() {
+export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false); // hides or shows password
@@ -25,39 +25,38 @@ export default function RegisterPage() {
   const router = useRouter(); // under useRouter and router.push https://nextjs.org/docs/api-reference/next/router
   return (
     <div>
-      <h1> Register </h1>
+      <h1> Login </h1>
       <form
         css={formStyles}
         onSubmit={async (event) => {
           event.preventDefault();
           console.log(username, password);
           // will prevent the default behavior on submit, instead the following code lines will be executed
-          const registerResponse = await fetch('/api/register', {
+          const loginResponse = await fetch('/api/login', {
             method: 'POST', // weil ich Information senden will und etwas neues kreieren möchte / http methods - POST is to create, GET is to get some information, PUT is to update some information and DELETE is to delete information
             headers: {
               'Content-Type': 'application/json', // tells the program that I am sending JSON data
             },
             body: JSON.stringify({
               // body needs to be send in JSON
-              // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in reigsterHandler von register.ts"
+              // die data die ich passen will, also an login.ts, schreibe ich den body - "this body inside the fetch turns into req.body in reigsterHandler von login.ts"
               username: username,
               password: password,
             }),
           });
-          console.log(registerResponse);
+          console.log(loginResponse);
 
-          const registerJson =
-            (await registerResponse.json()) as RegisterResponse;
+          const loginJson = (await loginResponse.json()) as LoginResponse;
 
-          if ('errors' in registerJson) {
-            setErrors(registerJson.errors);
+          if ('errors' in loginJson) {
+            setErrors(loginJson.errors);
             return;
           }
 
           router.push('/village'); // redirects to the village page after registration
-          // RegisterRespone is from register.ts
+          // LoginRespone is from login.ts
 
-          // console.log(registerJson.user);
+          // console.log(loginJson.user);
           // console.log(
           //   'Submitting username:',
           //   username,

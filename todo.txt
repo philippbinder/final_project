@@ -1,7 +1,9 @@
 Registration and Database
   - JSON error message if I enter a username on the registration page that I have allready exists and try create it as a new user
   - such failed usernames still take up one ID number despite not existing => ID 2-4 wont show up again in the dt
-  - hide acutal password with *******
+  + hide acutal password with ******* DONE
+  - switch "Show Password" to "Hide Password" based on the state of showPassword
+  - add a message after successful registration "Registration successful"
 
 Presentation of Log in and Registration
   - make the register page look like the registrarionPage page
@@ -16,3 +18,6 @@ Deployment
   - Preflight and all that lovely stuff
   - these test runs that are demanded
   - deployment on Heroku
+
+Read up on
+  - await sql <User[]> / await sql<[User]>
