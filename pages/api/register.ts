@@ -29,6 +29,29 @@ export default async function registerHandler(
     return;
   }
 
+  // checks minimumlength for password
+  if (req.body.password.length < 6) {
+    res.status(400).send({
+      errors: [
+        {
+          message: 'Password must be at least 6 characters long.',
+        },
+      ],
+    });
+    return;
+  }
+
+  // checks minimumlength for username
+  if (req.body.username.length < 4) {
+    res.status(400).send({
+      errors: [
+        {
+          message: 'Username must be at least 4 characters long.',
+        },
+      ],
+    });
+    return;
+  }
   // console.log(req.body);
   try {
     const username = req.body.username;

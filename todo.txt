@@ -9,6 +9,9 @@ Presentation of Log in and Registration
   - make the register page look like the registrarionPage page
   - use components for the background layout
 
+Village / Game screen
+  - add a logout button? Or should it only appear once the user clicks on the exit game button, ergo on the index.js file?
+
 Cookies
   - cookies for the session?
 
@@ -21,3 +24,4 @@ Deployment
 
 Read up on
   - await sql <User[]> / await sql<[User]>
+    => const [user] = await sql <[User]>

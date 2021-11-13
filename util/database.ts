@@ -17,7 +17,11 @@ const sql = postgres();
 // I can only see the use of this function being being called upton for the stretch goal of the leaderboard
 export async function getAllUsers() {
   const users = await sql`
-  SELECT * FROM users;
+  SELECT
+    id,
+    us ername
+  FROM
+    users;
   `;
   console.log('users:', users);
 }
@@ -25,7 +29,13 @@ export async function getAllUsers() {
 // this function can be called to get a single user based on the passed id - problem with id
 export async function getSingleUser(id: number) {
   const users = await sql`
-    SELECT * FROM users WHERE ID = ${id};
+    SELECT
+      id,
+      username
+    FROM
+      users
+    WHERE
+      ID = ${id};
     `;
   const singleUser = users[0];
   console.log('singleUser:', singleUser);

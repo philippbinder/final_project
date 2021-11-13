@@ -5,97 +5,14 @@ import { useState } from 'react';
 import { Errors } from '../util/types';
 import { RegisterResponse } from './api/register';
 
-const mainContainer = css`
-  position: absolute;
-  width: 100vw;
-  height: 100%;
-  /* height: 24.7%; */
-  /* height: 1080px; */
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  grid-template-rows: 1fr 1fr 0.5fr 4fr 0.5fr 1fr;
-  grid-row-gap: 5vh;
-  text-align: center;
-  font-size: 24px;
-  letter-spacing: 0.5vw;
-  /* justify-content: stretch; */
-  /* align-content: stretch; */
-  background: linear-gradient(
-    180deg,
-    rgba(139, 69, 19, 0.74) 0%,
-    rgba(139, 69, 19, 0.74) 0.01%,
-    rgba(139, 69, 19, 0) 100%
-  );
-  font-family: MedievalSharp;
-  /* font-size: 5vh; */
-`;
-
-const title = css`
-  grid-column: 2/3;
-  grid-row: 2/3;
-`;
-
 const formStyles = css`
-  grid-column: 2/3;
-  grid-row: 4/5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  row-gap: 50px;
   label {
     display: block;
   }
 `;
 
-// const inputStyles = css`
-//   background-color: #faf4e1;
-// `;
-
-const submitStyles = css`
-  margin-top: 72px;
-  font-family: MedievalSharp;
-  font-size: 20px;
-  letter-spacing: 0.2vw;
-  background-color: ffffff;
-  /* background-color: #faf4e1; */
-  border-radius: 20px;
-  /* justify-self: center; */
-`;
-
-const showPasswordStyles = css`
-  /* grid-column: 2/3;
-  grid-row: 5/6; */
-  justify-self: center;
-  position: absolute;
-  /* z-index: -1; */
-  /* margin-bottom: 200px; */
-  /* margin-left: 400%; */
-  /* margin-top: 62vh; */
-  margin-top: 500px;
-  font-family: MedievalSharp;
-  font-size: 20px;
-  letter-spacing: 0.2vw;
-  background-color: ffffff;
-  /* background-color: #faf4e1; */
-  /* FAF4E1 */
-  /* border: 2px solid white; */
-  border-radius: 20px;
-`;
-
 const errorStyles = css`
-  color: #ffffff;
-  background-color: red;
-  grid-column: 2/3;
-  grid-row: 3/4;
-  /* border: 2px solid red; */
-  justify-self: center;
-  /* justify-content: center; */
-  /* align-content: center; */
-  align-self: center;
-  position: absolute;
-  margin-bottom: 20px;
-  /* margin-right: 1001px; */
-  /* position: absolute; */
+  color: red;
 `;
 
 export default function RegisterPage() {
@@ -108,8 +25,8 @@ export default function RegisterPage() {
   const [errors, setErrors] = useState<Errors>([]); // um das array zu verändern mit .map und das Fehlermeldungsdiv anzuzeigen
   const router = useRouter(); // under useRouter and router.push https://nextjs.org/docs/api-reference/next/router
   return (
-    <div css={mainContainer}>
-      <h1 css={title}> Please register: </h1>
+    <div>
+      <h1> Register </h1>
       <form
         css={formStyles}
         onSubmit={async (event) => {
@@ -167,12 +84,10 @@ export default function RegisterPage() {
           />
           {/* <i type="bi bi-eye-slash" /> */}
         </label>
-        <button css={submitStyles}> Submit </button>
+        <button> Submit </button>
         {/* <button onClick={router.push('/village')}>Submit</button> */}
       </form>
-      <button onClick={togglePassword} css={showPasswordStyles}>
-        Show password
-      </button>
+      <button onClick={togglePassword}> Show Password </button>
       <div css={errorStyles}>
         {errors.map((error) => (
           <div key={`error-${error.message}`}> {error.message}</div>
@@ -181,5 +96,3 @@ export default function RegisterPage() {
     </div>
   );
 }
-
-// make it so that the show password button moves with the zoom of the grid or at least doesn't immidetly leave its position without moving it into the <form> </form> (takes on useRouter instead of showing the password)
