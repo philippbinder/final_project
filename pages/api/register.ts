@@ -2,7 +2,11 @@
 
 import { NextApiRequest, NextApiResponse } from 'next';
 import { hashPassword } from '../../util/auth';
-import { insertUser, User } from '../../util/database';
+import {
+  getSingleUserWithPasswordHashByUsername,
+  insertUser,
+  User,
+} from '../../util/database';
 import { Errors } from '../../util/types';
 
 export type RegisterRequest = {
@@ -57,12 +61,25 @@ export default async function registerHandler(
   try {
     const username = req.body.username;
     const passwordHash = await hashPassword(req.body.password);
+
+    // Adds response if the username is already taken
+    const existingUser = await getSingleUserWithPasswordHashByUsername(
+      username,
+    );
+    if (existingUser) {
+      res.status(400).send({
+        errors: [{ message: 'Username already exists.' }],
+      });
+    }
+
     console.log(username);
     console.log(passwordHash);
+
     const user = await insertUser({
       username: username,
       passwordHash: passwordHash,
     });
+
     // insert user to database
     res.send({ user: user }); // sends the respone back to the browser - it's what I get in the parsed JSON
   } catch (err) {
