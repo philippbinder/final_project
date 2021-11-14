@@ -4,6 +4,11 @@ Registration and Database
   + hide acutal password with ******* DONE
   - switch "Show Password" to "Hide Password" based on the state of showPassword
   - add a message after successful registration "Registration successful"
+  - add password constraint: Lack sufficient entropy: aaaaaaaaa
+  - add password constraint: Match common dictionary words: anteaters1
+      https://blog.codinghorror.com/your-password-is-too-damn-short/
+  - make the go back button really go back
+  - create a dropdown menu contacts with links to mylinkedin and upleveled profile
 
 Presentation of Log in and Registration
   - make the register page look like the registrarionPage page
@@ -16,6 +21,10 @@ Cookies
   - cookies for the session?
 
 CRF Token ?
+
+Images
+  - download, store and upload images
+  - credit artists
 
 Deployment
   - Preflight and all that lovely stuff

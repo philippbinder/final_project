@@ -8,6 +8,11 @@ export type User = {
   name: string | null;
 };
 
+// TS type User does not allow a passwordHash, therefore we create a new type based on the existing User type
+export type UserWithPasswordHash = User & {
+  passwordHash: string;
+};
+
 dotenvSafe.config(); // will read the environment variables in the .env file and this line needs to before any lines related to postgres, if not, the database will not be connected
 
 const sql = postgres();
@@ -35,13 +40,33 @@ export async function getSingleUser(id: number) {
     FROM
       users
     WHERE
-      ID = ${id};
+    ID = ${id};
     `;
   const singleUser = users[0];
   console.log('singleUser:', singleUser);
 
   return camelcaseKeys(singleUser);
 }
+
+// Careful with this function! Shows the hashes password of the user.
+export async function getSingleUserWithPasswordHashByUsername(
+  username: string,
+) {
+  const [user] = await sql<[UserWithPasswordHash | undefined]>`
+    SELECT
+      id,
+      username,
+      password_hash
+    FROM
+      users
+    WHERE
+      username = ${username}
+    `;
+  return user && camelcaseKeys(user);
+}
+// const [user] replaces const users and sql<[User]> is the <T> from TS - means the [User] is the type with all its properties
+
+// camelcaseKeys tranforms password_hash into passwordHash
 
 // functions die hier in der Database geschrieben haben bieten folgende Vorteile:
 // - sie können außerhalb des Backends flexibel verwendet werden

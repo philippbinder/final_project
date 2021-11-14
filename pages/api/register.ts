@@ -18,6 +18,7 @@ export default async function registerHandler(
   console.log(req.body.username); // what is req body
 
   // checks if there are username and password
+  // redundant since I check for a minlength of the username and the password
   if (!req.body.username || !req.body.password) {
     res.status(400).send({
       errors: [

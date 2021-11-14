@@ -1,13 +1,17 @@
 import { css } from '@emotion/react';
-import Link from 'next/link';
 
-const headerStyles = css`
-  position: absolute;
+const mainContainer = css`
   width: 100vw;
-  height: 24.7%; // = 253/1% of 1024, the total height in px
-  left: 0px;
-  top: 0px;
-  border-radius: [object Object]px;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 0.5fr 0.5fr 0.5fr 4fr 1fr;
+  /* grid-row-gap: 40px;
+  grid-column-gap: 20px; */
+  text-align: center;
+  font-size: 24px;
+  letter-spacing: 0.5vw;
+  font-family: MedievalSharp;
   background: linear-gradient(
     180deg,
     rgba(139, 69, 19, 0.74) 0%,
@@ -16,163 +20,81 @@ const headerStyles = css`
   );
 `;
 
-const mainContainer = css`
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  /* grid-row-gap: 4vh; */
-  /* grid-column-gap: 10vw; */
-  /* grid-template-columns: 40%, 20%, 40%; */
-  /* grid-template-columns: 10%, 30%, 20%, 30%, 10%; */
-  grid-template-columns: 1fr 3fr 0.5fr 3fr 1fr;
-  /* grid-template-columns: 10vw, 30vw, 20vw, 30vw, 10vw; */
-  /* grid-template-rows: 20%, 15%, 65%; */
-  /* grid-template-rows: 5%, 10%, 5%, 10%, 10%, 50%, 10%; */
-  grid-template-rows: 0.5fr 1fr 0.5fr 1fr 1fr 5fr 0.5fr;
-  row-gap: 2vh;
-  /* grid-template-rows: 1fr, 0.5fr, 1fr, 0.5fr, 5fr; */
-  /* grid-template-rows: auto; */
-  /* grid-template-areas:
-    '. heading heading heading .'
-    '. . . . .'
-    '. login . account .'
-    '. . . . .'
-    '. image image image .'; */
-  /* align-items: stretch; */
-  /* justify-items: stretch; */
-  border: 3px solid red;
-  /* justify-items: stretch;
-  justify-content: stretch;
-  align-items: stretch;
-  align-content: stretch; */
-`;
-
 const headingStyle = css`
-  grid-column-start: 2;
-  grid-column-end: 5;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  border-radius: nullpx;
-  font-family: MedievalSharp;
-  font-size: 5vh;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 72px;
-  /* letter-spacing: 0em; */
-  text-align: center;
-  letter-spacing: 0.5vw;
-`;
-
-const loginButton = css`
-  border: solid black;
-  border-radius: 20px;
-  align-self: center;
-  justify-self: center;
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  margin-left: 14vw;
+  grid-column: 2/3;
+  grid-row: 1/2;
+  background: linear-gradient(
+    rgba(139, 69, 19, 0.8) 0%,
+    rgba(139, 69, 19, 0.74) 1.05%,
+    rgba(242, 243, 244, 0.8) 6%,
+    rgba(250, 244, 225, 1) 15%
+  );
+  border-bottom: 3px solid black;
+  border-bottom-left-radius: 130px;
+  border-bottom-right-radius: 130px;
+  box-shadow: 0 0 10px #8b0000;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  /* border: 3px solid brown; */
-  font-size: 4vh;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 54px;
-  letter-spacing: 0.5vw;
-  padding-left: 0.5vw;
-  font-family: MedievalSharp;
-  /* text-decoration: underline; */
-  &:hover {
-    color: #faebd7;
-    border-color: #faebd7;
-  }
-  /* &:hover {
-    color: #654321;
-  } */
-  /* background: #fffafa; */
+  flex-direction: column;
+  /* width: 100%; */
 `;
 
-const registerButton = css`
-  border: solid black;
-  border-radius: 20px;
-  align-self: center;
-  justify-self: center;
-  grid-column-start: 4;
-  grid-column-end: 5;
-  grid-row-start: 2;
-  grid-row-end: 3;
-  margin-right: 14vw;
-  /* border-radius: 20px; */
-  /* border: 3px solid brown; */
+const welcomeStyle = css`
+  /* grid-column: 2/3;'
+  grid-row: 0/1;' */
+  font-size: 30px;
+  text-shadow: 0 0 5px #8b0000;
+`;
+
+const titleStyle = css`
+  /* grid-column: 2/3;
+  grid-row: 1/2; */
+  font-size: 42px;
+  letter-spacing: 1vw;
+  color: #242124;
+  font-weight: 550;
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
+    0 0 1px #8b4513;
+  /* text-shadow: 0 0 7px #8b0000, 0 0 5px #b22222, 0 0 3px #c32148,
+    0 0 1px #cb4154; */
+  /* text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,
+    0 0 82px #0fa, 0 0 92px #0fa, 0 0 102px #0fa, 0 0 151px #0fa; */
+`;
+
+const navStyle = css`
+  grid-column: 1/2;
+  grid-row: 4/5;
+  /* background: linear-gradient(
+    rgba(139, 69, 19, 0.8) 0%,
+    rgba(139, 69, 19, 0.74) 1.05%,
+    rgba(242, 243, 244, 0.8) 6%,
+    rgba(250, 244, 225, 1) 15%
+  ); */
+  border: 3px solid black;
+  border-top-right-radius: 130px;
+  border-bottom-right-radius: 130px;
+  /* box-shadow: 0 0 10px #8b0000; */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 4vh;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 54px;
-  letter-spacing: 0.5vw;
-  padding-left: 0.5vw;
-  font-family: MedievalSharp;
-  /* text-decoration: underline; */
-  &:hover {
-    color: #faebd7;
-    border-color: #faebd7;
-  }
-  /* &:hover {
-    color: #654321;
-  } */
-  /* background: #fffafa; */
+  flex-direction: column;
 `;
 
-// const logInText = css`
-//   font-family: MedievalSharp;
-//   text-decoration: underline;
-//   &:hover {
-//     color: #faebd7;
-//   }
-//   /* &:hover {
-//     color: #654321;
-//   } */
-//   /* background: #fffafa; */
-// `;
-
-const imageContainer = css`
-  /* width: 100%;
-  height: 100%; */
-  /* grid-area: image; */
-  grid-column-start: 2;
-  grid-column-end: 5;
-  grid-row-start: 3;
-  grid-row-end: 7;
-  border-radius: 20px;
-  background-color: blue;
-  text-align: center;
+const imageStyle = css`
+  grid-column: 2/3;
+  grid-row: 4/5;
+  background-color: black;
   color: white;
-  font-size: 20vh;
+  border-radius: 20px;
+  font-size: 40px;
 `;
 
 export default function LandingPage() {
   return (
-    <header css={headerStyles}>
-      <div css={mainContainer}>
-        {/* <div css={whiteSpaceLeft} /> */}
-        <div css={headingStyle}>
-          The Friendly Medieval Neighborhood Simulator
-        </div>
-        <div css={loginButton}>
-          <Link href="/loginPage"> Log in</Link>
-        </div>
-        {/* <div css={whiteSpaceMiddle} /> */}
-        <div css={registerButton}>
-          <Link href="/registerPage"> Register</Link>
-        </div>
-        <div css={imageContainer}>Import image from database</div>
-        {/* <div css={whiteSpaceRight} /> */}
+    <div css={mainContainer}>
+      <div css={headingStyle}>
+        <div css={welcomeStyle}> Welcome to </div>
+        <div css={titleStyle}> Dark Deeds </div>
       </div>
-    </header>
+      <div css={navStyle}></div>
+      <div css={imageStyle}> Add pixel image from database </div>
+    </div>
   );
 }

@@ -1,8 +1,11 @@
 // data from ../login.tsx will be send to this API route
 
 import { NextApiRequest, NextApiResponse } from 'next';
-import { hashPassword } from '../../util/auth';
-import { insertUser, User } from '../../util/database';
+import { verifyPassword } from '../../util/auth';
+import {
+  getSingleUserWithPasswordHashByUsername,
+  User,
+} from '../../util/database';
 import { Errors } from '../../util/types';
 
 export type LoginRequest = {
@@ -32,14 +35,41 @@ export default async function loginHandler(
   // console.log(req.body);
   try {
     const username = req.body.username;
-    const passwordHash = await hashPassword(req.body.password);
-    console.log(username);
-    console.log(passwordHash);
-    const user = await insertUser({
-      username: username,
-      passwordHash: passwordHash,
-    });
-    // insert user to database
+    const userFromDatabaseWithPasswordHash =
+      await getSingleUserWithPasswordHashByUsername(username);
+
+    if (!userFromDatabaseWithPasswordHash) {
+      res.status(401).send({
+        errors: [
+          {
+            message: 'Username or password is incorrect.',
+          },
+        ],
+      });
+      return;
+    }
+
+    const isPasswordVerified = verifyPassword(
+      req.body.password,
+      userFromDatabaseWithPasswordHash.passwordHash,
+    );
+    // req.body.password is the password from the login.tsx file that the user passes into the input field
+
+    if (!isPasswordVerified) {
+      res.status(401).send({
+        errors: [
+          {
+            message: 'Username or password is incorrect.',
+          },
+        ],
+      });
+      return;
+    }
+
+    // takes the userFromDatabaseWithPasswordHash and removes the passwrodHash and stores the rest into a variable called user
+    // reason is that we dont want to transmit the passwordHash back to the user
+    const { passwordHash, ...user } = userFromDatabaseWithPasswordHash;
+
     res.send({ user: user }); // sends the respone back to the browser - it's what I get in the parsed JSON
   } catch (err) {
     res.status(500).send({ errors: [{ message: (err as Error).message }] });
@@ -47,3 +77,6 @@ export default async function loginHandler(
     // 500 means internal server error - something went wrong when it tried to do something
   }
 }
+
+// BUG!!!! if (!isPasswordVerified) always falsy => Password for existing user ALLWAYS checks as true
+// https://www.youtube.com/watch?v=RUipFvAI72M&list=PLMZMRynGmhsix2_xWKX6sp4rDr0E1tIQ_&index=71 42:50

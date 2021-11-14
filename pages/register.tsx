@@ -1,5 +1,5 @@
-import { css } from '@emotion/react'; // emotion not working
-// import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { Errors } from '../util/types';
@@ -30,6 +30,118 @@ const mainContainer = css`
   /* font-size: 5vh; */
 `;
 
+const navigationStyles = css`
+  /* grid-column: 1/4; */
+  grid-column: 2/3;
+  grid-row: 0/1;
+  /* justify-self: stretch; */
+  width: 100%;
+  /* background-color: linear-gradient(
+    rgba(139, 69, 19, 0.2),
+    rgba(250, 244, 225, 1)
+  ); */
+  background: linear-gradient(
+    rgba(139, 69, 19, 0.8) 0%,
+    rgba(139, 69, 19, 0.74) 1.05%,
+    rgba(242, 243, 244, 0.8) 6%,
+    rgba(250, 244, 225, 1) 15%
+  );
+  border-bottom: 3px solid black;
+  border-bottom-left-radius: 130px;
+  border-bottom-right-radius: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  /* align-content: space-around; */
+`;
+
+const goBackStyles = css`
+  /* align-self: center;
+  justify-content: center; */
+  font-family: MedievalSharp;
+  font-size: 20px;
+  letter-spacing: 0.2vw;
+  padding: 0px 2.8px;
+  background-color: rgba(250, 244, 225, 0.8);
+  /* background-color: #faf4e1; */
+  /* border-radius: 20px; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 2.5px;
+  border-top-left-radius: 2.5px;
+  /* justify-self: center; */
+  &:hover {
+    border: 2px solid black;
+    /* color: #a52a2a; */
+    /* border-color: #8b4513; */
+  }
+`;
+
+const toLoginStyles = css`
+  /* align-self: center;
+  justify-content: center; */
+  font-family: MedievalSharp;
+  font-size: 20px;
+  letter-spacing: 0.2vw;
+  padding-left: 2.8px;
+  background-color: rgba(250, 244, 225, 0.8);
+  /* background-color: #faf4e1; */
+  /* border-radius: 20px; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 2.5px;
+  border-top-left-radius: 2.5px;
+  /* justify-self: center; */
+  &:hover {
+    border: 2px solid black;
+    /* color: #a52a2a; */
+    /* border-color: #8b4513; */
+  }
+`;
+
+const toMyLinkedInStyles = css`
+  /* align-self: center;
+  justify-content: center; */
+  font-family: MedievalSharp;
+  font-size: 20px;
+  letter-spacing: 0.2vw;
+  padding-left: 2.8px;
+  background-color: rgba(250, 244, 225, 0.55);
+  /* background-color: #faf4e1; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 2.5px;
+  border-top-left-radius: 2.5px;
+  /* justify-self: center; */
+  &:hover {
+    border: 2px solid black;
+    /* color: #a52a2a; */
+    /* border-color: #8b4513; */
+  }
+`;
+
+const toArtistCreditsStyles = css`
+  /* align-self: center;
+  justify-content: center; */
+  font-family: MedievalSharp;
+  font-size: 20px;
+  letter-spacing: 0.2vw;
+  padding: 0px 2.8px;
+  background-color: rgba(250, 244, 225, 0.8);
+  /* background-color: #faf4e1; */
+  /* border-radius: 20px; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 2.5px;
+  border-top-left-radius: 2.5px;
+  /* justify-self: center; */
+  &:hover {
+    border: 2px solid black;
+    /* color: #a52a2a; */
+    /* border-color: #8b4513; */
+  }
+`;
+
 const title = css`
   grid-column: 2/3;
   grid-row: 2/3;
@@ -56,10 +168,15 @@ const submitStyles = css`
   font-family: MedievalSharp;
   font-size: 20px;
   letter-spacing: 0.2vw;
-  background-color: ffffff;
+  background: linear-gradient(#f2f3f4 5%, #ffffff 50%);
+  /* background: linear-gradient(#faf4e1 5%, #ffffff 50%); */
   /* background-color: #faf4e1; */
   border-radius: 20px;
   /* justify-self: center; */
+  &:hover {
+    color: #a52a2a;
+    /* border-color: #8b4513; */
+  }
 `;
 
 const showPasswordStyles = css`
@@ -75,16 +192,22 @@ const showPasswordStyles = css`
   font-family: MedievalSharp;
   font-size: 20px;
   letter-spacing: 0.2vw;
-  background-color: ffffff;
+  background: linear-gradient(#f2f3f4 5%, #ffffff 50%);
+  /* background: linear-gradient(#faf4e1 5%, #ffffff 50%); */
+  /* background: linear-gradient(rgba(139, 69, 19, 0.74) 50%, #ffffff 99%); */
   /* background-color: #faf4e1; */
   /* FAF4E1 */
   /* border: 2px solid white; */
   border-radius: 20px;
+  &:hover {
+    color: #a52a2a;
+    /* border-color: #8b4513; */
+  }
 `;
 
 const errorStyles = css`
   color: #ffffff;
-  background-color: red;
+  background-color: #fa8072;
   grid-column: 2/3;
   grid-row: 3/4;
   /* border: 2px solid red; */
@@ -94,6 +217,7 @@ const errorStyles = css`
   align-self: center;
   position: absolute;
   margin-bottom: 20px;
+  padding-left: 4px;
   /* margin-right: 1001px; */
   /* position: absolute; */
 `;
@@ -109,6 +233,20 @@ export default function RegisterPage() {
   const router = useRouter(); // under useRouter and router.push https://nextjs.org/docs/api-reference/next/router
   return (
     <div css={mainContainer}>
+      <nav css={navigationStyles}>
+        <div css={goBackStyles}>
+          <Link href="/"> Go back </Link>
+        </div>
+        <div css={toLoginStyles}>
+          <Link href="./login"> To Login </Link>
+        </div>
+        <div css={toMyLinkedInStyles}>
+          <Link href="./placeholder"> To my LinkedIn Profile </Link>
+        </div>
+        <div css={toArtistCreditsStyles}>
+          <Link href="./placeholder"> To Artists Credits </Link>
+        </div>
+      </nav>
       <h1 css={title}> Please register: </h1>
       <form
         css={formStyles}
@@ -171,7 +309,7 @@ export default function RegisterPage() {
         {/* <button onClick={router.push('/village')}>Submit</button> */}
       </form>
       <button onClick={togglePassword} css={showPasswordStyles}>
-        Show password
+        Show Password
       </button>
       <div css={errorStyles}>
         {errors.map((error) => (
@@ -183,3 +321,4 @@ export default function RegisterPage() {
 }
 
 // make it so that the show password button moves with the zoom of the grid or at least doesn't immidetly leave its position without moving it into the <form> </form> (takes on useRouter instead of showing the password)
+// navigating with tabulator picks submit before password for the same reason - being infront in the document flow
