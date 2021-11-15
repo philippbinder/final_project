@@ -46,6 +46,7 @@ const navigationStyles = css`
     rgba(242, 243, 244, 0.8) 6%,
     rgba(250, 244, 225, 1) 15%
   );
+  box-shadow: 0 0 10px #8b0000;
   border-bottom: 3px solid black;
   border-bottom-left-radius: 130px;
   border-bottom-right-radius: 130px;
@@ -71,7 +72,9 @@ const goBackStyles = css`
   border-top-left-radius: 2.5px;
   /* justify-self: center; */
   &:hover {
-    border: 2px solid black;
+    color: #242124;
+    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
+      /* border: 2px solid black; */ 0 0 1px #8b4513;
     /* color: #a52a2a; */
     /* border-color: #8b4513; */
   }
@@ -93,7 +96,9 @@ const toLoginStyles = css`
   border-top-left-radius: 2.5px;
   /* justify-self: center; */
   &:hover {
-    border: 2px solid black;
+    color: #242124;
+    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
+      /* border: 2px solid black; */ 0 0 1px #8b4513;
     /* color: #a52a2a; */
     /* border-color: #8b4513; */
   }
@@ -114,13 +119,15 @@ const toMyLinkedInStyles = css`
   border-top-left-radius: 2.5px;
   /* justify-self: center; */
   &:hover {
-    border: 2px solid black;
+    color: #242124;
+    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
+      /* border: 2px solid black; */ 0 0 1px #8b4513;
     /* color: #a52a2a; */
     /* border-color: #8b4513; */
   }
 `;
 
-const toArtistCreditsStyles = css`
+const toArtistCreditStyles = css`
   /* align-self: center;
   justify-content: center; */
   font-family: MedievalSharp;
@@ -136,7 +143,9 @@ const toArtistCreditsStyles = css`
   border-top-left-radius: 2.5px;
   /* justify-self: center; */
   &:hover {
-    border: 2px solid black;
+    color: #242124;
+    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
+      /* border: 2px solid black; */ 0 0 1px #8b4513;
     /* color: #a52a2a; */
     /* border-color: #8b4513; */
   }
@@ -174,9 +183,13 @@ const submitStyles = css`
   border-radius: 20px;
   /* justify-self: center; */
   &:hover {
+    color: #242124;
+    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
+      /* border: 2px solid black; */ 0 0 1px #8b4513;
+  }
+  /* &:hover {
     color: #a52a2a;
     /* border-color: #8b4513; */
-  }
 `;
 
 const showPasswordStyles = css`
@@ -200,9 +213,13 @@ const showPasswordStyles = css`
   /* border: 2px solid white; */
   border-radius: 20px;
   &:hover {
+    color: #242124;
+    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
+      /* border: 2px solid black; */ 0 0 1px #8b4513;
+  }
+  /* &:hover {
     color: #a52a2a;
     /* border-color: #8b4513; */
-  }
 `;
 
 const errorStyles = css`
@@ -243,8 +260,8 @@ export default function RegisterPage() {
         <div css={toMyLinkedInStyles}>
           <Link href="./placeholder"> To my LinkedIn Profile </Link>
         </div>
-        <div css={toArtistCreditsStyles}>
-          <Link href="./placeholder"> To Artists Credits </Link>
+        <div css={toArtistCreditStyles}>
+          <Link href="./placeholder"> To Artist Credits </Link>
         </div>
       </nav>
       <h1 css={title}> Please register: </h1>

@@ -60,17 +60,21 @@ export default async function registerHandler(
   // console.log(req.body);
   try {
     const username = req.body.username;
-    const passwordHash = await hashPassword(req.body.password);
 
     // Adds response if the username is already taken
     const existingUser = await getSingleUserWithPasswordHashByUsername(
       username,
     );
+
+    // BUGGED! Message not displayed, econnect refused
     if (existingUser) {
       res.status(400).send({
         errors: [{ message: 'Username already exists.' }],
       });
+      return;
     }
+
+    const passwordHash = await hashPassword(req.body.password);
 
     console.log(username);
     console.log(passwordHash);
@@ -88,3 +92,5 @@ export default async function registerHandler(
     // 500 means internal server error - something went wrong when it tried to do something
   }
 }
+
+//  Response from if (existingUser) already exists is connect ECONNREFUSED ::1:5432

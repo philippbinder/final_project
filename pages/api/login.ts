@@ -1,8 +1,12 @@
 // data from ../login.tsx will be send to this API route
 
+import crypto from 'node:crypto';
+import { send } from 'node:process';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { verifyPassword } from '../../util/auth';
+import { createSerializedRegisterSessionTokenCookie } from '../../util/cookies';
 import {
+  createSession,
   getSingleUserWithPasswordHashByUsername,
   User,
 } from '../../util/database';
@@ -49,6 +53,11 @@ export default async function loginHandler(
       return;
     }
 
+    console.log(
+      'userFromDatabaseWithPasswordHash:',
+      userFromDatabaseWithPasswordHash,
+    );
+
     const isPasswordVerified = verifyPassword(
       req.body.password,
       userFromDatabaseWithPasswordHash.passwordHash,
@@ -66,10 +75,30 @@ export default async function loginHandler(
       return;
     }
 
-    // takes the userFromDatabaseWithPasswordHash and removes the passwrodHash and stores the rest into a variable called user
-    // reason is that we dont want to transmit the passwordHash back to the user
+    //  1. Creates the token for the session
+    const token = crypto.randomBytes(64).toString('base64');
+
+    console.log('Session token from login:', token); // console.log happens in the API -> visible in the terminal, not the console of the browser
+
+    // 2. Does a DB query to add the session record
+    // We set the token attached to the userId inside of the session table
+    const newSession = await createSession(
+      token,
+      userFromDatabaseWithPasswordHash.id,
+    );
+
+    console.log('New session:', newSession);
+
+    // 3. Set the response to create the cookie in the browser
+    // Based on the token we create a serialized cookie
+    const cookie = createSerializedRegisterSessionTokenCookie(newSession.token);
+
+    // Security: Takes the userFromDatabaseWithPasswordHash and removes the passwrodHash and stores the rest into a variable called user
+    // Reason is that we dont want to transmit the passwordHash back to the user
     const { passwordHash, ...user } = userFromDatabaseWithPasswordHash;
 
+    // 4. We set the response with a header that is telling the browser that as soon it recieves the response to set the cookie to the serialized value that we pass.
+    res.status(200).setHeader('set-Cookie', cookie).send({ user: user });
     res.send({ user: user }); // sends the respone back to the browser - it's what I get in the parsed JSON
   } catch (err) {
     res.status(500).send({ errors: [{ message: (err as Error).message }] });
@@ -80,3 +109,4 @@ export default async function loginHandler(
 
 // BUG!!!! if (!isPasswordVerified) always falsy => Password for existing user ALLWAYS checks as true
 // https://www.youtube.com/watch?v=RUipFvAI72M&list=PLMZMRynGmhsix2_xWKX6sp4rDr0E1tIQ_&index=71 42:50
+// make sure that the 1 hour expiry timestamp is working

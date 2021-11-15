@@ -120,7 +120,7 @@ const toMyLinkedInStyles = css`
   }
 `;
 
-const toArtistCreditsStyles = css`
+const toArtistCreditStyles = css`
   /* align-self: center;
   justify-content: center; */
   font-family: MedievalSharp;
@@ -243,8 +243,8 @@ export default function LoginPage() {
         <div css={toMyLinkedInStyles}>
           <Link href="./placeholder"> To my LinkedIn Profile </Link>
         </div>
-        <div css={toArtistCreditsStyles}>
-          <Link href="./placeholder"> To Artists Credits </Link>
+        <div css={toArtistCreditStyles}>
+          <Link href="./placeholder"> To Artist Credits </Link>
         </div>
       </nav>
       <h1 css={title}> Please log in: </h1>
@@ -320,11 +320,15 @@ export default function LoginPage() {
 }
 
 // !!!!!!!!!!!!!!! Password verification not working, at least if the username verification checks true
+// DESIGN:
+// Adds design consistency - change color for the nav container and the submit and show password button to have the same red glow like in the index.js file?
+// Adds design consistency - change hover effect from elements to glowing like the index.js file? -> would also solve the shacking problem for the nav elements
+// change color for the divs in the nav?
+// change color from submit and show password button?
+// once hoovered over, the nav elements are shacking
+// FUNCTIONALITY:
 // make go back button really go back to the last page instead of linking to the main page
 // or rename go back buttonm to To Mainpage
 // implement dropdown contacts with to my linkedin profile and to my uplevled profile
 // nav elements leave nav container once zoom is too close
 // fix show password button going all over the place due to not beeing absolute and AFTER the submit button
-// change color for the divs in the nav?
-// change color from submit and show password button?
-// once hoovered over, the nav elements are shacking

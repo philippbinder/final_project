@@ -1,3 +1,7 @@
+Bugs
+  + fix bugs in register.tsx and login.tsx DONE (needed thorough postgres restart)
+  - fix bug in register.ts
+
 Registration and Database
   - JSON error message if I enter a username on the registration page that I have allready exists and try create it as a new user
   - such failed usernames still take up one ID number despite not existing => ID 2-4 wont show up again in the dt
@@ -9,13 +13,15 @@ Registration and Database
       https://blog.codinghorror.com/your-password-is-too-damn-short/
   - make the go back button really go back
   - create a dropdown menu contacts with links to mylinkedin and upleveled profile
+  - make sure that the 1 hour expiry timestamp is working
 
 Presentation of Log in and Registration
-  - make the register page look like the registrarionPage page
+  + make the register page look like the registrarionPage page DONE EVEN BETTER
   - use components for the background layout
 
 Village / Game screen
   - add a logout button? Or should it only appear once the user clicks on the exit game button, ergo on the index.js file?
+  - add a "About this game" button or something like that that explains the gameplay and maybe the project in general
 
 Cookies
   - cookies for the session?
@@ -30,6 +36,9 @@ Deployment
   - Preflight and all that lovely stuff
   - these test runs that are demanded
   - deployment on Heroku
+
+UpLeveled Todo'showPassword
+  - create and set own favicon
 
 Read up on
   - await sql <User[]> / await sql<[User]>

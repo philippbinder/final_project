@@ -1,12 +1,17 @@
 installed packages:
-- postgres
-- ley https://www.npmjs.com/package/ley
-- dotenv-safe https://www.npmjs.com/package/dotenv-safe ?
-- dotenv-cli https://www.npmjs.com/package/dotenv-cli?activeTab=dependents
-- @emotion/react https://www.npmjs.com/package/@emotion/react and @emotion/babel-plugin https://www.npmjs.com/package/@emotion/babel-plugin + babel.config.js file in root (also quasi der erste folder - der namens final-project) + changes to tsconfig.json
-      (in "next": "12.0.1" Version??falsch???"
-      unter "jsx": "perserve" das hinzufügen: jsxImportSource": "@emotion/react", sonst funktioniert css von emotion nicht (JSX set to preserve in 12.0.1))
-- yarn add @emotion/react
-- yarn add @emotion/react @emotion/styled - wieeder removed!
-- bcrypt https://www.npmjs.com/package/bcrypt als yarn add --dev @types/bcrypt
-- camelCase-keys https://www.npmjs.com/package/camelcase-keys
+
+      - postgres
+      - ley https://www.npmjs.com/package/ley
+      - dotenv-safe https://www.npmjs.com/package/dotenv-safe ?
+      - dotenv-cli https://www.npmjs.com/package/dotenv-cli?activeTab=dependents
+      - @emotion/react https://www.npmjs.com/package/@emotion/react and @emotion/babel-plugin https://www.npmjs.com/package/@emotion/babel-plugin
+            + babel.config.js file in root (also quasi der erste folder - der namens final-project) + changes to tsconfig.json
+            (in "next": "12.0.1" Version??falsch???"
+            unter "jsx": "perserve" das hinzufügen: jsxImportSource": "@emotion/react", sonst funktioniert css von emotion nicht (JSX set to preserve in 12.0.1))
+      - yarn add @emotion/react
+      - yarn add @emotion/react @emotion/styled - wieeder removed!
+      - bcrypt https://www.npmjs.com/package/bcrypt als yarn add --dev @types/bcrypt
+      - camelCase-keys https://www.npmjs.com/package/camelcase-keys
+      - js-cookie, yarn add js-cookie, https://www.npmjs.com/package/js-cookie
+      - cookie, yarn add cokkie, Sessions, Setting COokies from the Server-Side 1/2 (by Jose) 1:03:10
+            To create cookies from the server!

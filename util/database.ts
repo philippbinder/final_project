@@ -13,6 +13,14 @@ export type UserWithPasswordHash = User & {
   passwordHash: string;
 };
 
+// (In this case) UserId could also nbe written as user_id and expiryTimestamp as expiry_timestamp since I am using camelcaseKeys everywhere to change it.
+export type Session = {
+  id: number;
+  token: string;
+  userId: number;
+  expiryTimestamp: Date;
+};
+
 dotenvSafe.config(); // will read the environment variables in the .env file and this line needs to before any lines related to postgres, if not, the database will not be connected
 
 const sql = postgres();
@@ -94,3 +102,19 @@ export async function insertUser({
   // do I need RETURNING?
   return camelcaseKeys(user); // Do I need to return users or anything at all?
 }
+
+// creates a session by user_id and token
+// This function recieves a token and a userId and inserts them into the database
+export async function createSession(token: string, userId: number) {
+  const [session] = await sql<[Session]>`
+    INSERT INTO sessions
+      (token, user_id)
+    VALUES
+      (${token}, ${userId})
+    RETURNING
+      *
+    `;
+  return camelcaseKeys(session);
+}
+
+// make sure that the 1 hour expiry timestamp is working
