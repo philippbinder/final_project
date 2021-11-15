@@ -12,6 +12,6 @@ installed packages:
       - yarn add @emotion/react @emotion/styled - wieeder removed!
       - bcrypt https://www.npmjs.com/package/bcrypt als yarn add --dev @types/bcrypt
       - camelCase-keys https://www.npmjs.com/package/camelcase-keys
-      - js-cookie, yarn add js-cookie, https://www.npmjs.com/package/js-cookie
+      - js-cookie, yarn add js-cookie, https://www.npmjs.com/package/js-cookie - unnecessary because not used?
       - cookie, yarn add cokkie, Sessions, Setting COokies from the Server-Side 1/2 (by Jose) 1:03:10
             To create cookies from the server!

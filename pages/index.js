@@ -23,7 +23,14 @@ const mainContainer = css`
 const headingStyle = css`
   grid-column: 2/3;
   grid-row: 1/2;
-  background-color: black;
+  background: linear-gradient(
+    rgba(139, 69, 19, 0.74) 12%,
+    rgba(139, 69, 19, 0.74) 10%,
+    rgba(36, 33, 36, 01) 100%
+  );
+  /* rgba(255, 255, 255, 0.74) 10%, */
+
+  /* background-color: #242124; */
   /* background: linear-gradient(
     rgba(139, 69, 19, 0.8) 0%,
     rgba(139, 69, 19, 0.74) 1.05%,
@@ -43,8 +50,11 @@ const welcomeStyle = css`
   /* grid-column: 2/3;'
   grid-row: 0/1;' */
   color: white;
+  letter-spacing: 0.7vw;
   font-size: 30px;
   text-shadow: 0 0 5px #8b0000;
+  padding-left: 20vw;
+  padding-right: 20vw;
 `;
 
 const titleStyle = css`
@@ -54,11 +64,13 @@ const titleStyle = css`
   letter-spacing: 1vw;
   /* color: #ffffff; */
   // Letters glow realy cool in white font color - concealed evil, fitting for gameplay?
-  color: #242124;
+  color: white;
   // Letters look really evil in black font color OR basic black?
   font-weight: 550;
   text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
     0 0 1px #8b4513;
+  /* padding-left: 0vw;
+  padding-right: 0vw; */
   /* text-shadow: 0 0 7px #8b0000, 0 0 5px #b22222, 0 0 3px #c32148,
     0 0 1px #cb4154; */
   /* text-shadow: 0 0 7px #fff, 0 0 10px #fff, 0 0 21px #fff, 0 0 42px #0fa,

@@ -58,7 +58,7 @@ export default async function loginHandler(
       userFromDatabaseWithPasswordHash,
     );
 
-    const isPasswordVerified = verifyPassword(
+    const isPasswordVerified = await verifyPassword(
       req.body.password,
       userFromDatabaseWithPasswordHash.passwordHash,
     );

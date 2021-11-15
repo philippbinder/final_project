@@ -18,6 +18,7 @@ Registration and Database
 Presentation of Log in and Registration
   + make the register page look like the registrarionPage page DONE EVEN BETTER
   - use components for the background layout
+  - move away from the brown color theme to a more dark one fitting with the red glow effect?
 
 Village / Game screen
   - add a logout button? Or should it only appear once the user clicks on the exit game button, ergo on the index.js file?
