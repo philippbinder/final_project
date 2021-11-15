@@ -64,7 +64,7 @@ const titleStyle = css`
   letter-spacing: 1vw;
   /* color: #ffffff; */
   // Letters glow realy cool in white font color - concealed evil, fitting for gameplay?
-  color: white;
+  color: #242124;
   // Letters look really evil in black font color OR basic black?
   font-weight: 550;
   text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
@@ -108,7 +108,7 @@ export default function LandingPage() {
     <div css={mainContainer}>
       <div css={headingStyle}>
         <div css={welcomeStyle}> Welcome to </div>
-        <div css={titleStyle}> Dark Deeds </div>
+        <div css={titleStyle}>Dark Deeds</div>
       </div>
       <div css={navStyle}></div>
       <div css={imageStyle}> Add pixel image from database </div>

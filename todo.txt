@@ -44,3 +44,8 @@ UpLeveled Todo'showPassword
 Read up on
   - await sql <User[]> / await sql<[User]>
     => const [user] = await sql <[User]>
+
+--- indicate to the user that one villager has alrdy been talked to
+--- keep track of the score
+--- delay last answer so user can read the asnwer an is not immideatly pushed to the ending screen- like after going back to the village screen
+    => when I load the village screen runServerSideProps - check for win or lose condition
