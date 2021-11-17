@@ -14,6 +14,9 @@ Registration and Database
   - make the go back button really go back
   - create a dropdown menu contacts with links to mylinkedin and upleveled profile
   - make sure that the 1 hour expiry timestamp is working
+  - IMPORTANT user shouldn't be able to access village side or any other relating to village if he is not logged in / has no session token
+  - what if user logs in, types in url for login and logs in a second time? 2 users logged in at the same time? ONLY happens with router.push, not with middelware, which prevents that but by redirecting to one single page all the time -> user can only access one page once logged in
+    -> SOLUTION? Multiple middelware files? One checking if the url is login or register and redirects to village if a token exists / getServerSideProps function
 
 Presentation of Log in and Registration
   + make the register page look like the registrarionPage page DONE EVEN BETTER

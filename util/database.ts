@@ -116,5 +116,44 @@ export async function createSession(token: string, userId: number) {
     `;
   return camelcaseKeys(session);
 }
-
 // make sure that the 1 hour expiry timestamp is working
+
+export async function deleteExpiredSessions() {
+  const sessions = await sql<Session[]>`
+    DELETE FROM
+      sessions
+    WHERE
+      expiry_timestamp < NOW()
+    RETURNING *
+  `;
+
+  return sessions.map((session) => camelcaseKeys(sessions));
+}
+
+// delete session token on logout
+export async function deleteSessionByToken(token: string) {
+  const sessions = await sql<Session[]>`
+    DELETE FROM
+      sessions
+    WHERE
+      expiry_timestamp < NOW()
+    RETURNING *
+  `;
+
+  return sessions.map((session) => camelcaseKeys(sessions))[0];
+}
+
+export async function getValidSessionByToken(token: string) {
+  if (!token) return undefined;
+
+  const sessions = await sql<Session[]>`
+    SELECT
+      *
+    FROM
+      sessions
+    WHERE
+      token = ${token} AND
+      expiry_timestamp > NOW()
+  `;
+  return sessions.map((session) => camelcaseKeys(sessions))[0];
+}

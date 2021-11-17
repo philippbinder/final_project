@@ -1,5 +1,4 @@
 import { css } from '@emotion/react';
-import Image from 'next/image';
 
 const mainContainer = css`
   width: 100vw;
@@ -50,13 +49,11 @@ const headingStyle = css`
   border-bottom: 3px solid black;
   border-bottom-left-radius: 130px;
   border-bottom-right-radius: 130px;
-  box-shadow: 0 0 20px #ffffff;
+  box-shadow: 0 0 20px #ffffff, 0 0 8px #8b0000;
   display: flex;
   flex-direction: column;
   /* width: 100%; */
 `;
-
-// const sunsetImage = <img src="/images/sunset.png" alt="Sunset at cemetery" />;
 
 const sunsetStyle = css`
   grid-column: 2/3;
@@ -77,12 +74,19 @@ const sunsetStyle = css`
   /* width: 100%; */
 `;
 
+// const hosueStyle = css`
+//   grid-column: 3/4;
+//   grid-row: 4/5;
+//   background-image: url('/images/house.png');
+//   background-size: cover;
+// `;
+
 const welcomeStyle = css`
   /* grid-column: 2/3;'
   grid-row: 0/1;' */
   color: white;
   letter-spacing: 0.7vw;
-  font-size: 30px;
+  font-size: 26px;
   text-shadow: 0 0 5px #8b0000;
   padding-left: 20vw;
   padding-right: 20vw;
@@ -96,7 +100,7 @@ const titleStyle = css`
   // Letters glow realy cool in white font color - concealed evil, fitting for gameplay?
   /* color: #242124; */
   // Letters look really evil in black font color OR basic black?
-  font-weight: 550;
+  /* font-weight: 550; */
   color: white;
   text-shadow: 0 0 10px #8b0000, 0 0 8px #b22222, 0 0 8px #8b4513,
     0 0 4px #8b4513;
@@ -132,7 +136,10 @@ const imageStyle = css`
   grid-column: 2/3;
   grid-row: 4/5;
   background-color: black;
-  color: white;
+  box-shadow: 0 0 4px #8b0000, 0 0 10px #ffffff;
+  color: #ffffff;
+  text-shadow: 0 0 6px #a52a2a, 0 0 4px #b22222, 0 0 3px #a52a2a,
+    0 0 1px #a52a2a;
   border-radius: 20px;
   font-size: 40px;
 `;
@@ -148,6 +155,10 @@ export default function LandingPage() {
       </div>
       <div css={navStyle} />
       <div css={imageStyle}> Add pixel image from database </div>
+      {/* <div css={hosueStyle} /> */}
     </div>
   );
 }
+
+// add shadow / black trees to left and the right of the screen?
+// darker orange, darke red?

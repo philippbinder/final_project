@@ -10,6 +10,7 @@ exports.up = async function up(sql) {
 	`;
 };
 // On delete cascade means: Once the id in the create useres table no longer exists, it will also delete the row with it's id in the sessions table.
+// make sure that the 1 hour expiry timestamp is working
 
 exports.down = async function down(sql) {
   console.log('Dropping sessions table...');

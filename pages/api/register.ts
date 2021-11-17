@@ -1,8 +1,12 @@
 // data from ../register.tsx will be send to this API route
 
+import crypto from 'node:crypto';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { hashPassword } from '../../util/auth';
+import { createSerializedRegisterSessionTokenCookie } from '../../util/cookies';
 import {
+  createSession,
+  deleteExpiredSessions,
   getSingleUserWithPasswordHashByUsername,
   insertUser,
   User,
@@ -84,8 +88,26 @@ export default async function registerHandler(
       passwordHash: passwordHash,
     });
 
-    // insert user to database
-    res.send({ user: user }); // sends the respone back to the browser - it's what I get in the parsed JSON
+    // clean old session
+    deleteExpiredSessions();
+
+    //  1. Creates the token for the session
+    const token = crypto.randomBytes(64).toString('base64');
+
+    console.log('Session token from login:', token); // console.log happens in the API -> visible in the terminal, not the console of the browser
+
+    // 2. Does a DB query to add the session record
+    // We set the token attached to the userId inside of the session table
+    const newSession = await createSession(token, user.id);
+
+    console.log('New session:', newSession);
+
+    // 3. Set the response to create the cookie in the browser
+    // Based on the token we create a serialized cookie
+    const cookie = createSerializedRegisterSessionTokenCookie(newSession.token);
+
+    // res.send({ user: user }); // sends the respone back to the browser - it's what I get in the parsed JSON
+    res.status(200).setHeader('set-Cookie', cookie).send({ user: user });
   } catch (err) {
     res.status(500).send({ errors: [{ message: (err as Error).message }] });
     // Security problem! This message displays on the page to the user how my database is structured => use a querry to check if such an error message exists and send a more secure and more understandable message to the user

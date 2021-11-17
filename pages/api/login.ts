@@ -7,6 +7,7 @@ import { verifyPassword } from '../../util/auth';
 import { createSerializedRegisterSessionTokenCookie } from '../../util/cookies';
 import {
   createSession,
+  deleteExpiredSessions,
   getSingleUserWithPasswordHashByUsername,
   User,
 } from '../../util/database';
@@ -74,6 +75,9 @@ export default async function loginHandler(
       });
       return;
     }
+
+    // clean old session
+    deleteExpiredSessions();
 
     //  1. Creates the token for the session
     const token = crypto.randomBytes(64).toString('base64');
