@@ -15,3 +15,6 @@ installed packages:
       - js-cookie, yarn add js-cookie, https://www.npmjs.com/package/js-cookie - unnecessary because not used?
       - cookie, yarn add cokkie, Sessions, Setting COokies from the Server-Side 1/2 (by Jose) 1:03:10
             To create cookies from the server!
+
+
+- css fixed vh and vw and function in onClick or onSubmit that redirects to template page that fetched the id of the villager

@@ -13,7 +13,7 @@ export type UserWithPasswordHash = User & {
   passwordHash: string;
 };
 
-// (In this case) UserId could also nbe written as user_id and expiryTimestamp as expiry_timestamp since I am using camelcaseKeys everywhere to change it.
+// (In this case) UserId could also be written as user_id and expiryTimestamp as expiry_timestamp since I am using camelcaseKeys everywhere to change it.
 export type Session = {
   id: number;
   token: string;

@@ -57,7 +57,7 @@ const navigationStyles = css`
   /* align-content: space-around; */
 `;
 
-const goBackStyles = css`
+const toHomeStyles = css`
   /* align-self: center;
   justify-content: center; */
   font-family: MedievalSharp;
@@ -236,8 +236,8 @@ export default function LoginPage() {
   return (
     <div css={mainContainer}>
       <nav css={navigationStyles}>
-        <div css={goBackStyles}>
-          <Link href="/"> Go back </Link>
+        <div css={toHomeStyles}>
+          <Link href="/"> To Home </Link>
         </div>
         <div css={toRegistrationStyles}>
           <Link href="./register"> To Registration </Link>

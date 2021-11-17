@@ -1,4 +1,5 @@
 import { css } from '@emotion/react';
+import Link from 'next/link';
 
 const mainContainer = css`
   width: 100vw;
@@ -124,12 +125,51 @@ const navStyle = css`
     rgba(242, 243, 244, 0.8) 6%,
     rgba(250, 244, 225, 1) 15%
   ); */
-  border: 3px solid black;
+  /* border: 3px solid black; */
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
   /* box-shadow: 0 0 10px #8b0000; */
+  /* background-color: #242124; */
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+`;
+
+const navElementStyles = css`
+  /* align-self: center;
+  justify-content: center; */
+  /* position: relative; */
+  /* right: 100px; */
+  font-family: MedievalSharp;
+  font-size: 20px;
+  letter-spacing: 0.2vw;
+  /* padding-left: 2.8px; */
+  /* height: 50px; */
+  /* width: 450px; */
+  padding-left: 2.8px;
+  padding-right: 2.8px;
+  text-align: center;
+  border: 3px solid #242124;
+  background-color: rgba(250, 244, 225, 0.62);
+  /* background-color: #faf4e1; */
+  /* border-radius: 20px; */
+  border-bottom-right-radius: 15px;
+  /* border-bottom-left-radius: 10px; */
+  border-top-right-radius: 20px;
+  // horizntal-, vertical-shadow-position, blur, spread, color
+  box-shadow: 5px -3px 4px 1.5px #242124;
+  /* 0 0 1px #a52a2a,  */
+  /* border-top-left-radius: 10px; */
+  /* justify-self: center; */
+  &:hover {
+    /* color: #242124; */
+    color: #171717;
+    /* color: #ffffff; */
+    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
+      /* border: 2px solid black; */ 0 0 1px #8b4513;
+    /* color: #a52a2a; */
+    /* border-color: #8b4513; */
+  }
 `;
 
 const imageStyle = css`
@@ -164,12 +204,42 @@ export default function LandingPage() {
         <div css={welcomeStyle}> Welcome to </div>
         <div css={titleStyle}>Dark Deeds</div>
       </div>
-      <div css={navStyle} />
+      <div css={navStyle}>
+        <div css={navElementStyles}>
+          {' '}
+          <Link href="./register"> To Registration </Link>{' '}
+        </div>
+        <div css={navElementStyles}>
+          {' '}
+          <Link href="./login"> To Login </Link>{' '}
+        </div>
+        <div css={navElementStyles}>
+          {' '}
+          <Link href="./placeholder"> To My LinkedIn </Link>{' '}
+        </div>
+        <div css={navElementStyles}>
+          {' '}
+          <Link href="./placeholder"> To Artist Credits </Link>{' '}
+        </div>
+      </div>
       <div css={imageStyle} />
       {/* <div css={hosueStyle} /> */}
     </div>
   );
 }
+
+//     <Link href="/"> To Registration </Link>
+//   </div>
+//   <div css={toLoginStyles}>
+//     <Link href="./login"> To Login </Link>
+//   </div>
+//   <div css={toMyLinkedInStyles}>
+//     <Link href="./placeholder"> To my LinkedIn Profile </Link>
+//   </div>
+//   <div css={toArtistCreditStyles}>
+//     <Link href="./placeholder"> To Artist Credits </Link>
+//   </div>
+// </nav>;
 
 // add shadow / black trees to left and the right of the screen?
 // darker orange, darke red?
