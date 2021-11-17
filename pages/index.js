@@ -4,7 +4,7 @@ const mainContainer = css`
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 0.8fr 3fr 0.8fr;
+  grid-template-columns: 0.5fr 0.8fr 3fr 0.8fr 0.5fr;
   grid-template-rows: 0.5fr 0.5fr 0.5fr 4fr 1fr;
   /* grid-row-gap: 40px;
   grid-column-gap: 20px; */
@@ -29,7 +29,7 @@ const mainContainer = css`
 // original helles orange rgba(202, 129, 20, 0.74) 0.02%,
 
 const headingStyle = css`
-  grid-column: 2/3;
+  grid-column: 2/5;
   grid-row: 1/2;
   /* background: linear-gradient(
     rgba(139, 69, 19, 0.74) 12%,
@@ -56,7 +56,7 @@ const headingStyle = css`
 `;
 
 const sunsetStyle = css`
-  grid-column: 2/3;
+  grid-column: 2/5;
   grid-row: 1/2;
   background-image: url('/images/sunsetDeer4.png');
   /* background-size: 60vw 110px; */
@@ -125,23 +125,34 @@ const navStyle = css`
     rgba(250, 244, 225, 1) 15%
   ); */
   border: 3px solid black;
-  border-top-right-radius: 130px;
-  border-bottom-right-radius: 130px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
   /* box-shadow: 0 0 10px #8b0000; */
   display: flex;
   flex-direction: column;
 `;
 
 const imageStyle = css`
-  grid-column: 2/3;
+  grid-column: 2/5;
   grid-row: 4/5;
-  background-color: black;
   box-shadow: 0 0 4px #8b0000, 0 0 10px #ffffff;
-  color: #ffffff;
+  background-color: #242124;
   text-shadow: 0 0 6px #a52a2a, 0 0 4px #b22222, 0 0 3px #a52a2a,
     0 0 1px #a52a2a;
   border-radius: 20px;
-  font-size: 40px;
+  margin: 0 70px;
+  background-image: url('/images/villageImage3.png');
+  /* background-size: 60vw 110px; */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-color: linear-gradient(
+    180deg,
+    rgba(15, 14, 15, 0.3626) 0.01%,
+    rgba(15, 14, 15, 0.74) 0.02%,
+    rgba(15, 14, 15, 0.74) 16.4%,
+    rgba(15, 14, 15, 0.9) 100%
+  ); */
 `;
 
 export default function LandingPage() {
@@ -154,7 +165,7 @@ export default function LandingPage() {
         <div css={titleStyle}>Dark Deeds</div>
       </div>
       <div css={navStyle} />
-      <div css={imageStyle}> Add pixel image from database </div>
+      <div css={imageStyle} />
       {/* <div css={hosueStyle} /> */}
     </div>
   );
@@ -162,3 +173,4 @@ export default function LandingPage() {
 
 // add shadow / black trees to left and the right of the screen?
 // darker orange, darke red?
+// why is the image getting smaller the more I zoom in?

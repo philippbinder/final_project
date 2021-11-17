@@ -340,3 +340,5 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 // implement dropdown contacts with to my linkedin profile and to my uplevled profile
 // nav elements leave nav container once zoom is too close
 // fix show password button going all over the place due to not beeing absolute and AFTER the submit button
+
+// 1:10:46 https://www.youtube.com/watch?v=PxKUl7-tVEE&list=PLMZMRynGmhsix2_xWKX6sp4rDr0E1tIQ_&index=74
