@@ -147,6 +147,8 @@ const navElementStyles = css`
   text-align: center;
   border: 3px solid #242124;
   background-color: rgba(250, 244, 225, 0.62);
+  /* background: linear-gradient(#f2f3f4 5%, #ffffff 50%); */
+
   /* background-color: #faf4e1; */
   /* border-radius: 20px; */
   border-bottom-right-radius: 15px;

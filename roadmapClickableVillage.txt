@@ -1,0 +1,13 @@
+  1.  Download image
+  2.  Position image in the village.js file
+  3.  Position the first button
+  4.  Make the button link to a placeholder page once clicked
+  5.  Give the button an id (database)
+  6.  Make this placeholder page a template page
+  7.  Make the template change based on the button id it grabs (from the database)
+  8.  Create 9 more buttons with unique ids that link to the template
+  9.  Design the template basics
+  10. Give the button unique images and dialogue (database)
+  11. Give the template changable elements for the parts of the template that are supposed to adapt to the buttons unique properties
+
+Button = villager from db
