@@ -1,4 +1,4 @@
-  1.  Download image
+  1.  Download image +
   2.  Position image in the village.js file
   3.  Position the first button
   4.  Make the button link to a placeholder page once clicked
@@ -11,3 +11,13 @@
   11. Give the template changable elements for the parts of the template that are supposed to adapt to the buttons unique properties
 
 Button = villager from db
+
+Next Image component pros
+  + less likely to run into problems with Heroku
+  + better performance (for ex. lazy loaded)
+
+Div for images pros pros
+  + usage of emotion
+  + don't have to restyle alrdy implemented images
+  + can use vh and vw
+  + more familiar to me, thus saving more time
