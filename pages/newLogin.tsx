@@ -8,149 +8,150 @@ import { Errors } from '../util/types';
 import { LoginResponse } from './api/login';
 
 const mainContainer = css`
+  position: absolute;
   width: 100vw;
   height: 100vh;
+  /* height: 24.7%; */
+  /* height: 1080px; */
   display: grid;
-  grid-template-columns: 0.5fr 4fr 0.5fr 10fr 0.5fr;
-  grid-template-rows: 1.5fr 1.5fr 7.5fr 1fr;
-  /* grid-row-gap: 40px;
-  grid-column-gap: 20px; */
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-template-rows: 1fr 1fr 0.5fr 4fr 0.5fr 1fr;
+  grid-row-gap: 5vh;
   text-align: center;
   font-size: 24px;
   letter-spacing: 0.5vw;
+  /* justify-content: stretch; */
+  /* align-content: stretch; */
   font-family: MedievalSharp;
-  /* background: linear-gradient(
-    180deg,
-    rgba(102, 0, 17, 0.74) 0%,
-    rgba(139, 69, 19, 0.74) 0.01%,
-    rgba(139, 69, 19, 0) 100%
-  ); */
   background: linear-gradient(
     180deg,
-    rgba(250, 127, 13, 0.3626) 0.01%,
-    rgba(168, 84, 14, 0.74) 0.02%,
-    rgba(147, 9, 0, 0.74) 16.4%,
-    rgba(6, 0, 2, 0.9) 100%
+    rgba(139, 69, 19, 0.74) 0%,
+    rgba(139, 69, 19, 0.74) 0.01%,
+    rgba(139, 69, 19, 0) 100%
   );
+  /* font-size: 5vh; */
 `;
-// original helles orange rgba(202, 129, 20, 0.74) 0.02%,
 
-const headingStyle = css`
-  grid-column: 2/5;
-  grid-row: 1/2;
-  /* background: linear-gradient(
-    rgba(139, 69, 19, 0.74) 12%,
-    rgba(139, 69, 19, 0.74) 10%,
-    rgba(36, 33, 36, 01) 100%
+const navigationStyles = css`
+  /* grid-column: 1/4; */
+  grid-column: 2/3;
+  grid-row: 0/1;
+  /* justify-self: stretch; */
+  width: 100%;
+  /* background-color: linear-gradient(
+    rgba(139, 69, 19, 0.2),
+    rgba(250, 244, 225, 1)
   ); */
-  /* background-image: img src= '/images/sunset.png' alt= 'Sunset at cemetery'; */
-  /* rgba(255, 255, 255, 0.74) 10%, */
-
-  /* background-color: #242124; */
-  /* background: linear-gradient(
+  background: linear-gradient(
     rgba(139, 69, 19, 0.8) 0%,
     rgba(139, 69, 19, 0.74) 1.05%,
     rgba(242, 243, 244, 0.8) 6%,
     rgba(250, 244, 225, 1) 15%
-  ); */
+  );
   border-bottom: 3px solid black;
   border-bottom-left-radius: 130px;
   border-bottom-right-radius: 130px;
-  box-shadow: 0 0 20px #ffffff, 0 0 8px #8b0000;
   display: flex;
-  flex-direction: column;
-  /* width: 100%; */
+  align-items: center;
+  justify-content: space-evenly;
+  /* align-content: space-around; */
 `;
 
-const sunsetStyle = css`
-  grid-column: 2/5;
-  grid-row: 1/2;
-  background-image: url('/images/sunsetDeer4.png');
-  /* background-size: 60vw 110px; */
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  border-bottom: 3px solid black;
-  border-bottom-left-radius: 130px;
-  border-bottom-right-radius: 130px;
-  box-shadow: 0 0 10px #8b0000;
-  /* width: 100%;
-  height: 100%; */
-  /* object-fit: contain; */
-  /* height: 100%; */
-  /* width: 100%; */
-`;
-
-const navStyle = css`
-  grid-column: 1/3;
-  grid-row: 3/4;
-  /* background: linear-gradient(
-    rgba(139, 69, 19, 0.8) 0%,
-    rgba(139, 69, 19, 0.74) 1.05%,
-    rgba(242, 243, 244, 0.8) 6%,
-    rgba(250, 244, 225, 1) 15%
-  ); */
-  /* border: 3px solid black; */
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
-  /* box-shadow: 0 0 10px #8b0000; */
-  /* background-color: #242124; */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
-const navElementStyles = css`
+const toHomeStyles = css`
   /* align-self: center;
   justify-content: center; */
-  /* position: relative; */
-  /* right: 100px; */
   font-family: MedievalSharp;
-  font-size: 30px;
+  font-size: 20px;
   letter-spacing: 0.2vw;
-  /* padding-left: 2.8px; */
-  /* height: 50px;
-  width: 450px; */
-  padding-left: 2.8px;
-  padding-right: 2.8px;
-  text-align: center;
-  border: 3px solid #242124;
-  background-color: rgba(250, 244, 225, 0.62);
+  padding: 0px 2.8px;
+  background-color: rgba(250, 244, 225, 0.8);
   /* background-color: #faf4e1; */
   /* border-radius: 20px; */
-  border-bottom-right-radius: 15px;
-  /* border-bottom-left-radius: 10px; */
-  border-top-right-radius: 20px;
-  // horizntal-, vertical-shadow-position, blur, spread, color
-  box-shadow: 5px -3px 4px 1.5px #242124;
-  /* 0 0 1px #a52a2a,  */
-  /* border-top-left-radius: 10px; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 2.5px;
+  border-top-left-radius: 2.5px;
   /* justify-self: center; */
   &:hover {
-    /* color: #242124; */
-    color: #171717;
-    /* color: #ffffff; */
-    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
-      /* border: 2px solid black; */ 0 0 1px #8b4513;
+    border: 2px solid black;
     /* color: #a52a2a; */
     /* border-color: #8b4513; */
   }
 `;
 
-const loginContainerStyle = css`
-  grid-column: 4/5;
-  grid-row: 3/4;
-  box-shadow: 0 0 4px black, 0 0 10px black;
-  /* background-color: #fff5ee; */
-  /* text-shadow: 0 0 6px #a52a2a, 0 0 4px #b22222, 0 0 3px #a52a2a,
-    0 0 1px #a52a2a; */
-  background: linear-gradient(
-    180deg,
-    rgba(250, 127, 13, 0.1) 10.01%,
-    rgba(168, 84, 14, 0.1) 10.02%,
-    #930a002d 36.4%,
-    rgba(6, 0, 2, 0.9) 100%
-  );
-  border-radius: 20px;
+const toRegistrationStyles = css`
+  /* align-self: center;
+  justify-content: center; */
+  font-family: MedievalSharp;
+  font-size: 20px;
+  letter-spacing: 0.2vw;
+  padding-left: 2.8px;
+  background-color: rgba(250, 244, 225, 0.8);
+  /* background-color: #faf4e1; */
+  /* border-radius: 20px; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 2.5px;
+  border-top-left-radius: 2.5px;
+  /* justify-self: center; */
+  &:hover {
+    border: 2px solid black;
+    /* color: #a52a2a; */
+    /* border-color: #8b4513; */
+  }
+`;
+
+const toMyLinkedInStyles = css`
+  /* align-self: center;
+  justify-content: center; */
+  font-family: MedievalSharp;
+  font-size: 20px;
+  letter-spacing: 0.2vw;
+  padding-left: 2.8px;
+  background-color: rgba(250, 244, 225, 0.55);
+  /* background-color: #faf4e1; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 2.5px;
+  border-top-left-radius: 2.5px;
+  /* justify-self: center; */
+  &:hover {
+    border: 2px solid black;
+    /* color: #a52a2a; */
+    /* border-color: #8b4513; */
+  }
+`;
+
+const toArtistCreditStyles = css`
+  /* align-self: center;
+  justify-content: center; */
+  font-family: MedievalSharp;
+  font-size: 20px;
+  letter-spacing: 0.2vw;
+  padding: 0px 2.8px;
+  background-color: rgba(250, 244, 225, 0.8);
+  /* background-color: #faf4e1; */
+  /* border-radius: 20px; */
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top-right-radius: 2.5px;
+  border-top-left-radius: 2.5px;
+  /* justify-self: center; */
+  &:hover {
+    border: 2px solid black;
+    /* color: #a52a2a; */
+    /* border-color: #8b4513; */
+  }
+`;
+
+const title = css`
+  grid-column: 2/3;
+  grid-row: 2/3;
+`;
+
+const formStyles = css`
+  grid-column: 2/3;
+  grid-row: 4/5;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -165,23 +166,17 @@ const loginContainerStyle = css`
 // `;
 
 const submitStyles = css`
-  margin-top: 7px;
+  margin-top: 72px;
   font-family: MedievalSharp;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: 0.2vw;
   background: linear-gradient(#f2f3f4 5%, #ffffff 50%);
-  /* #fff5ee */
   /* background: linear-gradient(#faf4e1 5%, #ffffff 50%); */
   /* background-color: #faf4e1; */
   border-radius: 20px;
   /* justify-self: center; */
   &:hover {
-    /* color: #242124; */
-    color: #171717;
-    /* color: #ffffff; */
-    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
-      /* border: 2px solid black; */ 0 0 1px #8b4513;
-    /* color: #a52a2a; */
+    color: #a52a2a;
     /* border-color: #8b4513; */
   }
 `;
@@ -193,12 +188,11 @@ const showPasswordStyles = css`
   position: absolute;
   /* z-index: -1; */
   /* margin-bottom: 200px; */
-  /* margin-left: 439px; */
-  margin-left: 29.1vw;
-  margin-top: 80vh;
-  /* margin-top: 550px; */
+  /* margin-left: 400%; */
+  /* margin-top: 62vh; */
+  margin-top: 500px;
   font-family: MedievalSharp;
-  font-size: 24px;
+  font-size: 20px;
   letter-spacing: 0.2vw;
   background: linear-gradient(#f2f3f4 5%, #ffffff 50%);
   /* background: linear-gradient(#faf4e1 5%, #ffffff 50%); */
@@ -208,12 +202,7 @@ const showPasswordStyles = css`
   /* border: 2px solid white; */
   border-radius: 20px;
   &:hover {
-    /* color: #242124; */
-    color: #171717;
-    /* color: #ffffff; */
-    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
-      /* border: 2px solid black; */ 0 0 1px #8b4513;
-    /* color: #a52a2a; */
+    color: #a52a2a;
     /* border-color: #8b4513; */
   }
 `;
@@ -246,24 +235,23 @@ export default function LoginPage() {
   const router = useRouter(); // under useRouter and router.push https://nextjs.org/docs/api-reference/next/router
   return (
     <div css={mainContainer}>
-      <div css={headingStyle} />
-      <div css={sunsetStyle} />
-      <nav css={navStyle}>
-        <div css={navElementStyles}>
-          <Link href="./register"> To Registration </Link>
-        </div>
-        <div css={navElementStyles}>
+      <nav css={navigationStyles}>
+        <div css={toHomeStyles}>
           <Link href="/"> To Home </Link>
         </div>
-        <div css={navElementStyles}>
-          <Link href="./placeholder"> To My LinkedIn </Link>
+        <div css={toRegistrationStyles}>
+          <Link href="./register"> To Registration </Link>
         </div>
-        <div css={navElementStyles}>
+        <div css={toMyLinkedInStyles}>
+          <Link href="./placeholder"> To my LinkedIn Profile </Link>
+        </div>
+        <div css={toArtistCreditStyles}>
           <Link href="./placeholder"> To Artist Credits </Link>
         </div>
       </nav>
+      <h1 css={title}> Please log in: </h1>
       <form
-        css={loginContainerStyle}
+        css={formStyles}
         onSubmit={async (event) => {
           event.preventDefault();
           console.log(username, password);
@@ -275,7 +263,7 @@ export default function LoginPage() {
             },
             body: JSON.stringify({
               // body needs to be send in JSON
-              // die data die ich passen will, also an login.ts, schreibe ich den body - "this body inside the fetch turns into req.body in loginrHandler von login.ts"
+              // die data die ich passen will, also an login.ts, schreibe ich den body - "this body inside the fetch turns into req.body in reigsterHandler von login.ts"
               username: username,
               password: password,
             }),
@@ -301,7 +289,6 @@ export default function LoginPage() {
           // );
         }}
       >
-        <h1> Please log in: </h1>
         <label>
           Enter your username:{' '}
           <input

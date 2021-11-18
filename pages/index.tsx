@@ -78,13 +78,6 @@ const sunsetStyle = css`
   /* width: 100%; */
 `;
 
-// const hosueStyle = css`
-//   grid-column: 3/4;
-//   grid-row: 4/5;
-//   background-image: url('/images/house.png');
-//   background-size: cover;
-// `;
-
 const welcomeStyle = css`
   /* grid-column: 2/3;'
   grid-row: 0/1;' */
@@ -249,27 +242,27 @@ export default function LandingPage() {
 // why is the image getting smaller the more I zoom in?
 
 // does the same as in the login.tsx - redirects if the user is already logged in
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { getValidSessionByToken } = await import('../util/database');
+// export async function getServerSideProps(context: GetServerSidePropsContext) {
+//   const { getValidSessionByToken } = await import('../util/database');
 
-  const sessionToken = context.req.cookies.sessionTokenRegister;
+//   const sessionToken = context.req.cookies.sessionTokenRegister;
 
-  const session = await getValidSessionByToken(sessionToken);
+//   const session = await getValidSessionByToken(sessionToken);
 
-  console.log(session);
+//   console.log(session);
 
-  if (session) {
-    // Redirect the user when they have a session
-    // token by returning an object with the `redirect` prop
-    // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
-    return {
-      redirect: {
-        destination: '/village',
-        permanent: false,
-      },
-    };
-  }
-  return {
-    props: {},
-  };
-}
+//   if (session) {
+//     // Redirect the user when they have a session
+//     // token by returning an object with the `redirect` prop
+//     // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+//     return {
+//       redirect: {
+//         destination: '/village',
+//         permanent: false,
+//       },
+//     };
+//   }
+//   return {
+//     props: {},
+//   };
+// }
