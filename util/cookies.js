@@ -12,8 +12,8 @@ export function createSerializedRegisterSessionTokenCookie(token) {
 
   const maxAge = 60 * 5; // means 5 minutes
 
-  // serialize recieves 3 arguments: sessionTokenRegister = name of the cookie, token = value of the cookie, {content} = is an object with all the options
-  return serialize('sessionTokenRegister', token, {
+  // serialize recieves 3 arguments: sessionToken = name of the cookie, token = value of the cookie, {content} = is an object with all the options
+  return serialize('sessionToken', token, {
     maxAge: maxAge,
     // we are also getting the expire because some browsers use maxeAge, some use expires
     expires: new Date(Date.now() + maxAge * 1000),

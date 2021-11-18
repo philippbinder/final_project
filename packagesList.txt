@@ -15,6 +15,7 @@ installed packages:
       - js-cookie, yarn add js-cookie, https://www.npmjs.com/package/js-cookie - unnecessary because not used?
       - cookie, yarn add cokkie, Sessions, Setting COokies from the Server-Side 1/2 (by Jose) 1:03:10
             To create cookies from the server!
+      - yarn add --dev @types/cookie / did go for yarn add @types/cookie to add it as dependancy in runtime and not only dev dependancy - for the cookie in logut.tsx
 
 
 - css fixed vh and vw and function in onClick or onSubmit that redirects to template page that fetched the id of the villager

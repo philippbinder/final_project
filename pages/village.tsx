@@ -120,25 +120,27 @@ export default function villageMap() {
 }
 
 // makes this page only reachable if user / admin is logged in
-// export async function getServerSideProps(context: GetServerSidePropsContext) {
-//   const sessionToken = context.req.cookies.sessionTokenRegister;
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  // const sessionToken = context.req.cookies.sessionTokenRegister;
+  const sessionToken = context.req.cookies.sessionToken;
+  console.log('village.tsx context.req.cookies:', context.req.cookies);
 
-//   const session = await getValidSessionByToken(sessionToken);
+  const session = await getValidSessionByToken(sessionToken);
 
-//   console.log(session);
+  console.log(session);
 
-//   if (!session) {
-//     // Redirect the user when they have a session
-//     // token by returning an object with the `redirect` prop
-//     // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
-//     return {
-//       redirect: {
-//         destination: '/',
-//         permanent: false,
-//       },
-//     };
-//   }
-//   return {
-//     props: {},
-//   };
-// }
+  if (!session) {
+    // Redirect the user when they have a session
+    // token by returning an object with the `redirect` prop
+    // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+    return {
+      redirect: {
+        destination: '/?returnTo=/village',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}
