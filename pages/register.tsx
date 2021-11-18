@@ -1,7 +1,9 @@
 import { css } from '@emotion/react';
+import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+// import { getValidSessionByToken } from '../util/database';
 import { Errors } from '../util/types';
 import { RegisterResponse } from './api/register';
 
@@ -255,13 +257,13 @@ export default function RegisterPage() {
           <Link href="/"> To Home </Link>
         </div>
         <div css={toLoginStyles}>
-          <Link href="./login"> To Login </Link>
+          <Link href="/login"> To Login </Link>
         </div>
         <div css={toMyLinkedInStyles}>
-          <Link href="./placeholder"> To my LinkedIn Profile </Link>
+          <Link href="/placeholder"> To my LinkedIn Profile </Link>
         </div>
         <div css={toArtistCreditStyles}>
-          <Link href="./placeholder"> To Artist Credits </Link>
+          <Link href="/placeholder"> To Artist Credits </Link>
         </div>
       </nav>
       <h1 css={title}> Please register: </h1>
@@ -335,6 +337,32 @@ export default function RegisterPage() {
       </div>
     </div>
   );
+}
+
+// does the same as in the login.tsx - redirects if the user is already logged in
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { getValidSessionByToken } = await import('../util/database');
+
+  const sessionToken = context.req.cookies.sessionTokenRegister;
+
+  const session = await getValidSessionByToken(sessionToken);
+
+  console.log(session);
+
+  if (session) {
+    // Redirect the user when they have a session
+    // token by returning an object with the `redirect` prop
+    // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+    return {
+      redirect: {
+        destination: '/village',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
 }
 
 // make it so that the show password button moves with the zoom of the grid or at least doesn't immidetly leave its position without moving it into the <form> </form> (takes on useRouter instead of showing the password)

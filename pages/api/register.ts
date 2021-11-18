@@ -114,5 +114,3 @@ export default async function registerHandler(
     // 500 means internal server error - something went wrong when it tried to do something
   }
 }
-
-//  Response from if (existingUser) already exists is connect ECONNREFUSED ::1:5432

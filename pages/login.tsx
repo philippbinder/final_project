@@ -1,9 +1,9 @@
-import { css } from '@emotion/react'; // emotion not working
+import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { getValidSessionByToken } from '../util/database';
+// import { getValidSessionByToken } from '../util/database';
 import { Errors } from '../util/types';
 import { LoginResponse } from './api/login';
 
@@ -323,8 +323,28 @@ export default function LoginPage() {
 
 // check if user is already logged in by checking if there is a session token, if so, redirect him from the login page to the village page
 export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const sessionToken = context.req.cookies.sessionToken;
-  getValidSessionByToken(sessionToken);
+  const { getValidSessionByToken } = await import('../util/database');
+
+  const sessionToken = context.req.cookies.sessionTokenRegister;
+
+  const session = await getValidSessionByToken(sessionToken);
+
+  console.log(session);
+
+  if (session) {
+    // Redirect the user when they have a session
+    // token by returning an object with the `redirect` prop
+    // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+    return {
+      redirect: {
+        destination: '/village',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
 }
 
 // !!!!!!!!!!!!!!! Password verification not working, at least if the username verification checks true

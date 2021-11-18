@@ -23,6 +23,7 @@ export type Session = {
 
 dotenvSafe.config(); // will read the environment variables in the .env file and this line needs to before any lines related to postgres, if not, the database will not be connected
 
+// connect one time to database
 const sql = postgres();
 
 // for the   const [user] = await sql<[User]>` in the insertUser function down below
@@ -39,21 +40,20 @@ export async function getAllUsers() {
   console.log('users:', users);
 }
 
-// this function can be called to get a single user based on the passed id - problem with id
-export async function getSingleUser(id: number) {
-  const users = await sql`
+// this function can be called to get a single user based on the passed id
+export async function getUser(id: number) {
+  const [user] = await sql<[User]>`
     SELECT
       id,
       username
     FROM
       users
     WHERE
-    ID = ${id};
+    id = ${id};
     `;
-  const singleUser = users[0];
-  console.log('singleUser:', singleUser);
+  console.log('User:', user);
 
-  return camelcaseKeys(singleUser);
+  return camelcaseKeys(user);
 }
 
 // Careful with this function! Shows the hashes password of the user.
@@ -155,5 +155,5 @@ export async function getValidSessionByToken(token: string) {
       token = ${token} AND
       expiry_timestamp > NOW()
   `;
-  return sessions.map((session) => camelcaseKeys(sessions))[0];
+  return sessions.map((session) => camelcaseKeys(session))[0];
 }

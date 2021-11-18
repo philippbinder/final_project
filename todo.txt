@@ -1,6 +1,6 @@
 Bugs
   + fix bugs in register.tsx and login.tsx DONE (needed thorough postgres restart)
-  - fix bug in register.ts
+  + fix bug in register.ts
 
 Registration and Database
   - JSON error message if I enter a username on the registration page that I have allready exists and try create it as a new user
@@ -11,24 +11,25 @@ Registration and Database
   - add password constraint: Lack sufficient entropy: aaaaaaaaa
   - add password constraint: Match common dictionary words: anteaters1
       https://blog.codinghorror.com/your-password-is-too-damn-short/
-  - make the go back button really go back
+  + make the go back button really go back - worked around by taking the user back to the landing page
   - create a dropdown menu contacts with links to mylinkedin and upleveled profile
   - make sure that the 1 hour expiry timestamp is working
-  - IMPORTANT user shouldn't be able to access village side or any other relating to village if he is not logged in / has no session token
-  - what if user logs in, types in url for login and logs in a second time? 2 users logged in at the same time? ONLY happens with router.push, not with middelware, which prevents that but by redirecting to one single page all the time -> user can only access one page once logged in
-    -> SOLUTION? Multiple middelware files? One checking if the url is login or register and redirects to village if a token exists / getServerSideProps function
+  + IMPORTANT user shouldn't be able to access village side or any other relating to village if he is not logged in / has no session token
+  + what if user logs in, types in url for login and logs in a second time? 2 users logged in at the same time? ONLY happens with router.push, not with middelware, which prevents that but by redirecting to one single page all the time -> user can only access one page once logged in
+    -> SOLUTION: redirect if user is logged in and make village only accesible if user is logged in
 
 Presentation of Log in and Registration
   + make the register page look like the registrarionPage page DONE EVEN BETTER
   - use components for the background layout
-  - move away from the brown color theme to a more dark one fitting with the red glow effect?
+  + move away from the brown color theme to a more dark one fitting with the red glow effect?
+  - make the buttons at index.tsx shift inwards if hovered over / or clicked? For satisfying 3D click effect
 
 Village / Game screen
   - add a logout button? Or should it only appear once the user clicks on the exit game button, ergo on the index.js file?
   - add a "About this game" button or something like that that explains the gameplay and maybe the project in general
 
 Cookies
-  - cookies for the session?
+  + cookies for the session?
 
 CRF Token ?
 
@@ -48,6 +49,7 @@ Read up on
   - await sql <User[]> / await sql<[User]>
     => const [user] = await sql <[User]>
 
+Karl:
 --- indicate to the user that one villager has alrdy been talked to
 --- keep track of the score
 --- delay last answer so user can read the asnwer an is not immideatly pushed to the ending screen- like after going back to the village screen

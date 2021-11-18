@@ -1,12 +1,15 @@
 import { css } from '@emotion/react';
+import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
+
+// import { getValidSessionByToken } from '../util/database';
 
 const mainContainer = css`
   width: 100vw;
   height: 100vh;
   display: grid;
-  grid-template-columns: 0.5fr 0.8fr 3fr 0.8fr 0.5fr;
-  grid-template-rows: 0.5fr 0.5fr 0.5fr 4fr 1fr;
+  grid-template-columns: 0.5fr 4fr 0.5fr 10fr 0.5fr;
+  grid-template-rows: 1.5fr 1.5fr 7.5fr 1fr;
   /* grid-row-gap: 40px;
   grid-column-gap: 20px; */
   text-align: center;
@@ -117,8 +120,8 @@ const titleStyle = css`
 `;
 
 const navStyle = css`
-  grid-column: 1/2;
-  grid-row: 4/5;
+  grid-column: 1/3;
+  grid-row: 3/4;
   /* background: linear-gradient(
     rgba(139, 69, 19, 0.8) 0%,
     rgba(139, 69, 19, 0.74) 1.05%,
@@ -141,11 +144,11 @@ const navElementStyles = css`
   /* position: relative; */
   /* right: 100px; */
   font-family: MedievalSharp;
-  font-size: 20px;
+  font-size: 30px;
   letter-spacing: 0.2vw;
   /* padding-left: 2.8px; */
-  /* height: 50px; */
-  /* width: 450px; */
+  /* height: 50px;
+  width: 450px; */
   padding-left: 2.8px;
   padding-right: 2.8px;
   text-align: center;
@@ -173,8 +176,8 @@ const navElementStyles = css`
 `;
 
 const imageStyle = css`
-  grid-column: 2/5;
-  grid-row: 4/5;
+  grid-column: 4/5;
+  grid-row: 3/4;
   box-shadow: 0 0 4px #8b0000, 0 0 10px #ffffff;
   background-color: #242124;
   text-shadow: 0 0 6px #a52a2a, 0 0 4px #b22222, 0 0 3px #a52a2a,
@@ -244,3 +247,29 @@ export default function LandingPage() {
 // add shadow / black trees to left and the right of the screen?
 // darker orange, darke red?
 // why is the image getting smaller the more I zoom in?
+
+// does the same as in the login.tsx - redirects if the user is already logged in
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { getValidSessionByToken } = await import('../util/database');
+
+  const sessionToken = context.req.cookies.sessionTokenRegister;
+
+  const session = await getValidSessionByToken(sessionToken);
+
+  console.log(session);
+
+  if (session) {
+    // Redirect the user when they have a session
+    // token by returning an object with the `redirect` prop
+    // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+    return {
+      redirect: {
+        destination: '/village',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
+}

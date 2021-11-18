@@ -2,6 +2,8 @@ import type { NextFetchEvent, NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 import { deleteSessionByToken } from '../util/database';
 
+// checks if the user the user is on the logout page and if so, deletes his session cookie, thus logging him out, and redirects him to the landig page
+// is done in the middleware, alternatively a logout page could be created
 export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   console.log(
     "Is the url of the current page 'logout'?",
@@ -9,8 +11,8 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
   ); // checks if the url of page I am at is logout
   if (req.url === '/logout') {
     const sessionToken = req.cookies.sessionTokenRegister;
-    // delete session with the sesseion in the cookie
 
+    // delete session with the sesseion in the cookie
     // if a sessionToken exist, ergo if user loged in or registered, fetch the api route that deletes that token
     if (sessionToken) {
       // fetch API route called logout
@@ -38,5 +40,4 @@ export async function middleware(req: NextRequest, ev: NextFetchEvent) {
     // redirect to home
     // return NextResponse.redirect('/');
   }
-  return;
 }
