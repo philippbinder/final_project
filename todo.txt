@@ -18,6 +18,10 @@ Registration and Database
   + what if user logs in, types in url for login and logs in a second time? 2 users logged in at the same time? ONLY happens with router.push, not with middelware, which prevents that but by redirecting to one single page all the time -> user can only access one page once logged in
     -> SOLUTION: redirect if user is logged in and make village only accesible if user is logged in
 
+Save Game / database
+  - game needs to keep track of which villagers the player has already talked to and to which he hasn't -> automatically saves any progress in database? If I do it that way, a save game button wouldn't make any sense because everything gets saved immideatly
+
+
 Presentation of Log in and Registration
   + make the register page look like the registrarionPage page DONE EVEN BETTER
   - use components for the background layout
