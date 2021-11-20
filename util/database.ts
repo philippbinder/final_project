@@ -21,6 +21,13 @@ export type Session = {
   expiryTimestamp: Date;
 };
 
+export type Status = {
+  id: number;
+  userId: number;
+  dialogueId: number;
+  answeredCorrectly: boolean;
+};
+
 dotenvSafe.config(); // will read the environment variables in the .env file and this line needs to before any lines related to postgres, if not, the database will not be connected
 
 // connect one time to database
@@ -83,6 +90,8 @@ export async function getSingleUserWithPasswordHashByUsername(
 // - Wäre mit Migrations nicht möglich, da der User ja keinen Zugriff auf das Backend hat? Zumindestens soll er "normal" mit dem Interface interagieren.
 
 export async function insertUser({
+  /* username und passwordHash sagt in welcher Reihenfolge es inserted werden soll
+  username: string und passwordHash: string sagen TS nochmals den type, da TS ansonsten error messages wirfrt */
   username,
   passwordHash,
 }: {
@@ -93,8 +102,10 @@ export async function insertUser({
   const [user] = await sql<[User]>`
     INSERT INTO users
       (username, password_hash)
+      /* sind die echten Namen in dem table users  */
     VALUES
       (${username}, ${passwordHash})
+      /* $ sucht den Wert in DIESER file - also was ich oben deklariert habe */
     RETURNING
       id,
       username
@@ -156,4 +167,44 @@ export async function getValidSessionByToken(token: string) {
       expiry_timestamp > NOW()
   `;
   return sessions.map((session) => camelcaseKeys(session))[0];
+}
+
+// grab the dialogue from the table dialogue
+export async function getDialogue() {
+  const dialogueItems = await sql`
+    SELECT
+      *
+    FROM
+      dialogue
+    -- WHERE
+    --   villager_id = 1
+  `;
+
+  return dialogueItems;
+}
+
+// exports function to update user status
+export async function insertStatus({
+  answeredCorrectly,
+  userId,
+  dialogueId,
+}: {
+  answeredCorrectly: boolean;
+  userId: number;
+  dialogueId: number;
+}) {
+  const [status] = await sql<[Status]>`
+    INSERT INTO status
+      (answered_correctly, user_id)
+    VALUES
+      (${answeredCorrectly}), (${userId})
+    WHERE
+       user_id = ${userId} AND
+       dialogue_id = ${dialogueId}
+    RETURNING
+     user_id,
+     dialogue_id,
+     answered_correctly
+    `;
+  return camelcaseKeys(status);
 }

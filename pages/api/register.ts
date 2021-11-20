@@ -70,7 +70,6 @@ export default async function registerHandler(
       username,
     );
 
-    // BUGGED! Message not displayed, econnect refused
     if (existingUser) {
       res.status(400).send({
         errors: [{ message: 'Username already exists.' }],

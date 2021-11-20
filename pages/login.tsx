@@ -320,7 +320,7 @@ export default function LoginPage() {
           />
           {/* <i type="bi bi-eye-slash" /> */}
         </label>
-        <button css={submitStyles}> Submit </button>
+        <button css={submitStyles}> Submit Password </button>
         {/* <button onClick={router.push('/village')}>Submit</button> */}
       </form>
       <button onClick={togglePassword} css={showPasswordStyles}>

@@ -1,7 +1,6 @@
 // data from ../login.tsx will be send to this API route
 
 import crypto from 'node:crypto';
-import { send } from 'node:process';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { verifyPassword } from '../../util/auth';
 import { createSerializedRegisterSessionTokenCookie } from '../../util/cookies';

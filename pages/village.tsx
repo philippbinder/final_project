@@ -160,13 +160,19 @@ const imageContainer = css`
 `;
 
 const villager1 = css`
-  border: 2px solid #b3500e;
+  /* border: 2px solid #b3500e; */
+  /* border: 2px solid #ffffff;
   border-radius: 50%;
   background: none;
-  width: 4vw;
-  margin-top: 11.5%;
-  margin-left: -64%;
-  height: 4vw;
+  /* background-color: white; */
+  color: white;
+  font-size: 4vh;
+  position: absolute;
+  /* width: 4vw; */
+  margin-top: 41vh;
+  margin-left: 32.8vw;
+  /* margin-left: -64%; */
+  /* height: 4vw; */
   /* width: 5%;
   height: 5%; */
   /* width: 30px;
@@ -175,6 +181,8 @@ const villager1 = css`
 
 export default function VillagePage(props) {
   // console.log(sunsetImage);
+  console.log('village.tsx - villager_id:', props.dialogueList[0].villager_id);
+  // props.dialogueItems
   return (
     <div css={mainContainer}>
       <div css={sunsetStyle} />
@@ -188,10 +196,12 @@ export default function VillagePage(props) {
           <Link href="/placeholder">Lore?</Link>
         </div>
       </div>
-      <div css={imageContainer}>
-        <button css={villager1} />
+      <div css={imageContainer} />
+      <div css={villager1}>
+        <Link href="/dialogueFolder/1"> 1 </Link>
       </div>
     </div>
+    // <Link href={`/dialogueFolder/${props.dialogueList[0].villager_id}`}>
   );
 }
 
@@ -199,11 +209,14 @@ export default function VillagePage(props) {
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   // const sessionToken = context.req.cookies.sessionTokenRegister;
   const sessionToken = context.req.cookies.sessionToken;
-  console.log('village.tsx context.req.cookies:', context.req.cookies);
+  // console.log('village.tsx context.req.cookies:', context.req.cookies);
 
   const session = await getValidSessionByToken(sessionToken);
+  const { getDialogue } = await import('../util/database');
+  const dialogueInTsx = await getDialogue();
 
-  console.log(session);
+  // console.log('Dialogue in village.tsx:', dialogueInTsx);
+  // console.log(session);
 
   if (!session) {
     // Redirect the user when they have a session
@@ -218,6 +231,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
   return {
-    props: {},
+    props: { dialogueList: dialogueInTsx },
   };
 }
