@@ -261,7 +261,9 @@ export default function RegisterPage() {
           <Link href="./placeholder"> To My LinkedIn </Link>
         </div>
         <div css={navElementStyles}>
-          <Link href="./placeholder"> To Artist Credits </Link>
+          <Link href="./placeholder">
+            To Artist Credits (please see creditsSource folder)
+          </Link>
         </div>
       </nav>
       <form

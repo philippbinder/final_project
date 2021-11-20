@@ -183,11 +183,45 @@ export async function getDialogue() {
   return dialogueItems;
 }
 
+// grab the answers from the table answers1
+export async function getAnswers1() {
+  const answers1Items = await sql`
+    SELECT
+      *
+    FROM
+      answers1
+  `;
+
+  return answers1Items;
+}
+
+export async function getAnswers2() {
+  const answers1Items = await sql`
+    SELECT
+      *
+    FROM
+      answers2
+  `;
+
+  return answers1Items;
+}
+
+export async function getAnswers3() {
+  const answers1Items = await sql`
+    SELECT
+      *
+    FROM
+      answers3
+  `;
+
+  return answers1Items;
+}
+
 // exports function to update user status
 export async function insertStatus({
-  answeredCorrectly,
   userId,
   dialogueId,
+  answeredCorrectly,
 }: {
   answeredCorrectly: boolean;
   userId: number;
@@ -195,12 +229,9 @@ export async function insertStatus({
 }) {
   const [status] = await sql<[Status]>`
     INSERT INTO status
-      (answered_correctly, user_id)
+      (user_id, dialogue_id, answered_correctly)
     VALUES
-      (${answeredCorrectly}), (${userId})
-    WHERE
-       user_id = ${userId} AND
-       dialogue_id = ${dialogueId}
+      (${answeredCorrectly}), (${userId}, ${dialogueId})
     RETURNING
      user_id,
      dialogue_id,

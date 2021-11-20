@@ -140,6 +140,7 @@ const navElementStyles = css`
 const loginContainerStyle = css`
   grid-column: 4/5;
   grid-row: 3/4;
+
   box-shadow: 0 0 4px black, 0 0 10px black;
   /* background-color: #fff5ee; */
   /* text-shadow: 0 0 6px #a52a2a, 0 0 4px #b22222, 0 0 3px #a52a2a,
@@ -260,7 +261,9 @@ export default function LoginPage() {
           <Link href="./placeholder"> To My LinkedIn </Link>
         </div>
         <div css={navElementStyles}>
-          <Link href="./placeholder"> To Artist Credits </Link>
+          <Link href="./placeholder">
+            To Artist Credits (please see creditsSource folder)
+          </Link>
         </div>
       </nav>
       <form

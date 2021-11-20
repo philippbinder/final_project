@@ -179,10 +179,8 @@ const villager1 = css`
   height: 30px; */
 `;
 
-export default function VillagePage(props) {
-  // console.log(sunsetImage);
-  console.log('village.tsx - villager_id:', props.dialogueList[0].villager_id);
-  // props.dialogueItems
+export default function VillagePage() {
+  // console.log(sunsetImage)
   return (
     <div css={mainContainer}>
       <div css={sunsetStyle} />
@@ -212,10 +210,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // console.log('village.tsx context.req.cookies:', context.req.cookies);
 
   const session = await getValidSessionByToken(sessionToken);
-  const { getDialogue } = await import('../util/database');
-  const dialogueInTsx = await getDialogue();
-
-  // console.log('Dialogue in village.tsx:', dialogueInTsx);
   // console.log(session);
 
   if (!session) {
@@ -231,6 +225,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     };
   }
   return {
-    props: { dialogueList: dialogueInTsx },
+    props: {},
   };
 }
