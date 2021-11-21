@@ -1,8 +1,14 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 
+// import { insertAnswer1 } from '../../util/database';
+
+// import { GradientContainer } from '../../components/GradientContainer';
+
 // props (und ihre verwendeten Elemente) müssen immer in TS/TSX genau aufgeschlüsselt werden!
 // type Props kann ich irgdnwie nennen, Hauptsache es wird als value props zugewiesen
+
+// type GradientContainer = string;
 type Props = {
   singleDialogue: {
     id: number;
@@ -10,29 +16,61 @@ type Props = {
     question_text: string;
     failed_text: string;
     succeed_text: string;
+    answer1: string;
+    answer2: string;
+    answer3: string;
+    correct_answer: string;
   };
-  singleAnswer1fromAnswers1: {
-    id: number;
-    answer_id: number;
-    answer_text: string;
-  };
-  singleAnswer2fromAnswers2: {
-    id: number;
-    answer_id: number;
-    answer_text: string;
-  };
-  singleAnswer3fromAnswers3: {
-    id: number;
-    answer_id: number;
-    answer_text: string;
-  };
+  // singleAnswer1fromAnswers1: {
+  //   id: number;
+  //   answer_id: number;
+  //   answer_text: string;
+  // };
+  // singleAnswer2fromAnswers2: {
+  //   id: number;
+  //   answer_id: number;
+  //   answer_text: string;
+  // };
+  // singleAnswer3fromAnswers3: {
+  //   id: number;
+  //   answer_id: number;
+  //   answer_text: string;
+  // };
+  // GradientContainer = string;
 };
 
+// export type answer_id = number;
+// type LetsGo = {
+//   answer_id: number;
+//   correct: boolean;
+// };
+// type letsGo = {
+//   answer_id: number;
+//   correct: boolean;
+// };
+// export type LetsGo = {
+//   answer_id: number;
+//   correct: boolean;
+// };
+// export type letsGo = {
+//   answer_id: number;
+//   correct: boolean;
+// };
+
+// type answer_id: number;
+
+// type
+
 export default function ProdcutTemplate(props: Props) {
+  // const letsGo = await insertAnswer1({
+  //   answer_id: answer_id,
+  //   correct: correct,
+  // });
   // const image = props.singleItem.image;
   // console.log(image);
   console.log('props.singleDialogue:', props.singleDialogue);
   return (
+    // <GradientContainer>
     <div>
       {/* gibt es singleDIalogue und falls es das in props gibt, dann stelle folgenden Code dar. Verhindert, dass er versucht props dartzustellen, wenn es props noch nicht gibt. Props gibt es immer, aber singleDialogue gibt es noch nicht in props*/}
       <h1> Test </h1>
@@ -40,34 +78,35 @@ export default function ProdcutTemplate(props: Props) {
         <p> Question is: {props.singleDialogue.question_text} </p>
       )}
 
-      {'singleAnswer1fromAnswers1' in props && (
-        <p>Answer 1 is: {props.singleAnswer1fromAnswers1.answer_text}</p>
+      {'singleDialogue' in props && (
+        <button id="answer1">
+          {' '}
+          Answer 1 is: {props.singleDialogue.answer1}
+        </button>
       )}
 
-      {'singleAnswer2fromAnswers2' in props && (
-        <p>Answer 2 is: {props.singleAnswer2fromAnswers2.answer_text}</p>
+      {'singleDialogue' in props && (
+        <button id="answer2">
+          {' '}
+          Answer 2 is: {props.singleDialogue.answer2}
+        </button>
       )}
 
-      {'singleAnswer3fromAnswers3' in props && (
-        <p>Answer 3 is: {props.singleAnswer3fromAnswers3.answer_text}</p>
+      {'singleDialogue' in props && (
+        <button id="answer3">
+          {' '}
+          Answer 3 is: {props.singleDialogue.answer3}
+        </button>
       )}
     </div>
+    // </GradientContainer>
   );
 }
 // Haut die querry hin, aber es kann dennoch nicht dargestellt werden -> debuggen und die einzelnen Elemente durchgehen (mit typeof)
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { getDialogue } = await import('../../util/database');
-  const { getAnswers1 } = await import('../../util/database');
-  const { getAnswers2 } = await import('../../util/database');
-  const { getAnswers3 } = await import('../../util/database');
 
   const dialogueList = await getDialogue();
-  // console.log('dialogueList', dialogueList);
-  const answers1List = await getAnswers1();
-  // console.log('answers1List:', answers1List);
-  const answers2List = await getAnswers2();
-  const answers3List = await getAnswers3();
-  console.log('answers2List:', answers2List);
 
   const idFromUrl = context.query.dialogueId;
   console.log('idFromUrl:', idFromUrl);
@@ -78,15 +117,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
   const singleDialogue = dialogueList.find((singleDialogueItem) => {
     return Number(idFromUrl) === singleDialogueItem.id;
-  });
-  const singleAnswer1fromAnswers1 = answers1List.find((singleAnswer) => {
-    return Number(idFromUrl) === singleAnswer.id;
-  });
-  const singleAnswer2fromAnswers2 = answers2List.find((singleAnswer) => {
-    return Number(idFromUrl) === singleAnswer.id;
-  });
-  const singleAnswer3fromAnswers3 = answers3List.find((singleAnswer) => {
-    return Number(idFromUrl) === singleAnswer.id;
   });
 
   // heißt: singleDialogue ist aus der dailogueList (die ALLE Dialoge beinhlatet) jener Dialog, dessen ID der id im table mit der idFromUrl Zahl übereinstimmt.
@@ -103,9 +133,6 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       singleDialogue: singleDialogue,
-      singleAnswer1fromAnswers1: singleAnswer1fromAnswers1,
-      singleAnswer2fromAnswers2: singleAnswer2fromAnswers2,
-      singleAnswer3fromAnswers3: singleAnswer3fromAnswers3,
     },
   };
 }

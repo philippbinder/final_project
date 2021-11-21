@@ -21,7 +21,7 @@ export type RegisterResponse = { errors: Errors } | { user: User };
 
 export default async function registerHandler(
   req: NextApiRequest,
-  res: NextApiResponse<RegisterResponse>, // responses are allways of the ReigsterResponse type -> Errors types
+  res: NextApiResponse<RegisterResponse>, // responses are allways of the RegisterResponse type -> Errors types
 ) {
   console.log(req.body.username); // what is req body
 

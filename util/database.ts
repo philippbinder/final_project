@@ -176,8 +176,6 @@ export async function getDialogue() {
       *
     FROM
       dialogue
-    -- WHERE
-    --   villager_id = 1
   `;
 
   return dialogueItems;
@@ -218,24 +216,45 @@ export async function getAnswers3() {
 }
 
 // exports function to update user status
-export async function insertStatus({
-  userId,
-  dialogueId,
-  answeredCorrectly,
-}: {
-  answeredCorrectly: boolean;
-  userId: number;
-  dialogueId: number;
-}) {
-  const [status] = await sql<[Status]>`
-    INSERT INTO status
-      (user_id, dialogue_id, answered_correctly)
-    VALUES
-      (${answeredCorrectly}), (${userId}, ${dialogueId})
-    RETURNING
-     user_id,
-     dialogue_id,
-     answered_correctly
-    `;
-  return camelcaseKeys(status);
-}
+// export async function insertStatus({
+//   userId,
+//   dialogueId,
+//   answeredCorrectly,
+// }: {
+//   answeredCorrectly: boolean;
+//   userId: number;
+//   dialogueId: number;
+// }) {
+//   const [status] = await sql<[Status]>`
+//     INSERT INTO status
+//       (user_id, dialogue_id, answered_correctly)
+//     VALUES
+//       (${answeredCorrectly}), (${userId}), (${dialogueId})
+//     RETURNING
+//      user_id,
+//      dialogue_id,
+//      answered_correctly
+//     `;
+//   return camelcaseKeys(status);
+// }
+
+// export async function insertAnswer1({
+//   answer_id,
+//   correct,
+// }: {
+//   answer_id: number;
+//   correct: boolean;
+// }) {
+//   const [status] = await sql<[Status]>`
+//     INSERT INTO status
+//       (answer_id, correct)
+//     SELECT
+//       (${answer_id}) , (${correct})
+//     FROM
+//       answers1
+//     WHERE
+//     -- dort wo die dialogue_id die dieselbe Zahl hat wie answer_id von answers1
+//     -- -> das ganze brauche ich 3mal da ich 3 answers tables habe
+//     `;
+//   return camelcaseKeys(status);
+// }

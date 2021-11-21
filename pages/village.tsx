@@ -165,18 +165,99 @@ const villager1 = css`
   border-radius: 50%;
   background: none;
   /* background-color: white; */
-  color: white;
+  color: rgba(250, 244, 225, 0.89);
   font-size: 4vh;
   position: absolute;
   /* width: 4vw; */
   margin-top: 41vh;
   margin-left: 32.8vw;
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
   /* margin-left: -64%; */
   /* height: 4vw; */
   /* width: 5%;
   height: 5%; */
   /* width: 30px;
   height: 30px; */
+`;
+const villager2 = css`
+  color: rgba(250, 244, 225, 0.89);
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
+  font-size: 4vh;
+  position: absolute;
+  margin-top: 45vh;
+  margin-left: 49.9vw;
+`;
+
+const villager3 = css`
+  color: rgba(250, 244, 225, 0.89);
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
+  font-size: 4vh;
+  position: absolute;
+  margin-top: 41.5vh;
+  margin-left: 65.5vw;
+`;
+
+const villager4 = css`
+  color: rgba(250, 244, 225, 0.89);
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
+  font-size: 4vh;
+  position: absolute;
+  margin-top: 40.5vh;
+  margin-left: 81vw;
+`;
+
+const villager5 = css`
+  color: rgba(250, 244, 225, 0.89);
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
+  font-size: 4vh;
+  position: absolute;
+  margin-top: 53vh;
+  margin-left: 81.8vw;
+`;
+
+const villager6 = css`
+  color: rgba(250, 244, 225, 0.89);
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
+  font-size: 4vh;
+  position: absolute;
+  margin-top: 66.5vh;
+  margin-left: 42.15vw;
+`;
+
+const villager7 = css`
+  color: rgba(250, 244, 225, 0.89);
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
+  font-size: 4vh;
+  position: absolute;
+  margin-top: 73.5vh;
+  margin-left: 47.55vw;
+`;
+
+const villager8 = css`
+  color: rgba(250, 244, 225, 0.89);
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
+  font-size: 4vh;
+  position: absolute;
+  margin-top: 61.5vh;
+  margin-left: 53.85vw;
+`;
+
+const villager9 = css`
+  color: rgba(250, 244, 225, 0.89);
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
+  font-size: 4vh;
+  position: absolute;
+  margin-top: 70vh;
+  margin-left: 64.78vw;
+`;
+
+const villager10 = css`
+  color: rgba(250, 244, 225, 0.89);
+  text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513;
+  font-size: 4vh;
+  position: absolute;
+  margin-top: 69.4vh;
+  margin-left: 77.78vw;
 `;
 
 export default function VillagePage() {
@@ -196,7 +277,34 @@ export default function VillagePage() {
       </div>
       <div css={imageContainer} />
       <div css={villager1}>
-        <Link href="/dialogueFolder/1"> 1 </Link>
+        <Link href="/dynamicDialogue/1"> 1 </Link>
+      </div>
+      <div css={villager2}>
+        <Link href="/dynamicDialogue/2"> 2 </Link>
+      </div>
+      <div css={villager3}>
+        <Link href="/dynamicDialogue/3"> 3 </Link>
+      </div>
+      <div css={villager4}>
+        <Link href="/dynamicDialogue/4"> 4 </Link>
+      </div>
+      <div css={villager5}>
+        <Link href="/dynamicDialogue/5"> 5 </Link>
+      </div>
+      <div css={villager6}>
+        <Link href="/dynamicDialogue/6"> 6 </Link>
+      </div>
+      <div css={villager7}>
+        <Link href="/dynamicDialogue/7"> 7 </Link>
+      </div>
+      <div css={villager8}>
+        <Link href="/dynamicDialogue/8"> 8 </Link>
+      </div>
+      <div css={villager9}>
+        <Link href="/dynamicDialogue/9"> 9 </Link>
+      </div>
+      <div css={villager10}>
+        <Link href="/dynamicDialogue/10"> 10 </Link>
       </div>
     </div>
     // <Link href={`/dialogueFolder/${props.dialogueList[0].villager_id}`}>
