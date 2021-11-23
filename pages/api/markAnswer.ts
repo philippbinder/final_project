@@ -11,6 +11,8 @@ export default async function markAnswerHandler(
   req: NextApiRequest, // is the thing that is coming from the user
   res: NextApiResponse, // is the response
 ) {
+  console.log('API req.body =', req.body);
+
   const dialogueList = await getDialogue();
   // gets me the dialogue table as an array of objects
   const singleDialogue = dialogueList.find((singleDialogueItem) => {

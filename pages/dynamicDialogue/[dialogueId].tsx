@@ -54,6 +54,7 @@ const buttonStyling = css`
 `;
 
 export default function ProdcutTemplate(props: Props) {
+  const clickHanlder = await fetch('/api/markAnswer');
   // async function insertAnswer(id: string) {
   //   if (id === props.singleDialogue.correct_answer) {
   //     await sql`
@@ -119,7 +120,13 @@ export default function ProdcutTemplate(props: Props) {
         )}
 
         {'singleDialogue' in props && (
-          <button id="answer1" css={buttonStyling}>
+          <button
+            id="answer1"
+            css={buttonStyling}
+            onClick={() => {
+              const test = await fetch('/api/markAnswer');
+            }}
+          >
             {' '}
             {props.singleDialogue.answer1}
           </button>
