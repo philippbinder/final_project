@@ -14,7 +14,7 @@ const mainContainer = css`
   /* grid-row-gap: 40px; */
   /* grid-column-gap: 20px; */
   /* text-align: center; */
-  font-size: 18px;
+  font-size: 21px;
   font-weight: 600;
   /* text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
     0 0 1px #8b4513; */

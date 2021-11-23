@@ -1,7 +1,6 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
-import GradientContainer from '../../components/GradientContainer';
 
 // WHY does GradientContainer kill the buttons???????????????
 
@@ -25,28 +24,94 @@ type Props = {
   };
 };
 
-const textStyling = css`
-  padding: 0 3px 0 3px;
-  border-radius: 10px;
-  background-color: silver;
-  border: 2.5px solid black;
-  box-shadow: 0 0 10px #ffffff, 0 0 18px #8b0000;
+const mainContainer = css`
+  width: 100vw;
+  height: 100vh;
+  /* grid-row-gap: 40px; */
+  /* grid-column-gap: 20px; */
+  /* text-align: center; */
+  font-size: 18px;
+  font-weight: 600;
+  /* text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
+    0 0 1px #8b4513; */
+  letter-spacing: 0vw;
+  font-family: MedievalSharp;
+  /* background: linear-gradient(
+    180deg,
+    rgba(102, 0, 17, 0.74) 0%,
+    rgba(139, 69, 19, 0.74) 0.01%,
+    rgba(139, 69, 19, 0) 100%
+  ); */
+  background: linear-gradient(
+    180deg,
+    rgba(250, 127, 13, 0.3626) 0.01%,
+    rgba(168, 84, 14, 0.74) 0.02%,
+    rgba(147, 9, 0, 0.74) 16.4%,
+    rgba(6, 0, 2, 0.9) 100%
+  );
+  display: grid;
+  grid-template-columns: 0.5fr 4fr 4fr 0.5fr;
+  grid-template-rows: 1fr 0.5fr 3fr 1fr 0.5fr;
 `;
 
-const buttonStyling = css`
-  margin-top: 40px;
-  border: 2.5px solid black;
-  border-radius: 10px;
-  font-size: 16px;
-  position: relative;
-  text-align: left;
-  box-shadow: 0 0 10px #8b0000, 0 0 6px #ffffff;
-  background-color: silver;
+const sunsetStyle = css`
+  grid-column: 2/4;
+  grid-row: 1/2;
+  background-image: url('/images/sunsetDeer4.png');
+  /* background-size: 60vw 110px; */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-bottom: 3px solid black;
+  border-bottom-left-radius: 130px;
+  border-bottom-right-radius: 130px;
+  box-shadow: 0 0 10px #8b0000;
+  /* width: 100%;
+  height: 100%; */
+  /* object-fit: contain; */
+  /* height: 100%; */
+  /* width: 100%; */
+`;
+
+const innerContainer = css`
+  grid-column: 2/4;
+  grid-row: 3/5;
+  box-shadow: 0 0 4px black, 0 0 10px black;
+  /* background-color: #fff5ee; */
+  /* text-shadow: 0 0 6px #a52a2a, 0 0 4px #b22222, 0 0 3px #a52a2a,
+    0 0 1px #a52a2a; */
+  background: linear-gradient(
+    180deg,
+    rgba(240, 234, 229, 0.498) 10.01%,
+    rgba(240, 228, 217, 0.469) 20.02%,
+    #8683832c 46.4%,
+    rgba(83, 80, 81, 0.027) 100%
+  );
+  border: 1.5px solid black;
+  border-radius: 20px;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
+  /* row-gap: 50px; */
+  padding: 0px 10px 0px 10px;
+`;
+
+const takeSpace = css`
+  grid-column: 1/5;
+  grid-row: 3/4;
+`;
+
+const testButton = css`
+  /* grid-column: 2/3;
+  grid-row: 5/6; */
+  justify-self: center;
+  position: absolute;
+  border-radius: 20px;
   &:hover {
     /* color: #242124; */
     color: #171717;
     /* color: #ffffff; */
-    text-shadow: 0 0 4px #8b0000, 0 0 2px #b22222, 0 0 2px #8b4513,
+    text-shadow: 0 0 6px #8b0000, 0 0 5px #b22222, 0 0 5px #8b4513,
       /* border: 2px solid black; */ 0 0 1px #8b4513;
     /* color: #a52a2a; */
     /* border-color: #8b4513; */
@@ -83,8 +148,10 @@ export default function ProdcutTemplate(props: Props) {
   // console.log(image);
   console.log('props.singleDialogue:', props.singleDialogue);
   return (
-    <GradientContainer>
-      {/* // FETCHES API AND PASSES DATA
+    <div css={mainContainer}>
+      <div css={sunsetStyle} />
+      <div css={innerContainer}>
+        {/* // FETCHES API AND PASSES DATA
 
       const registerResponse = await fetch('/api/markAnswer', {
         method: 'POST', // weil ich Information senden will und etwas neues kreieren möchte / http methods - POST is to create, GET is to get some information, PUT is to update some information and DELETE is to delete information
@@ -103,62 +170,58 @@ export default function ProdcutTemplate(props: Props) {
       const registerJson = (await registerResponse.json()) as RegisterResponse;
 
       // FETCHES API AND PASSES DATA */}
-      <form>
-        {/* gibt es singleDIalogue und falls es das in props gibt, dann stelle folgenden Code dar. Verhindert, dass er versucht props dartzustellen, wenn es props noch nicht gibt. Props gibt es immer, aber singleDialogue gibt es noch nicht in props*/}
-        {/* <h1> Test </h1> */}
+        <form>
+          {/* gibt es singleDIalogue und falls es das in props gibt, dann stelle folgenden Code dar. Verhindert, dass er versucht props dartzustellen, wenn es props noch nicht gibt. Props gibt es immer, aber singleDialogue gibt es noch nicht in props*/}
+          {/* <h1> Test </h1> */}
 
-        {'singleDialogue' in props && (
-          <p css={textStyling}> {props.singleDialogue.description_text}</p>
-        )}
+          {'singleDialogue' in props && (
+            <p> {props.singleDialogue.description_text} </p>
+          )}
 
-        {'singleDialogue' in props && (
-          <p css={textStyling}>
-            {' '}
-            Villager: "{props.singleDialogue.question_text}"{' '}
-          </p>
-        )}
+          {'singleDialogue' in props && (
+            <p> Question is: {props.singleDialogue.question_text} </p>
+          )}
 
-        {'singleDialogue' in props && (
-          <button id="answer1" css={buttonStyling}>
-            {' '}
-            {props.singleDialogue.answer1}
-          </button>
-        )}
+          {/* {'singleDialogue' in props && (
+        <button id={1} onClick={insertAnswer(this.id)}>
+          {' '}
+          Answer 1 is: {props.singleDialogue.answer1}
+        </button>
+      )} */}
 
-        {'singleDialogue' in props && (
-          <button id="answer2" css={buttonStyling}>
-            {' '}
-            {props.singleDialogue.answer2}
-          </button>
+          {'singleDialogue' in props && (
+            <button id="answer3"> {props.singleDialogue.answer2}</button>
 
-          // <form
-          //   id="answer2"
-          //   onSubmit={async (event) => {
-          //     event.preventDefault();
-          //     await fetch('/api/markAnswer'),
-          //       {
-          //         method: 'POST', // or PUT? Ppost to is to create something new,PUT is to update some informatiom
-          //         header: {
-          //           'Content-Type': 'application/json',
-          //         },
-          //         body: JOSN.stringify,({
-          //           props.singleDialogue.answer2.correct_answer: props.singleDialogue.answer2.correct_answer,
-          //         })
-          //       };
-          //   }}
-          // >
-          //   {props.singleDialogue.answer2}
-          // </form>
-        )}
+            // <form
+            //   id="answer2"
+            //   onSubmit={async (event) => {
+            //     event.preventDefault();
+            //     await fetch('/api/markAnswer'),
+            //       {
+            //         method: 'POST', // or PUT? Ppost to is to create something new,PUT is to update some informatiom
+            //         header: {
+            //           'Content-Type': 'application/json',
+            //         },
+            //         body: JOSN.stringify,({
+            //           props.singleDialogue.answer2.correct_answer: props.singleDialogue.answer2.correct_answer,
+            //         })
+            //       };
+            //   }}
+            // >
+            //   {props.singleDialogue.answer2}
+            // </form>
+          )}
 
-        {'singleDialogue' in props && (
-          <button id="answer3" css={buttonStyling}>
-            {' '}
-            {props.singleDialogue.answer3}
-          </button>
-        )}
-      </form>
-    </GradientContainer>
+          {'singleDialogue' in props && (
+            <button id="answer3" css={testButton}>
+              {' '}
+              {props.singleDialogue.answer3}
+            </button>
+          )}
+        </form>
+      </div>
+      <div css={takeSpace} />
+    </div>
   );
 }
 // Haut die querry hin, aber es kann dennoch nicht dargestellt werden -> debuggen und die einzelnen Elemente durchgehen (mit typeof)

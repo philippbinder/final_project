@@ -91,7 +91,7 @@ export default async function registerHandler(
     deleteExpiredSessions();
 
     //  1. Creates the token for the session
-    const token = crypto.randomBytes(64).toString('base64');
+    const token = crypto.randomBytesbutton(64).toString('base64');
 
     console.log('Session token from login:', token); // console.log happens in the API -> visible in the terminal, not the console of the browser
 

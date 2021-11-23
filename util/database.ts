@@ -181,32 +181,43 @@ export async function getDialogue() {
   return dialogueItems;
 }
 
+// returnme an array of one object and information about the clomuns
+export async function getOneDialogue(idFromUrlNumber: number) {
+  const oneDialogue = await sql`
+    SELECT
+      *
+    FROM
+      dialogue
+    WHERE
+      dialogue.dialogue_id = ${idFromUrlNumber};
+  `;
+
+  return oneDialogue;
+}
+
+// export async function getOneRowOfDialogue(idFromUrlNumber: number) {
+//   const oneRow = await
+// }
+
 // ------------------------------------------------------------------------------------------------------------------------------
 // Thanks for taking to time to help me get through this mess.
 
-export async function insertAnswer(/*I guees I need to pass something here for the button id*/) {
-  const dialogueList = await getDialogue();
-  // gets me the dialogue table as an array of objects
-
-  const singleDialogue = dialogueList.find((singleDialogueItem) => {
-    return (
-      Number(/* Id from the button of the [dialogueId].tsx file in the dynamicDialogue folder*/) ===
-      singleDialogueItem.id
-    );
-  });
-  // out of said the new dialogueList array of objecets select the current object - for example the first row of the dialogue table
-
-  if (singleDialogue?.correct_answer === button.id) {
-    // should check if the id of the button (which is a string called "answer1", "answer2" or "answer3") from the [dialogueId].tsx file in the dynamicDialogue folder matches the the value of the correct_answer column from the dialogue table in the current row
-    // ? beaucse without it I get possibly undefined message
-    // Problem 1: Don't know how to pass the button id
-    // Problem 2: The imported styling component in the [dialogueId].tsx file messes up the buttons - they are no longer clickable
+export async function insertAnswer(
+  idFromUrlNumber: number,
+  buttonId: string,
+  userId: number,
+) {
+  const oneDialogueRowArray = await getOneDialogue(idFromUrlNumber);
+  // gets me the needed row from dialogue table as an array of objects with one object
+  const oneDialogueObject = oneDialogueRowArray[0];
+  // gets only the one object in the array of objects
+  if (oneDialogueObject.correct_answer === buttonId) {
     await sql`
       UPDATE status
       SET
         correct_answer = true
       WHERE
-        status.dialogue_id = singleDialogue.dialogue_id AND status.user_id = session.userId
+        status.dialogue_id = ${oneDialogueObject.dialogue_id} AND status.user_id = ${userId}
         /* I need to make sure that in the status the correct_answer column is updated where the row belongs to the current user AND the current dialogue - Since one user can have 10 dialogue rows unique to himself in the status table, only the current dialogue_id column should update its correct_answer column in the same row from null to true or false exactly where the user_id column matches the current user. */
         `;
   } else {
@@ -215,7 +226,7 @@ export async function insertAnswer(/*I guees I need to pass something here for t
       SET
         correct_answer = false
       WHERE
-        status.dialogue_id = singleDialogue.dialogue_id AND status.user_id = session.userId
+        status.dialogue_id = ${oneDialogueObject.dialogue_id} AND status.user_id = ${userId}
     `;
   }
 }
