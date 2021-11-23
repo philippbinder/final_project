@@ -1,9 +1,12 @@
 const dialogueArray = [
   {
     dialogue_id: 1,
-    question_text: 'What do you want, outsider?',
+    description_text:
+      'You knock on the door, helplessly trying to get attention and babbling something about the mayoress being a witch and dancing with broomstick once the sun is setting low. After nobody answeres the door you start kicking it with your feet and the door suddenly jumps wide open. A large, angry man appears, carrying a TEMPLAR ISIGNIA around his neck.',
+    question_text:
+      'I heard you the first time! Dancing broomsticks and making a fuss about the mayoress being a witch. Why would I listen to such nonsense?',
     fail_text:
-      "There is a reason why we don't welcome outsiders in our community. You would be well advised to leave our village by sunset.",
+      'An idiot rambling on about such nonsense is a rare sight to behold in our lonely village. You would be well advised to leave our village by sunset.',
     succeed_text:
       "You are totally right. Deus vult indeed! It's time for some good, old-fashioned witch-hunting.",
     answer1:
@@ -15,6 +18,7 @@ const dialogueArray = [
   },
   {
     dialogue_id: 2,
+    description_text: '',
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
@@ -25,6 +29,7 @@ const dialogueArray = [
   },
   {
     dialogue_id: 3,
+    description_text: '',
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
@@ -35,6 +40,7 @@ const dialogueArray = [
   },
   {
     dialogue_id: 4,
+    description_text: '',
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
@@ -45,6 +51,7 @@ const dialogueArray = [
   },
   {
     dialogue_id: 5,
+    description_text: '',
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
@@ -55,6 +62,7 @@ const dialogueArray = [
   },
   {
     dialogue_id: 6,
+    description_text: '',
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
@@ -65,6 +73,7 @@ const dialogueArray = [
   },
   {
     dialogue_id: 7,
+    description_text: '',
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
@@ -75,6 +84,7 @@ const dialogueArray = [
   },
   {
     dialogue_id: 8,
+    description_text: '',
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
@@ -85,6 +95,7 @@ const dialogueArray = [
   },
   {
     dialogue_id: 9,
+    description_text: '',
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
@@ -95,6 +106,7 @@ const dialogueArray = [
   },
   {
     dialogue_id: 10,
+    description_text: '',
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
@@ -114,9 +126,9 @@ exports.up = async function up(sql) {
     // Looping over the array and inserting each item
     await sql`
 			INSERT INTO dialogue
-				(dialogue_id, question_text, fail_text, succeed_text, answer1, answer2, answer3)
+				(dialogue_id, description_text, question_text, fail_text, succeed_text, answer1, answer2, answer3)
 			VALUES
-				(${item.dialogue_id}, ${item.question_text}, ${item.fail_text}, ${item.succeed_text}, ${item.answer1}, ${item.answer2}, ${item.answer3});
+				(${item.dialogue_id}, ${item.description_text} ,${item.question_text}, ${item.fail_text}, ${item.succeed_text}, ${item.answer1}, ${item.answer2}, ${item.answer3});
           `;
   }
 };
@@ -128,7 +140,7 @@ exports.down = async function down(sql) {
         DELETE FROM
           dialogue
         WHERE
-        dialogue_id = ${item.dialogue_id} AND question_text = ${item.question_text} AND fail_text = ${item.fail_text} AND succeed_text = ${item.succeed_text} AND answer1 =${item.answer1} AND answer2 =${item.answer2} AND answer3 =${item.answer3};
+        dialogue_id = ${item.dialogue_id} AND description_text = ${item.description_text} AND question_text = ${item.question_text} AND fail_text = ${item.fail_text} AND succeed_text = ${item.succeed_text} AND answer1 =${item.answer1} AND answer2 =${item.answer2} AND answer3 =${item.answer3};
           `;
   }
 };

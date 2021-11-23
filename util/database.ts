@@ -42,7 +42,7 @@ export async function getAllUsers() {
     id,
     us ername
   FROM
-    users;
+    users
   `;
   console.log('users:', users);
 }
@@ -181,80 +181,41 @@ export async function getDialogue() {
   return dialogueItems;
 }
 
-// grab the answers from the table answers1
-export async function getAnswers1() {
-  const answers1Items = await sql`
-    SELECT
-      *
-    FROM
-      answers1
-  `;
+// ------------------------------------------------------------------------------------------------------------------------------
+// Thanks for taking to time to help me get through this mess.
 
-  return answers1Items;
+export async function insertAnswer(/*I guees I need to pass something here for the button id*/) {
+  const dialogueList = await getDialogue();
+  // gets me the dialogue table as an array of objects
+
+  const singleDialogue = dialogueList.find((singleDialogueItem) => {
+    return (
+      Number(/* Id from the button of the [dialogueId].tsx file in the dynamicDialogue folder*/) ===
+      singleDialogueItem.id
+    );
+  });
+  // out of said the new dialogueList array of objecets select the current object - for example the first row of the dialogue table
+
+  if (singleDialogue?.correct_answer === button.id) {
+    // should check if the id of the button (which is a string called "answer1", "answer2" or "answer3") from the [dialogueId].tsx file in the dynamicDialogue folder matches the the value of the correct_answer column from the dialogue table in the current row
+    // ? beaucse without it I get possibly undefined message
+    // Problem 1: Don't know how to pass the button id
+    // Problem 2: The imported styling component in the [dialogueId].tsx file messes up the buttons - they are no longer clickable
+    await sql`
+      UPDATE status
+      SET
+        correct_answer = true
+      WHERE
+        status.dialogue_id = singleDialogue.dialogue_id AND status.user_id = session.userId
+        /* I need to make sure that in the status the correct_answer column is updated where the row belongs to the current user AND the current dialogue - Since one user can have 10 dialogue rows unique to himself in the status table, only the current dialogue_id column should update its correct_answer column in the same row from null to true or false exactly where the user_id column matches the current user. */
+        `;
+  } else {
+    await sql`
+      UPDATE status
+      SET
+        correct_answer = false
+      WHERE
+        status.dialogue_id = singleDialogue.dialogue_id AND status.user_id = session.userId
+    `;
+  }
 }
-
-export async function getAnswers2() {
-  const answers1Items = await sql`
-    SELECT
-      *
-    FROM
-      answers2
-  `;
-
-  return answers1Items;
-}
-
-export async function getAnswers3() {
-  const answers1Items = await sql`
-    SELECT
-      *
-    FROM
-      answers3
-  `;
-
-  return answers1Items;
-}
-
-// exports function to update user status
-// export async function insertStatus({
-//   userId,
-//   dialogueId,
-//   answeredCorrectly,
-// }: {
-//   answeredCorrectly: boolean;
-//   userId: number;
-//   dialogueId: number;
-// }) {
-//   const [status] = await sql<[Status]>`
-//     INSERT INTO status
-//       (user_id, dialogue_id, answered_correctly)
-//     VALUES
-//       (${answeredCorrectly}), (${userId}), (${dialogueId})
-//     RETURNING
-//      user_id,
-//      dialogue_id,
-//      answered_correctly
-//     `;
-//   return camelcaseKeys(status);
-// }
-
-// export async function insertAnswer1({
-//   answer_id,
-//   correct,
-// }: {
-//   answer_id: number;
-//   correct: boolean;
-// }) {
-//   const [status] = await sql<[Status]>`
-//     INSERT INTO status
-//       (answer_id, correct)
-//     SELECT
-//       (${answer_id}) , (${correct})
-//     FROM
-//       answers1
-//     WHERE
-//     -- dort wo die dialogue_id die dieselbe Zahl hat wie answer_id von answers1
-//     -- -> das ganze brauche ich 3mal da ich 3 answers tables habe
-//     `;
-//   return camelcaseKeys(status);
-// }

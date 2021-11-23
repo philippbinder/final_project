@@ -59,3 +59,10 @@ Karl:
 --- keep track of the score
 --- delay last answer so user can read the asnwer an is not immideatly pushed to the ending screen- like after going back to the village screen
     => when I load the village screen runServerSideProps - check for win or lose condition
+
+
+Function for changing null in db status correct to true or false with api
+buttons dont work as buttons anymore with component
+whats left of buttons center their text, looks stupid
+Then redirect to answer succeed or fail
+button or link to go back

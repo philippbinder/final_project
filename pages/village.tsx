@@ -3,6 +3,42 @@ import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import { getValidSessionByToken } from '../util/database';
 
+// if id from button (which is a varchar) = correct_answer in dialogue
+//   INSERT INTO status
+//      (correct_answer)
+//   VALUES
+//       true
+//   WHERE
+//     status.dialogue_id = dialogue.dialogue_id for session.userId (I need to insert it for the current user at the current dialogue, one user_id will have multiple dialogue_ids)
+// else
+//   INSERT INTO status
+//      (correct_answer)
+//   VALUES
+//       false
+//   WHERE
+//     status.dialogue_id = dialogue.dialogue_id for session.userId
+
+//     function insertAnswer(id: string) {
+//       if (id === props.singleDialogue.correct_answer) {
+//         await sql`
+//         -- INSERT INTO status
+//         UPDATE status
+//         SET
+//           correct_answer = true
+//         WHERE
+//           status.dialogue_id = props.singleDialogue.dialogue_id AND status.user_id = session.userId
+//           `
+//         };
+//       else {
+//         await sql`
+//         UPDATE status
+//         SET
+//           correct_answer = false
+//         WHERE
+//           status.dialogue_id = props.singleDialogue.dialogue_id AND status.user_id = session.userId
+//         ;}
+//       `
+
 const mainContainer = css`
   width: 100vw;
   height: 100vh;

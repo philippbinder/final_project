@@ -10,7 +10,7 @@ export function createSerializedRegisterSessionTokenCookie(token) {
   // Check if we are in production e.g. Heroku
   const isProduction = process.env.NODE_ENV === 'production';
 
-  const maxAge = 60 * 5; // means 5 minutes
+  const maxAge = 60 * 20; // means 20 minutes
 
   // serialize recieves 3 arguments: sessionToken = name of the cookie, token = value of the cookie, {content} = is an object with all the options
   return serialize('sessionToken', token, {
