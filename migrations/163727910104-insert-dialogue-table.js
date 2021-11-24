@@ -126,9 +126,9 @@ exports.up = async function up(sql) {
     // Looping over the array and inserting each item
     await sql`
 			INSERT INTO dialogue
-				(dialogue_id, description_text, question_text, fail_text, succeed_text, answer1, answer2, answer3)
+				(dialogue_id, description_text, question_text, fail_text, succeed_text, answer1, answer2, answer3, correct_answer)
 			VALUES
-				(${item.dialogue_id}, ${item.description_text} ,${item.question_text}, ${item.fail_text}, ${item.succeed_text}, ${item.answer1}, ${item.answer2}, ${item.answer3});
+				(${item.dialogue_id}, ${item.description_text} ,${item.question_text}, ${item.fail_text}, ${item.succeed_text}, ${item.answer1}, ${item.answer2}, ${item.answer3}, ${item.correct_answer});
           `;
   }
 };
@@ -140,7 +140,7 @@ exports.down = async function down(sql) {
         DELETE FROM
           dialogue
         WHERE
-        dialogue_id = ${item.dialogue_id} AND description_text = ${item.description_text} AND question_text = ${item.question_text} AND fail_text = ${item.fail_text} AND succeed_text = ${item.succeed_text} AND answer1 =${item.answer1} AND answer2 =${item.answer2} AND answer3 =${item.answer3};
+        dialogue_id = ${item.dialogue_id} AND description_text = ${item.description_text} AND question_text = ${item.question_text} AND fail_text = ${item.fail_text} AND succeed_text = ${item.succeed_text} AND answer1 = ${item.answer1} AND answer2 = ${item.answer2} AND answer3 = ${item.answer3} AND correct_answer = ${item.correct_answer};
           `;
   }
 };

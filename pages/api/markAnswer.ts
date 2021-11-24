@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getDialogue } from '../../util/database';
+import { getDialogue, insertAnswer } from '../../util/database';
 
 export type RegisterRequest = {
-  idFromUrlNumber: number;
+  // idFromUrlNumber: number;
+  dialogueId: number;
   buttonId: string;
   userId: number;
 };
@@ -12,13 +13,12 @@ export default async function markAnswerHandler(
   res: NextApiResponse, // is the response
 ) {
   console.log('API req.body =', req.body);
-
-  const dialogueList = await getDialogue();
+  await insertAnswer(req.body.dialogueId, req.body.buttonId, req.body.userId);
+  // const dialogueList = await getDialogue();
   // gets me the dialogue table as an array of objects
-  const singleDialogue = dialogueList.find((singleDialogueItem) => {
-    return Number(req.body.dialogueId) === singleDialogueItem.id;
-    // out of said array select the object
-  });
+  // const singleDialogue = dialogueList.find((singleDialogueItem) => {
+  // return Number(req.body.dialogueId) === singleDialogueItem.id;
+  // out of said array select the object
 
   // get the buttonId from the body and the userId from the cookies / from the session?
   // then pass both into the function insertAnswer(buttonId, userId)

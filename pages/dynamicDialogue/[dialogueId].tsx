@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
 import GradientContainer from '../../components/GradientContainer';
 
-// WHY does GradientContainer kill the buttons???????????????
+// import { RegisterResponse } from './api/markAnswer'; need no response from the API in the browser
 
 // import { insertAnswer1 } from '../../util/database';
 // props (und ihre verwendeten Elemente) müssen immer in TS/TSX genau aufgeschlüsselt werden!
@@ -23,7 +23,13 @@ type Props = {
     answer3: string;
     correct_answer: string;
   };
+  // session: {
+  //   userId: number;
+  // };
+  // idFromUrlNumber: number;
+  // idFromUrl: {};
 };
+// let idFromUrlNumber: number = idFromUrlNumber;
 
 const textStyling = css`
   padding: 0 3px 0 3px;
@@ -54,7 +60,25 @@ const buttonStyling = css`
 `;
 
 export default function ProdcutTemplate(props: Props) {
-  const clickHanlder = await fetch('/api/markAnswer');
+  // console.log('idFromUrlNumber', props.idFromUrlNumber);
+  const button1 = 'answer1';
+  // const button2 = 'answer2';
+  // const button3 = 'answer3';
+
+  // Testlauf nur für button1, wenn es geht, könnte ich den fetch einfach auf jeden button schreiben auf onClick
+  // const clickHanlder = await fetch('/api/markAnswer', {
+  //   method: 'POST',
+  //   headers: {
+  //     'Content-Type': 'application/json', // tells the program that I am sending JSON data
+  //   },
+  //   body: JSON.stringify({
+  //     // body needs to be send in JSON
+  //     // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in registerHandler von register.ts"
+  //     dialogueId: props.idFromUrlNumber, // is ALLWAYS the same as the needed dialogue_id
+  //     buttonId: button1, // event.currentTarget?.id, this.id würden von dem onClick event die id des buttons holen?
+  //     userId: props.session.userId,
+  //   }),
+  // });
   // async function insertAnswer(id: string) {
   //   if (id === props.singleDialogue.correct_answer) {
   //     await sql`
@@ -82,7 +106,8 @@ export default function ProdcutTemplate(props: Props) {
   // });
   // const image = props.singleItem.image;
   // console.log(image);
-  console.log('props.singleDialogue:', props.singleDialogue);
+  // console.log('props.singleDialogue:', props.singleDialogue);
+  const dialogueIdNumber = 1;
   return (
     <GradientContainer>
       {/* // FETCHES API AND PASSES DATA
@@ -123,9 +148,24 @@ export default function ProdcutTemplate(props: Props) {
           <button
             id="answer1"
             css={buttonStyling}
-            onClick={() => {
-              const test = await fetch('/api/markAnswer');
-            }}
+            onClick={async () =>
+              console.log(
+                await fetch('/api/markAnswer', {
+                  method: 'POST',
+                  credentials: 'include', // the way to pass cookies to the API?
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    // body needs to be send in JSON
+                    // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in registerHandler von register.ts"
+                    dialogueId: dialogueIdNumber, // is ALLWAYS the same as the needed dialogue_id - UNEFINED SENT!
+                    buttonId: button1, // event.currentTarget?.id, this.id würden von dem onClick event die id des buttons holen?
+                    // userId: props.session.userId,
+                  }),
+                }),
+              )
+            }
           >
             {' '}
             {props.singleDialogue.answer1}
@@ -177,6 +217,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // console.log('dialogueList = ', dialogueList);
   const idFromUrl = context.query.dialogueId; // is a string
   const idFromUrlNumber = Number(idFromUrl); // is a number
+  console.log('idFromUrlNumber in gSSP:', idFromUrlNumber);
   // holt die function um die Session zu kriegen aus der db
   const { getValidSessionByToken } = await import('../../util/database');
   // holt den sessionToken der namentlich als sessionToken in util/cookies.js deklariert ist. req weil er auf der Serverside gespeichert ist
@@ -206,11 +247,13 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   const singleDialogue = dialogueList.find((singleDialogueItem) => {
     return Number(idFromUrl) === singleDialogueItem.id;
   });
-  console.log('singleDialogue:', singleDialogue);
+  // console.log('singleDialogue:', singleDialogue);
 
-  const oneDialogue = await getOneDialogue(idFromUrlNumber); // is an array of one object
+  // const oneDialogue = await getOneDialogue(idFromUrlNumber);
+  // is an array of one object
   // console.log('oneDialogue:', oneDialogue);
-  console.log('oneDialogueOnlyObject:', oneDialogue[0]); // is an object
+  // console.log('oneDialogueOnlyObject:', oneDialogue[0]);
+  // is an object
 
   return {
     props: {

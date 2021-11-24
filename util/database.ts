@@ -181,15 +181,29 @@ export async function getDialogue() {
   return dialogueItems;
 }
 
-// returnme an array of one object and information about the clomuns
-export async function getOneDialogue(idFromUrlNumber: number) {
+// returnme an array of one object and information about the clomuns with idFromUrlNumber
+// export async function getOneDialogue(idFromUrlNumber: number) {
+//   const oneDialogue = await sql`
+//     SELECT
+//       *
+//     FROM
+//       dialogue
+//     WHERE
+//       dialogue.dialogue_id = ${idFromUrlNumber};
+//   `;
+
+//   return oneDialogue;
+// }
+
+// same but with dialogueId passed from insertAnswer function
+export async function getOneDialogue(dialogueId: number) {
   const oneDialogue = await sql`
     SELECT
       *
     FROM
       dialogue
     WHERE
-      dialogue.dialogue_id = ${idFromUrlNumber};
+      dialogue.dialogue_id = ${dialogueId};
   `;
 
   return oneDialogue;
@@ -200,33 +214,67 @@ export async function getOneDialogue(idFromUrlNumber: number) {
 // }
 
 // ------------------------------------------------------------------------------------------------------------------------------
-// Thanks for taking to time to help me get through this mess.
 
+// dialogue_id through function in function with idFromUrl from API
+// export async function insertAnswer(
+//   idFromUrlNumber: number,
+//   buttonId: string,
+//   userId: number,
+// ) {
+//   const oneDialogueRowArray = await getOneDialogue(idFromUrlNumber);
+//   // gets me the needed row from dialogue table as an array of objects with one object
+//   const oneDialogueObject = oneDialogueRowArray[0];
+//   // gets only the one object in the array of objects
+//   if (oneDialogueObject.correct_answer === buttonId) {
+//     await sql`
+//       UPDATE status
+//       SET
+//         correct_answer = true
+//       WHERE
+//         status.dialogue_id = ${oneDialogueObject.dialogue_id} AND status.user_id = ${userId}
+//         /* I need to make sure that in the status the correct_answer column is updated where the row belongs to the current user AND the current dialogue - Since one user can have 10 dialogue rows unique to himself in the status table, only the current dialogue_id column should update its correct_answer column in the same row from null to true or false exactly where the user_id column matches the current user. */
+//         `;
+//   } else {
+//     await sql`
+//       UPDATE status
+//       SET
+//         correct_answer = false
+//       WHERE
+//         status.dialogue_id = ${oneDialogueObject.dialogue_id} AND status.user_id = ${userId}
+//     `;
+//   }
+// }
+
+// dialogue_id through API with dialogue_id
 export async function insertAnswer(
-  idFromUrlNumber: number,
+  dialogueId: number,
   buttonId: string,
   userId: number,
 ) {
-  const oneDialogueRowArray = await getOneDialogue(idFromUrlNumber);
+  const oneDialogueRowArray = await getOneDialogue(dialogueId);
   // gets me the needed row from dialogue table as an array of objects with one object
   const oneDialogueObject = oneDialogueRowArray[0];
   // gets only the one object in the array of objects
   if (oneDialogueObject.correct_answer === buttonId) {
     await sql`
-      UPDATE status
-      SET
-        correct_answer = true
-      WHERE
-        status.dialogue_id = ${oneDialogueObject.dialogue_id} AND status.user_id = ${userId}
-        /* I need to make sure that in the status the correct_answer column is updated where the row belongs to the current user AND the current dialogue - Since one user can have 10 dialogue rows unique to himself in the status table, only the current dialogue_id column should update its correct_answer column in the same row from null to true or false exactly where the user_id column matches the current user. */
+      INSERT INTO status
+        (user_id, dialogue_id, correct_answer)
+      /* DONT UPDATE since the row doesn't exists yet. Insert it? */
+      VALUES
+        (${userId}, ${buttonId}, correct_answer = true)
+      RETURNING
+        *
+      /* REUTRNING unnecessary? */
         `;
   } else {
     await sql`
-      UPDATE status
-      SET
-        correct_answer = false
-      WHERE
-        status.dialogue_id = ${oneDialogueObject.dialogue_id} AND status.user_id = ${userId}
+      INSERT INTO status
+        (user_id, dialogue_id, correct_answer)
+      /* DONT UPDATE since the row doesn't exists yet. Insert it? */
+      VALUES
+        (${userId}, ${buttonId}, correct_answer = false)
+      RETURNING
+        *
     `;
   }
 }
