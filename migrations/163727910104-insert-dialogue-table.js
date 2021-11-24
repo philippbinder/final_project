@@ -18,19 +18,27 @@ const dialogueArray = [
   },
   {
     dialogue_id: 2,
-    description_text: '',
-    question_text: 'Placeholder',
-    fail_text: 'Placeholder',
-    succeed_text: 'Placeholder',
-    answer1: 'Placeholder,',
-    answer2: 'Placeholder,',
-    answer3: 'Placeholder,',
-    correct_answer: 'answer3',
+    description_text:
+      'You walk up to the tallest house in the village, eager to unleash the epiphany of rhetoric and demagogy. Bright words for dark deeds form naturally in your mind as you knock on the door with utter self-confidence. Dressed to impress, deceive for mischief. The door opens and out steps a mountain of a man. Barerly fitting through the door frame thanks to all his huge size and the layers upon layers of muscles. The frowns upon you and you start sweating and panicking',
+    question_text:
+      'Great. Another idiot in our village, this time even dressed like wannabe aristocracy. Get lost, now!',
+    fail_text:
+      '[The answer of the man follows swiftly: Angered by your laughable appearance and performance, the man grabs you easily with a swift movement. The next thing you can remember is a fist, almost half the size of your head, crushing down on your face. You wake up next in the horse stable at the neighboring house.]',
+    succeed_text:
+      'You run far away, the village long out of sight, deep in the woods, you still keep running until trip over a stone and are knocked out. After ypu regain consciousness you start your long way back to the village.',
+    answer1:
+      "[PANIC] Dea... Dea.... Dea-dea-dear ge-ge-ge-gentleman!... I-I-I see you-you-you are a man of the qui-qui-qui-quill, ra-ra rather than the the the sword. Would would would'nt you li-li-like t-t-t-to join me me me in ki-ki-ki-lling the mayoress?",
+    answer2:
+      '[RUN] Almost in an instance you turn around and start running as fast as your legs can carry you. No matter the direction, no matter the embarrassment. As you sprint away, you turn your head and shout: "I will return! Forever undefeated!',
+    answer3:
+      '[FIGHT] Like an absolut amateur, you start hopping from one leg on to the other and start swinging your fists infront of you almost in a full circle. Sheer terror is written in your eyes. You gather all your courage and shout: "Bring it, wimp!"',
+    correct_answer: 'answer2',
   },
   {
     dialogue_id: 3,
     description_text: '',
-    question_text: 'Placeholder',
+    question_text:
+      'A little girl opens the door. But it matter does it not, you are out for vengeance and blood.',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
     answer1: 'Placeholder,',
@@ -99,9 +107,9 @@ const dialogueArray = [
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
-    answer1: 'Placeholder,',
-    answer2: 'Placeholder,',
-    answer3: 'Placeholder,',
+    answer1: 'Placeholder',
+    answer2: 'Placeholder',
+    answer3: 'Placeholder',
     correct_answer: 'answer1',
   },
   {
@@ -110,9 +118,9 @@ const dialogueArray = [
     question_text: 'Placeholder',
     fail_text: 'Placeholder',
     succeed_text: 'Placeholder',
-    answer1: 'Placeholder,',
-    answer2: 'Placeholder,',
-    answer3: 'Placeholder,',
+    answer1: 'Placeholder',
+    answer2: 'Placeholder',
+    answer3: 'Placeholder',
     correct_answer: 'answer2',
   },
 ];
