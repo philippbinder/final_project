@@ -23,13 +23,12 @@ type Props = {
     answer3: string;
     correct_answer: string;
   };
-  // session: {
-  //   userId: number;
-  // };
-  // idFromUrlNumber: number;
+  idFromUrlNumber: number;
   // idFromUrl: {};
+  // let idFromUrlNumber: number = idFromUrlNumber;
 };
-// let idFromUrlNumber: number = idFromUrlNumber;
+
+// export const button1: string = 'answer1';
 
 const textStyling = css`
   padding: 0 3px 0 3px;
@@ -59,76 +58,15 @@ const buttonStyling = css`
   }
 `;
 
-export default function ProdcutTemplate(props: Props) {
-  // console.log('idFromUrlNumber', props.idFromUrlNumber);
+export default function DialogueTemplate(props: Props) {
+  console.log('idFromUrlNumber', props.idFromUrlNumber);
   const button1 = 'answer1';
-  // const button2 = 'answer2';
-  // const button3 = 'answer3';
+  console.log('API typeof button1 =', typeof button1);
+  const button2 = 'answer2';
+  const button3 = 'answer3';
 
-  // Testlauf nur für button1, wenn es geht, könnte ich den fetch einfach auf jeden button schreiben auf onClick
-  // const clickHanlder = await fetch('/api/markAnswer', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Content-Type': 'application/json', // tells the program that I am sending JSON data
-  //   },
-  //   body: JSON.stringify({
-  //     // body needs to be send in JSON
-  //     // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in registerHandler von register.ts"
-  //     dialogueId: props.idFromUrlNumber, // is ALLWAYS the same as the needed dialogue_id
-  //     buttonId: button1, // event.currentTarget?.id, this.id würden von dem onClick event die id des buttons holen?
-  //     userId: props.session.userId,
-  //   }),
-  // });
-  // async function insertAnswer(id: string) {
-  //   if (id === props.singleDialogue.correct_answer) {
-  //     await sql`
-  //     -- INSERT INTO status
-  //     UPDATE status
-  //     SET
-  //       correct_answer = true
-  //     WHERE
-  //       status.dialogue_id = props.singleDialogue.dialogue_id AND status.user_id = session.userId
-  //       `;
-  //   } else {
-  //     await sql`
-  //     UPDATE status
-  //     SET
-  //       correct_answer = false
-  //     WHERE
-  //       status.dialogue_id = props.singleDialogue.dialogue_id AND status.user_id = session.userId
-  //   `;
-  //   }
-  // }
-
-  // const letsGo = await insertAnswer1({
-  //   answer_id: answer_id,
-  //   correct: correct,
-  // });
-  // const image = props.singleItem.image;
-  // console.log(image);
-  // console.log('props.singleDialogue:', props.singleDialogue);
-  const dialogueIdNumber = 1;
   return (
     <GradientContainer>
-      {/* // FETCHES API AND PASSES DATA
-
-      const registerResponse = await fetch('/api/markAnswer', {
-        method: 'POST', // weil ich Information senden will und etwas neues kreieren möchte / http methods - POST is to create, GET is to get some information, PUT is to update some information and DELETE is to delete information
-        headers: {
-          'Content-Type': 'application/json', // tells the program that I am sending JSON data
-        },
-        body: JSON.stringify({
-          // body needs to be send in JSON
-          // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in reigsterHandler von register.ts"
-          username: username,
-          password: password,
-        }),
-      });
-      console.log(registerResponse);
-
-      const registerJson = (await registerResponse.json()) as RegisterResponse;
-
-      // FETCHES API AND PASSES DATA */}
       <form>
         {/* gibt es singleDIalogue und falls es das in props gibt, dann stelle folgenden Code dar. Verhindert, dass er versucht props dartzustellen, wenn es props noch nicht gibt. Props gibt es immer, aber singleDialogue gibt es noch nicht in props*/}
         {/* <h1> Test </h1> */}
@@ -146,20 +84,18 @@ export default function ProdcutTemplate(props: Props) {
 
         {'singleDialogue' in props && (
           <button
-            id="answer1"
             css={buttonStyling}
             onClick={async () =>
               console.log(
                 await fetch('/api/markAnswer', {
                   method: 'POST',
-                  credentials: 'include', // the way to pass cookies to the API?
                   headers: {
                     'Content-Type': 'application/json',
                   },
                   body: JSON.stringify({
                     // body needs to be send in JSON
                     // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in registerHandler von register.ts"
-                    dialogueId: dialogueIdNumber, // is ALLWAYS the same as the needed dialogue_id - UNEFINED SENT!
+                    dialogueId: props.idFromUrlNumber, // is ALLWAYS the same as the needed dialogue_id - UNEFINED SENT!
                     buttonId: button1, // event.currentTarget?.id, this.id würden von dem onClick event die id des buttons holen?
                     // userId: props.session.userId,
                   }),
@@ -173,33 +109,52 @@ export default function ProdcutTemplate(props: Props) {
         )}
 
         {'singleDialogue' in props && (
-          <button id="answer2" css={buttonStyling}>
+          <button
+            css={buttonStyling}
+            onClick={async () =>
+              console.log(
+                await fetch('/api/markAnswer', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    // body needs to be send in JSON
+                    // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in registerHandler von register.ts"
+                    dialogueId: props.idFromUrlNumber, // is ALLWAYS the same as the needed dialogue_id - UNEFINED SENT!
+                    buttonId: button2, // event.currentTarget?.id, this.id würden von dem onClick event die id des buttons holen?
+                    // userId: props.session.userId,
+                  }),
+                }),
+              )
+            }
+          >
             {' '}
             {props.singleDialogue.answer2}
           </button>
-
-          // <form
-          //   id="answer2"
-          //   onSubmit={async (event) => {
-          //     event.preventDefault();
-          //     await fetch('/api/markAnswer'),
-          //       {
-          //         method: 'POST', // or PUT? Ppost to is to create something new,PUT is to update some informatiom
-          //         header: {
-          //           'Content-Type': 'application/json',
-          //         },
-          //         body: JOSN.stringify,({
-          //           props.singleDialogue.answer2.correct_answer: props.singleDialogue.answer2.correct_answer,
-          //         })
-          //       };
-          //   }}
-          // >
-          //   {props.singleDialogue.answer2}
-          // </form>
         )}
 
         {'singleDialogue' in props && (
-          <button id="answer3" css={buttonStyling}>
+          <button
+            css={buttonStyling}
+            onClick={async () =>
+              console.log(
+                await fetch('/api/markAnswer', {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                  },
+                  body: JSON.stringify({
+                    // body needs to be send in JSON
+                    // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in registerHandler von register.ts"
+                    dialogueId: props.idFromUrlNumber, // is ALLWAYS the same as the needed dialogue_id - UNEFINED SENT!
+                    buttonId: button3, // event.currentTarget?.id, this.id würden von dem onClick event die id des buttons holen?
+                    // userId: props.session.userId,
+                  }),
+                }),
+              )
+            }
+          >
             {' '}
             {props.singleDialogue.answer3}
           </button>
@@ -217,7 +172,8 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   // console.log('dialogueList = ', dialogueList);
   const idFromUrl = context.query.dialogueId; // is a string
   const idFromUrlNumber = Number(idFromUrl); // is a number
-  console.log('idFromUrlNumber in gSSP:', idFromUrlNumber);
+  console.log('idFromUrlNumber in gSSP:', idFromUrlNumber); // <--- good guy idFromUrlNumber
+
   // holt die function um die Session zu kriegen aus der db
   const { getValidSessionByToken } = await import('../../util/database');
   // holt den sessionToken der namentlich als sessionToken in util/cookies.js deklariert ist. req weil er auf der Serverside gespeichert ist
@@ -258,6 +214,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
   return {
     props: {
       singleDialogue: singleDialogue,
+      idFromUrlNumber: idFromUrlNumber,
     },
   };
 }

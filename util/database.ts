@@ -8,6 +8,8 @@ export type User = {
   name: string | null;
 };
 
+// export type Answer = {};
+
 // TS type User does not allow a passwordHash, therefore we create a new type based on the existing User type
 export type UserWithPasswordHash = User & {
   passwordHash: string;
@@ -209,11 +211,46 @@ export async function getOneDialogue(dialogueId: number) {
   return oneDialogue;
 }
 
+// dialogue_id through API with dialogue_id
+export async function insertAnswer(
+  dialogueId: number,
+  buttonId: string,
+  userId: number,
+) {
+  const oneDialogueRowArray = await getOneDialogue(dialogueId);
+  // gets me the needed row from dialogue table as an array of objects with one object
+  const oneDialogueObject = oneDialogueRowArray[0];
+  // gets only the one object in the array of objects
+  if (oneDialogueObject.correct_answer === buttonId) {
+    await sql`
+      INSERT INTO status
+        (user_id, dialogue_id, correct_answer)
+      /* DONT UPDATE since the row doesn't exists yet. Insert it? */
+      VALUES
+        (${userId}, ${buttonId}, true)
+      RETURNING
+        *
+      /* REUTRNING unnecessary? */
+        `;
+  } else {
+    await sql`
+      INSERT INTO status
+        (user_id, dialogue_id, correct_answer)
+      /* DONT UPDATE since the row doesn't exists yet. Insert it? */
+      VALUES
+        (${userId}, ${buttonId}, false)
+      RETURNING
+        *
+    `;
+  }
+}
+
 // export async function getOneRowOfDialogue(idFromUrlNumber: number) {
 //   const oneRow = await
 // }
 
 // ------------------------------------------------------------------------------------------------------------------------------
+// OLD CODE to for insertAnswer
 
 // dialogue_id through function in function with idFromUrl from API
 // export async function insertAnswer(
@@ -244,37 +281,3 @@ export async function getOneDialogue(dialogueId: number) {
 //     `;
 //   }
 // }
-
-// dialogue_id through API with dialogue_id
-export async function insertAnswer(
-  dialogueId: number,
-  buttonId: string,
-  userId: number,
-) {
-  const oneDialogueRowArray = await getOneDialogue(dialogueId);
-  // gets me the needed row from dialogue table as an array of objects with one object
-  const oneDialogueObject = oneDialogueRowArray[0];
-  // gets only the one object in the array of objects
-  if (oneDialogueObject.correct_answer === buttonId) {
-    await sql`
-      INSERT INTO status
-        (user_id, dialogue_id, correct_answer)
-      /* DONT UPDATE since the row doesn't exists yet. Insert it? */
-      VALUES
-        (${userId}, ${buttonId}, correct_answer = true)
-      RETURNING
-        *
-      /* REUTRNING unnecessary? */
-        `;
-  } else {
-    await sql`
-      INSERT INTO status
-        (user_id, dialogue_id, correct_answer)
-      /* DONT UPDATE since the row doesn't exists yet. Insert it? */
-      VALUES
-        (${userId}, ${buttonId}, correct_answer = false)
-      RETURNING
-        *
-    `;
-  }
-}

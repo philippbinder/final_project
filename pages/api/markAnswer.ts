@@ -1,11 +1,10 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getDialogue, insertAnswer } from '../../util/database';
+import { getValidSessionByToken, insertAnswer } from '../../util/database';
 
+// idFromUrlNumber: number;
 export type RegisterRequest = {
-  // idFromUrlNumber: number;
   dialogueId: number;
   buttonId: string;
-  userId: number;
 };
 
 export default async function markAnswerHandler(
@@ -13,21 +12,16 @@ export default async function markAnswerHandler(
   res: NextApiResponse, // is the response
 ) {
   console.log('API req.body =', req.body);
-  await insertAnswer(req.body.dialogueId, req.body.buttonId, req.body.userId);
-  // const dialogueList = await getDialogue();
-  // gets me the dialogue table as an array of objects
-  // const singleDialogue = dialogueList.find((singleDialogueItem) => {
-  // return Number(req.body.dialogueId) === singleDialogueItem.id;
-  // out of said array select the object
+  console.log('API req.cookies =', req.cookies);
+  console.log('API typeof req.boy.dialogueId:', typeof req.body.dialogueId); // is a number
+  console.log('API typeof req.body.buttonId:', typeof req.body.buttonId); // is a string
+  const sessionToken = req.cookies.sessionToken;
+  const session = await getValidSessionByToken(sessionToken);
+  console.log('API typeof session.userId:', typeof session.userId); // is a number
+  console.log('API session.userId =', session?.userId);
 
-  // get the buttonId from the body and the userId from the cookies / from the session?
-  // then pass both into the function insertAnswer(buttonId, userId)
-  //
+  await insertAnswer(req.body.dialogueId, req.body.buttonId, session.userId);
 
-  res.status(200).json('status.correect_answer updated.');
+  res.status(200).json('status.correct_answer updated.');
   // don't need any data sent back
 }
-
-// Reading - GET all dialogues
-// Reading - GET single dialogue - dialogue_id with for the right user_id
-// Updating - PUT
