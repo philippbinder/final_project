@@ -1,11 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getValidSessionByToken, insertAnswer } from '../../util/database';
+import {
+  endGame,
+  getValidSessionByToken,
+  insertAnswer,
+} from '../../util/database';
 
 // idFromUrlNumber: number;
 export type RegisterRequest = {
   dialogueId: number;
   buttonId: string;
 };
+
+// export const response: string = 'status.correct_answer updated.';
+
+// export type LoginResponse = { user: User };
 
 export default async function markAnswerHandler(
   req: NextApiRequest, // is the thing that is coming from the user
@@ -20,8 +28,11 @@ export default async function markAnswerHandler(
   console.log('API typeof session.userId:', typeof session.userId); // is a number
   console.log('API session.userId =', session?.userId);
 
-  await insertAnswer(req.body.dialogueId, req.body.buttonId, session.userId);
+  await insertAnswer(req.body.buttonId, req.body.dialogueId, session.userId);
+
+  endGame(session.userId);
 
   res.status(200).json('status.correct_answer updated.');
+  res.send('status.correct_answer updated.');
   // don't need any data sent back
 }

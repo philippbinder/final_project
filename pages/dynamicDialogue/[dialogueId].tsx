@@ -1,6 +1,6 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import GradientContainer from '../../components/GradientContainer';
 
 // import { RegisterResponse } from './api/markAnswer'; need no response from the API in the browser
@@ -64,6 +64,7 @@ export default function DialogueTemplate(props: Props) {
   console.log('API typeof button1 =', typeof button1);
   const button2 = 'answer2';
   const button3 = 'answer3';
+  const router = useRouter(); // under useRouter and router.push https://nextjs.org/docs/api-reference/next/router
 
   return (
     <GradientContainer>

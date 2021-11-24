@@ -213,8 +213,8 @@ export async function getOneDialogue(dialogueId: number) {
 
 // dialogue_id through API with dialogue_id
 export async function insertAnswer(
-  dialogueId: number,
   buttonId: string,
+  dialogueId: number,
   userId: number,
 ) {
   const oneDialogueRowArray = await getOneDialogue(dialogueId);
@@ -227,7 +227,7 @@ export async function insertAnswer(
         (user_id, dialogue_id, correct_answer)
       /* DONT UPDATE since the row doesn't exists yet. Insert it? */
       VALUES
-        (${userId}, ${buttonId}, true)
+        (${userId}, ${dialogueId}, true)
       RETURNING
         *
       /* REUTRNING unnecessary? */
@@ -238,46 +238,45 @@ export async function insertAnswer(
         (user_id, dialogue_id, correct_answer)
       /* DONT UPDATE since the row doesn't exists yet. Insert it? */
       VALUES
-        (${userId}, ${buttonId}, false)
+        (${userId}, ${dialogueId}, false)
       RETURNING
         *
     `;
   }
 }
 
-// export async function getOneRowOfDialogue(idFromUrlNumber: number) {
-//   const oneRow = await
-// }
+export async function getSpecificStatus(userId: number) {
+  const oneStatus = await sql`
+    SELECT
+      correct_answer
+    FROM
+      status
+    WHERE
+      status.user_id = ${userId};
+  `;
 
-// ------------------------------------------------------------------------------------------------------------------------------
-// OLD CODE to for insertAnswer
+  return oneStatus;
+}
 
-// dialogue_id through function in function with idFromUrl from API
-// export async function insertAnswer(
-//   idFromUrlNumber: number,
-//   buttonId: string,
-//   userId: number,
-// ) {
-//   const oneDialogueRowArray = await getOneDialogue(idFromUrlNumber);
-//   // gets me the needed row from dialogue table as an array of objects with one object
-//   const oneDialogueObject = oneDialogueRowArray[0];
-//   // gets only the one object in the array of objects
-//   if (oneDialogueObject.correct_answer === buttonId) {
-//     await sql`
-//       UPDATE status
-//       SET
-//         correct_answer = true
-//       WHERE
-//         status.dialogue_id = ${oneDialogueObject.dialogue_id} AND status.user_id = ${userId}
-//         /* I need to make sure that in the status the correct_answer column is updated where the row belongs to the current user AND the current dialogue - Since one user can have 10 dialogue rows unique to himself in the status table, only the current dialogue_id column should update its correct_answer column in the same row from null to true or false exactly where the user_id column matches the current user. */
-//         `;
-//   } else {
-//     await sql`
-//       UPDATE status
-//       SET
-//         correct_answer = false
-//       WHERE
-//         status.dialogue_id = ${oneDialogueObject.dialogue_id} AND status.user_id = ${userId}
-//     `;
-//   }
-// }
+export async function endGame(userId: number) {
+  const userStatusArray = await getSpecificStatus(userId);
+  console.log('userStatusArray:', userStatusArray);
+  console.log('userStatusArray.length:', userStatusArray.length);
+  const trueAnswers = userStatusArray.filter(
+    (i) => i.correct_answer === true,
+  ).length;
+  console.log('trueAnswer =', trueAnswers); // returns count of true answers
+  if (userStatusArray.length = 10) {
+    if (trueAnswers >= 6) {
+      // redirect/router.push youWin.tsx
+      return;
+    };
+    elsif (trueAnswers < 6) {
+    // else (trueAnswers < 6) {
+      // redirect/router.puh youDied.tsx
+      return;
+    }
+    endif
+  }
+  return;
+}
