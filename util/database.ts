@@ -266,17 +266,14 @@ export async function endGame(userId: number) {
     (i) => i.correct_answer === true,
   ).length;
   console.log('trueAnswer =', trueAnswers); // returns count of true answers
-  if (userStatusArray.length = 10) {
+  if (userStatusArray.length === 10) {
     if (trueAnswers >= 6) {
       // redirect/router.push youWin.tsx
-      return;
-    };
-    elsif (trueAnswers < 6) {
-    // else (trueAnswers < 6) {
-      // redirect/router.puh youDied.tsx
-      return;
+      console.log('------------------- You win!!!');
+    } else if (trueAnswers < 6) {
+      // redirect/router.push youDied.tsx
+      console.log('------------------- You died!!!');
     }
-    endif
   }
   return;
 }
