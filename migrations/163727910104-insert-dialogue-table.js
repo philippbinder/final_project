@@ -37,18 +37,19 @@ const dialogueArray = [
   {
     dialogue_id: 3,
     description_text:
-      "You walk up to the next house and as the door opens, you see a little girl, looking at you with big, innocent eyes. But matter does it not to you, you are out for vengeance and blood. And this girl will join you in your cause to murder the mayoress, for it was her, the evil mayoress, who didn't award you first place when you were the fastet child in the anual sack race back in the days. In those days, when there was still joy and compasion in your heart. Before you left this village behind along with your innocence and childhood many years ago to train and forge a plan for this very moment. To rally the people of this village to murder your arch nemesis - the evil mayoress.",
+      "You walk up to the next house and as the door opens, you see a little girl, looking at you with big, innocent eyes. But matter does it not to you, you are out for vengeance and blood. And this girl will join you in your cause to murder the mayoress, for it was her, the evil mayoress, who didn't award you first place when you were the fastet child in the anual sack race back in the days. In those days, when there was still joy and compassion in your heart. Before you left this village behind, along with your innocence and childhood many years ago to train and forge a plan for this very moment. To rally the people of this village to murder your arch nemesis - the evil mayoress.",
     question_text:
-      'Scarred of you, the girl quickly shuts the door with all of her strength. You are suprised of the sheer force she smashes the door in to your face, as you stand too close. The door hits you right in the face, knocking you of your feet and sending you fyling backwards in the dirt and hitting your head on the hard ground. It takes you a minute to muster the strength to fight the pain and get up, looking for your next victim.',
-    fail_text: 'Placeholder',
+      'Hello mister. If you need someone to talk to, my mother will be back shortly.',
+    fail_text:
+      'Scarred of you, the girl quickly shuts the door with all of her strength. As you stand too close, you are suprised of the sheer force she smashes the door into your face. The door hits you hard, knocking you of your feet and sending you fyling backwards in the dirt and hitting your head on the hard ground. It takes you a minute to muster the strength to fight the pain and get up, looking for your next victim.',
     succeed_text:
       'The little girl laughs, half out of amusement, half out of confusion. She says: "Haha. You dance as stupid as you look, mister." Hoping that your dance did the trick and still completly exhausted, you start crawling to the nearest tree and take a short nap to recover your strength. As you wake up, you feel refreshed and evil machinations form in your mind.',
     answer1:
       '[DANCE] You start hopping, bend your knees, take of your yellow top hat with turquoise splashes, wave your hands wildly and throw your legs around, almost dislocating them. You repeat this process several times for at least two minutes. Totally exhausted, you let your dance come to an end, kneel on your knees to catch your breath and look hoepfully up into the girls eyes. Hoping that your stupid dance convinced a little girl to do your bidding.',
     answer2:
-      '[RHYME] One, two, three, four, five, once I caught a mayoress alive! Six, seven, eight, nine, ten, the evil witch must hang!',
-    answer3:
       '[LURE WITH PROMISES OF POWER] Ohhhh, I see you. I truly see you. You and your wants. Imagine: wealth, power, fame! Servants for your every needs, lands to call your owm and people to rule over. The fear of your subjects, the power over life and death. All of it can be yours, all of it! If you just join me and together we will create a new world!',
+    answer3:
+      '[RHYME] One, two, three, four, five, once I caught a mayoress alive! Six, seven, eight, nine, ten, the evil witch must hang!',
     correct_answer: 'answer1',
   },
   {
