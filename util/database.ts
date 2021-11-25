@@ -265,7 +265,7 @@ export async function endGame(userId: number) {
   const trueAnswers = userStatusArray.filter(
     (i) => i.correct_answer === true,
   ).length;
-  console.log('trueAnswer =', trueAnswers); // returns count of true answers
+  console.log('trueAnswers =', trueAnswers); // returns count of true answers
   if (userStatusArray.length === 10) {
     if (trueAnswers >= 6) {
       // redirect/router.push youWin.tsx

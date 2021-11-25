@@ -2,9 +2,9 @@ const dialogueArray = [
   {
     dialogue_id: 1,
     description_text:
-      'You knock on the door, helplessly trying to get attention and babbling something about the mayoress being a witch and dancing with broomstick once the sun is setting low. After nobody answeres the door you start kicking it with your feet and the door suddenly jumps wide open. A large, angry man appears, carrying a TEMPLAR ISIGNIA around his neck.',
+      'You knock on the door, helplessly trying to get attention and babbling something about the mayoress being a witch and dancing with brooms once the sun is setting low. After nobody answeres the door you start kicking it with your feet and the door suddenly jumps wide open. A angry man appears, carrying a TEMPLAR ISIGNIA around his neck.',
     question_text:
-      'I heard you the first time! Dancing broomsticks and making a fuss about the mayoress being a witch. Why would I listen to such nonsense?',
+      'I heard you the first time! Dancing brooms and making a fuss about the mayoress being a witch. Why would I listen to such nonsense?',
     fail_text:
       'An idiot rambling on about such nonsense is a rare sight to behold in our lonely village. You would be well advised to leave our village by sunset.',
     succeed_text:
@@ -19,9 +19,9 @@ const dialogueArray = [
   {
     dialogue_id: 2,
     description_text:
-      'You walk up to the tallest house in the village, eager to unleash the epiphany of rhetoric and demagogy. Bright words for dark deeds form naturally in your mind as you knock on the door with utter self-confidence. Dressed to impress, deceive for mischief. The door opens and out steps a mountain of a man. Barerly fitting through the door frame thanks to all his huge size and the layers upon layers of muscles. The frowns upon you and you start sweating and panicking',
+      'You walk up to the tallest house in the village, eager to unleash the epiphany of rhetoric and demagogy. Bright words for dark deeds form naturally in your mind as you knock on the door with utter self-confidence. Dressed to impress, deceive for mischief. The door opens and out steps a mountain of a man. Barerly fitting through the door frame thanks to his huge size and all the layers upon layers of muscles. The man frowns upon you and you start sweating and panicking.',
     question_text:
-      'Great. Another idiot in our village, this time even dressed like wannabe aristocracy. Get lost, now!',
+      'Great. Another idiot in our village, this time even dressed like one. Get lost.',
     fail_text:
       '[The answer of the man follows swiftly: Angered by your laughable appearance and performance, the man grabs you easily with a swift movement. The next thing you can remember is a fist, almost half the size of your head, crushing down on your face. You wake up next in the horse stable at the neighboring house.]',
     succeed_text:
@@ -31,19 +31,24 @@ const dialogueArray = [
     answer2:
       '[RUN] Almost in an instance you turn around and start running as fast as your legs can carry you. No matter the direction, no matter the embarrassment. As you sprint away, you turn your head and shout: "I will return! Forever undefeated!',
     answer3:
-      '[FIGHT] Like an absolut amateur, you start hopping from one leg on to the other and start swinging your fists infront of you almost in a full circle. Sheer terror is written in your eyes. You gather all your courage and shout: "Bring it, wimp!"',
+      '[FIGHT] Like an absolut amateur, you start hopping from one leg on to the other and start swinging your fists infront of your face almost in a full circle. Sheer terror is written in your eyes. Too proud to admit to yourself that you are afraid, you start gathering all your courage and shout: "Bring it, wimp!"',
     correct_answer: 'answer2',
   },
   {
     dialogue_id: 3,
-    description_text: '',
+    description_text:
+      "You walk up to the next house and as the door opens, you see a little girl, looking at you with big, innocent eyes. But matter does it not to you, you are out for vengeance and blood. And this girl will join you in your cause to murder the mayoress, for it was her, the evil mayoress, who didn't award you first place when you were the fastet child in the anual sack race back in the days. In those days, when there was still joy and compasion in your heart. Before you left this village behind along with your innocence and childhood many years ago to train and forge a plan for this very moment. To rally the people of this village to murder your arch nemesis - the evil mayoress.",
     question_text:
-      'A little girl opens the door. But it matter does it not, you are out for vengeance and blood.',
+      'Scarred of you, the girl quickly shuts the door with all of her strength. You are suprised of the sheer force she smashes the door in to your face, as you stand too close. The door hits you right in the face, knocking you of your feet and sending you fyling backwards in the dirt and hitting your head on the hard ground. It takes you a minute to muster the strength to fight the pain and get up, looking for your next victim.',
     fail_text: 'Placeholder',
-    succeed_text: 'Placeholder',
-    answer1: 'Placeholder,',
-    answer2: 'Placeholder,',
-    answer3: 'Placeholder,',
+    succeed_text:
+      'The little girl laughs, half out of amusement, half out of confusion. She says: "Haha. You dance as stupid as you look, mister." Hoping that your dance did the trick and still completly exhausted, you start crawling to the nearest tree and take a short nap to recover your strength. As you wake up, you feel refreshed and evil machinations form in your mind.',
+    answer1:
+      '[DANCE] You start hopping, bend your knees, take of your yellow top hat with turquoise splashes, wave your hands wildly and throw your legs around, almost dislocating them. You repeat this process several times for at least two minutes. Totally exhausted, you let your dance come to an end, kneel on your knees to catch your breath and look hoepfully up into the girls eyes. Hoping that your stupid dance convinced a little girl to do your bidding.',
+    answer2:
+      '[RHYME] One, two, three, four, five, once I caught a mayoress alive! Six, seven, eight, nine, ten, the evil witch must hang!',
+    answer3:
+      '[LURE WITH PROMISES OF POWER] Ohhhh, I see you. I truly see you. You and your wants. Imagine: wealth, power, fame! Servants for your every needs, lands to call your owm and people to rule over. The fear of your subjects, the power over life and death. All of it can be yours, all of it! If you just join me and together we will create a new world!',
     correct_answer: 'answer1',
   },
   {
