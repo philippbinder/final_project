@@ -1,8 +1,6 @@
 import { css } from '@emotion/react';
 import { ReactNode } from 'react';
 
-// neccessary for tsx
-
 type Props = {
   children: ReactNode;
 };

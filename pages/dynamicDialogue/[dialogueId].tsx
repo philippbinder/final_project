@@ -86,7 +86,7 @@ export default function DialogueTemplate(props: Props) {
         {'singleDialogue' in props && (
           <button
             css={buttonStyling}
-            onClick={async () =>
+            onClick={async () => {
               console.log(
                 await fetch('/api/markAnswer', {
                   method: 'POST',
@@ -94,15 +94,13 @@ export default function DialogueTemplate(props: Props) {
                     'Content-Type': 'application/json',
                   },
                   body: JSON.stringify({
-                    // body needs to be send in JSON
-                    // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in registerHandler von register.ts"
-                    dialogueId: props.idFromUrlNumber, // is ALLWAYS the same as the needed dialogue_id - UNEFINED SENT!
-                    buttonId: button1, // event.currentTarget?.id, this.id würden von dem onClick event die id des buttons holen?
-                    // userId: props.session.userId,
+                    dialogueId: props.idFromUrlNumber,
+                    buttonId: button1,
                   }),
                 }),
-              )
-            }
+              );
+              router.push('/village');
+            }}
           >
             {' '}
             {props.singleDialogue.answer1}
@@ -120,11 +118,8 @@ export default function DialogueTemplate(props: Props) {
                     'Content-Type': 'application/json',
                   },
                   body: JSON.stringify({
-                    // body needs to be send in JSON
-                    // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in registerHandler von register.ts"
-                    dialogueId: props.idFromUrlNumber, // is ALLWAYS the same as the needed dialogue_id - UNEFINED SENT!
-                    buttonId: button2, // event.currentTarget?.id, this.id würden von dem onClick event die id des buttons holen?
-                    // userId: props.session.userId,
+                    dialogueId: props.idFromUrlNumber,
+                    buttonId: button2,
                   }),
                 }),
               )
@@ -146,11 +141,8 @@ export default function DialogueTemplate(props: Props) {
                     'Content-Type': 'application/json',
                   },
                   body: JSON.stringify({
-                    // body needs to be send in JSON
-                    // die data die ich passen will, also an register.ts, schreibe ich den body - "this body inside the fetch turns into req.body in registerHandler von register.ts"
-                    dialogueId: props.idFromUrlNumber, // is ALLWAYS the same as the needed dialogue_id - UNEFINED SENT!
-                    buttonId: button3, // event.currentTarget?.id, this.id würden von dem onClick event die id des buttons holen?
-                    // userId: props.session.userId,
+                    dialogueId: props.idFromUrlNumber,
+                    buttonId: button3,
                   }),
                 }),
               )
@@ -167,7 +159,7 @@ export default function DialogueTemplate(props: Props) {
 // Haut die querry hin, aber es kann dennoch nicht dargestellt werden -> debuggen und die einzelnen Elemente durchgehen (mit typeof)
 export async function getServerSideProps(context: GetServerSidePropsContext) {
   const { getDialogue } = await import('../../util/database');
-  const { getOneDialogue } = await import('../../util/database');
+  // const { getOneDialogue } = await import('../../util/database');
 
   const dialogueList = await getDialogue();
   // console.log('dialogueList = ', dialogueList);

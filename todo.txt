@@ -20,17 +20,17 @@ Registration and Database
   - check if sessiontoken exists on the dialogue pages etc to kick user if he is not logged in
 
 Save Game / database
-  - game needs to keep track of which villagers the player has already talked to and to which he hasn't -> automatically saves any progress in database? If I do it that way, a save game button wouldn't make any sense because everything gets saved immideatly
+  + game needs to keep track of which villagers the player has already talked to and to which he hasn't -> automatically saves any progress in database? If I do it that way, a save game button wouldn't make any sense because everything gets saved immideatly
 
 
 Presentation of Log in and Registration
   + make the register page look like the registrarionPage page DONE EVEN BETTER
-  - use components for the background layout
+  ~ use components for the background layout
   + move away from the brown color theme to a more dark one fitting with the red glow effect?
   - make the buttons at index.tsx shift inwards if hovered over / or clicked? For satisfying 3D click effect
 
 Village / Game screen
-  - add a logout button? Or should it only appear once the user clicks on the exit game button, ergo on the index.js file?
+  + add a logout button
   - add a "About this game" button or something like that that explains the gameplay and maybe the project in general
 
 Cookies
@@ -66,3 +66,8 @@ buttons dont work as buttons anymore with component
 whats left of buttons center their text, looks stupid
 Then redirect to answer succeed or fail
 button or link to go back
+
+---------------------------------------------------------------------------------------------------------------------------
+- Clear database for specific user once a round is completed
+- make button to myLinkedIn link to my LinkedIn
+- check design for game over - remove 3rd radial?

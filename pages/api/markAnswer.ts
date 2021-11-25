@@ -25,7 +25,7 @@ export default async function markAnswerHandler(
   console.log('API typeof req.body.buttonId:', typeof req.body.buttonId); // is a string
   const sessionToken = req.cookies.sessionToken;
   const session = await getValidSessionByToken(sessionToken);
-  console.log('API typeof session.userId:', typeof session.userId); // is a number
+  console.log('API typeof session.userId:', typeof session?.userId); // is a number
   console.log('API session.userId =', session?.userId);
 
   await insertAnswer(req.body.buttonId, req.body.dialogueId, session.userId);
