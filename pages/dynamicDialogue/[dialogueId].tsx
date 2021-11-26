@@ -87,18 +87,18 @@ export default function DialogueTemplate(props: Props) {
           <button
             css={buttonStyling}
             onClick={async () => {
-              console.log(
-                await fetch('/api/markAnswer', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    dialogueId: props.idFromUrlNumber,
-                    buttonId: button1,
-                  }),
+              // console.log(
+              await fetch('/api/markAnswer', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  dialogueId: props.idFromUrlNumber,
+                  buttonId: button1,
                 }),
-              );
+              });
+              // );
               router.push('/village');
             }}
           >

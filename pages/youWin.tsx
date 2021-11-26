@@ -43,17 +43,17 @@ export default function YouWin() {
       {/* <div css={textContainer}> */}
       <div css={youWinStyle}> YOU WIN </div>
       <div css={text1Style}>
-        At sundown, you rally the mob. They lust for blood and their mouths
+        At nightfall, you rally the mob. They lust for blood and their mouths
         foam. You really do know how to decieve and bring out the worst in
         people. The villagers follow your command with zealousness and the power
         you hold in your hands fills your heart with pleasure you thought lost
         to the ages.{' '}
       </div>
       <div css={text2Style}>
-        Once your pack of blood-hungry creatures arrive at the mayoress house,
-        it all goes quickly. They storm her house, drag her out of it and bring
-        her life to an end. As you relish in your vengance, a silent chill
-        settles in the village as the winds start blowing.{' '}
+        Once your pack of blood-hungry creatures arrives at the mayoress' house,
+        it all goes down quickly. They storm the house, drag her out on the
+        street and bring her life to an end. As you relish in your vengance, a
+        silent chill falls on the village as the wind starts blowing.{' '}
       </div>
       {/* </div> */}
     </YouWinLayout>
