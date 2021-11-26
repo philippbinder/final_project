@@ -47,7 +47,7 @@ const dialogueArray = [
     answer1:
       '[DANCE] You start hopping, bend your knees, take of your yellow top hat with turquoise splashes, wave your hands wildly and throw your legs around, almost dislocating them. You repeat this process several times for at least two minutes. Totally exhausted, you let your dance come to an end, kneel on your knees to catch your breath and look hoepfully up into the girls eyes. Hoping that your stupid dance convinced a little girl to do your bidding.',
     answer2:
-      '[LURE WITH PROMISES OF POWER] Ohhhh, I see you. I truly see you. You and your wants. Imagine: wealth, power, fame! Servants for your every needs, lands to call your owm and people to rule over. The fear of your subjects, the power over life and death. All of it can be yours, all of it! If you just join me and together we will create a new world!',
+      '[LURE WITH PROMISES OF POWER] Ohhhh, I see you. I truly see you. You and your wants. Imagine: wealth, power, fame! Servants for your every needs, lands to call your owm and people to rule over. The fear of your subjects, the power over life and death. All of it can be yours, all of it! If you just join me and together we will shake the very foundations of this village!',
     answer3:
       '[RHYME] One, two, three, four, five, once I caught a mayoress alive! Six, seven, eight, nine, ten, the evil witch must hang!',
     correct_answer: 'answer1',

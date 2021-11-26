@@ -12,10 +12,12 @@ const mainContainer = css`
   height: 100vh;
   font-weight: 600;
   font-family: MedievalSharp;
-  background: radial-gradient(
-    rgba(147, 9, 0, 0.44) 16.4%,
-    rgba(138, 41, 52, 0.858) 30%,
-    rgba(6, 0, 2, 1) 74%
+  background: linear-gradient(
+    180deg,
+    rgba(250, 127, 13, 0.3626) 0.01%,
+    rgba(168, 84, 14, 0.74) 0.02%,
+    rgba(147, 9, 0, 0.74) 16.4%,
+    rgba(6, 0, 2, 0.9) 100%
   );
   display: grid;
   grid-template-columns: 1fr 0.5fr 8fr 0.5fr 1fr;
@@ -26,24 +28,10 @@ const innerContainer = css`
   grid-column: 3/4;
   grid-row: 2/3;
   box-shadow: 0 0 4px black, 0 0 10px black;
-  background-image: url('/images/biggerWitch.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   border: 1.5px solid black;
   border-radius: 60px;
   padding: 0px 10px 0px 10px;
 `;
-
-// const navStyle = css`
-//   grid-column: 5/6;
-//   grid-row: 3/4;
-//   border-top-right-radius: 30px;
-//   border-bottom-right-radius: 30px;
-//   display: flex;
-//   flex-direction: column;
-//   justify-content: space-around;
-// `;
 
 const navStyle = css`
   display: flex;
@@ -78,7 +66,7 @@ const navElementStyles = css`
   }
 `;
 
-export default function YouDiedLayout(props: Props) {
+export default function ArtistCredits(props: Props) {
   return (
     <div css={mainContainer}>
       <div css={innerContainer}>
@@ -89,7 +77,7 @@ export default function YouDiedLayout(props: Props) {
           </div>
           <div css={navElementStyles}>
             {' '}
-            <Link href="./placeholder"> Artist Credits </Link>{' '}
+            <Link href="/village"> To Village </Link>{' '}
           </div>
           <div css={navElementStyles}>
             <Link href="https://www.linkedin.com/in/philipp-binder-021916226/">

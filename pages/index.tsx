@@ -151,7 +151,7 @@ const navElementStyles = css`
 
   /* background-color: #faf4e1; */
   /* border-radius: 20px; */
-  border-bottom-right-radius: 15px;
+  border-bottom-right-radius: 20px;
   /* border-bottom-left-radius: 10px; */
   border-top-right-radius: 20px;
   // horizntal-, vertical-shadow-position, blur, spread, color
@@ -212,8 +212,9 @@ export default function LandingPage() {
           <Link href="./login"> To Login </Link>{' '}
         </div>
         <div css={navElementStyles}>
-          {' '}
-          <Link href="./placeholder"> To My LinkedIn </Link>{' '}
+          <Link href="https://www.linkedin.com/in/philipp-binder-021916226/">
+            To My Linkedin
+          </Link>
         </div>
         <div css={navElementStyles}>
           {' '}

@@ -117,7 +117,7 @@ const navElementStyles = css`
 
   /* background-color: #faf4e1; */
   /* border-radius: 20px; */
-  border-bottom-right-radius: 15px;
+  border-bottom-right-radius: 20px;
   /* border-bottom-left-radius: 10px; */
   border-top-right-radius: 20px;
   // horizntal-, vertical-shadow-position, blur, spread, color
@@ -267,12 +267,16 @@ export default function VillagePage() {
       <div css={sunsetStyle} />
       <div css={headingStyle} />
       <div css={navStyle}>
-        <div css={navElementStyles}>X/Y answered.</div>
         <div css={navElementStyles}>
           <Link href="/logout"> Logout </Link>
         </div>
         <div css={navElementStyles}>
-          <Link href="/placeholder">Lore?</Link>
+          <Link href="https://www.linkedin.com/in/philipp-binder-021916226/">
+            Linkedin
+          </Link>
+        </div>
+        <div css={navElementStyles}>
+          <Link href="/placeholder"> Artist Credits </Link>
         </div>
       </div>
       <div css={imageContainer} />
