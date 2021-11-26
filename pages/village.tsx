@@ -276,7 +276,7 @@ export default function VillagePage() {
           </Link>
         </div>
         <div css={navElementStyles}>
-          <Link href="/placeholder"> Artist Credits </Link>
+          <Link href="./artistCredits"> Artist Credits </Link>
         </div>
       </div>
       <div css={imageContainer} />

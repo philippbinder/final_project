@@ -204,12 +204,10 @@ export default function LandingPage() {
       </div>
       <div css={navStyle}>
         <div css={navElementStyles}>
-          {' '}
-          <Link href="./register"> To Registration </Link>{' '}
+          <Link href="./register"> To Registration </Link>
         </div>
         <div css={navElementStyles}>
-          {' '}
-          <Link href="./login"> To Login </Link>{' '}
+          <Link href="./login"> To Login </Link>
         </div>
         <div css={navElementStyles}>
           <Link href="https://www.linkedin.com/in/philipp-binder-021916226/">
@@ -217,8 +215,7 @@ export default function LandingPage() {
           </Link>
         </div>
         <div css={navElementStyles}>
-          {' '}
-          <Link href="./placeholder"> To Artist Credits </Link>{' '}
+          <Link href="artistCredits"> To Artist Credits </Link>
         </div>
       </div>
       <div css={imageStyle} />

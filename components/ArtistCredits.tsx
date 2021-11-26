@@ -10,7 +10,6 @@ type Props = {
 const mainContainer = css`
   width: 100vw;
   height: 100vh;
-  font-weight: 600;
   font-family: MedievalSharp;
   background: linear-gradient(
     180deg,
@@ -21,7 +20,7 @@ const mainContainer = css`
   );
   display: grid;
   grid-template-columns: 1fr 0.5fr 8fr 0.5fr 1fr;
-  grid-template-rows: 0.2fr 4fr 0.2fr;
+  grid-template-rows: 0.2fr 8fr 1fr 0.2fr;
 `;
 
 const innerContainer = css`
@@ -31,18 +30,23 @@ const innerContainer = css`
   border: 1.5px solid black;
   border-radius: 60px;
   padding: 0px 10px 0px 10px;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
 `;
 
 const navStyle = css`
+  grid-column: 3/4;
+  grid-row: 3/4;
   display: flex;
-  position: relative;
   margin-top: 10px;
   /* background-color: green; */
   justify-content: space-around;
+  align-items: center;
 `;
 
 const navElementStyles = css`
-  margin-top: 200px;
+  /* margin-top: 200px; */
   font-family: MedievalSharp;
   font-size: 30px;
   letter-spacing: 0.2vw;
@@ -51,8 +55,8 @@ const navElementStyles = css`
   padding-right: 2.8px;
   text-align: center;
   border: 3px solid #242124;
-  /* background-color: rgba(250, 244, 225, 0.62); */
-  background-color: white;
+  background-color: rgba(250, 244, 225, 0.82);
+  /* background-color: white; */
   text-shadow: 0 0 6px #000000;
   border-radius: 20px;
   box-shadow: 5px -3px 4px 1.5px #242124;
@@ -69,21 +73,18 @@ const navElementStyles = css`
 export default function ArtistCredits(props: Props) {
   return (
     <div css={mainContainer}>
-      <div css={innerContainer}>
-        {props.children}
-        <div css={navStyle}>
-          <div css={navElementStyles}>
-            <Link href="/logout"> Logout </Link>{' '}
-          </div>
-          <div css={navElementStyles}>
-            {' '}
-            <Link href="/village"> To Village </Link>{' '}
-          </div>
-          <div css={navElementStyles}>
-            <Link href="https://www.linkedin.com/in/philipp-binder-021916226/">
-              Linkedin
-            </Link>
-          </div>
+      <div css={innerContainer}>{props.children}</div>
+      <div css={navStyle}>
+        <div css={navElementStyles}>
+          <Link href="/logout"> Logout / Home </Link>
+        </div>
+        <div css={navElementStyles}>
+          <Link href="/village"> To Village </Link>
+        </div>
+        <div css={navElementStyles}>
+          <Link href="https://www.linkedin.com/in/philipp-binder-021916226/">
+            My Linkedin
+          </Link>
         </div>
       </div>
       {/* <div css={takeSpace} /> */}

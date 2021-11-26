@@ -12,9 +12,13 @@ const mainContainer = css`
   height: 100vh;
   font-weight: 600;
   font-family: MedievalSharp;
-  background: radial-gradient(
+  /* background: radial-gradient(
     rgba(147, 9, 0, 0.44) 16.4%,
     rgba(138, 41, 52, 0.858) 30%,
+    rgba(6, 0, 2, 1) 74%
+  ); */
+  background: radial-gradient(
+    rgba(172, 41, 1, 0.94) 46.4%,
     rgba(6, 0, 2, 1) 74%
   );
   display: grid;
@@ -88,13 +92,13 @@ export default function YouDiedLayout(props: Props) {
             <Link href="/logout"> Logout </Link>{' '}
           </div>
           <div css={navElementStyles}>
-            {' '}
-            <Link href="./placeholder"> Artist Credits </Link>{' '}
+            <Link href="https://www.linkedin.com/in/philipp-binder-021916226/">
+              My Linkedin
+            </Link>
           </div>
           <div css={navElementStyles}>
-            <Link href="https://www.linkedin.com/in/philipp-binder-021916226/">
-              Linkedin
-            </Link>
+            {' '}
+            <Link href="/artistCredits"> Artist Credits </Link>{' '}
           </div>
         </div>
       </div>

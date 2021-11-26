@@ -11,6 +11,7 @@ import YouDiedLayout from '../components/YouDiedLayout';
 
 const youDiedStyle = css`
   padding-top: 36px;
+  letter-spacing: 0.65vw;
   color: red;
   font-size: 72px;
   text-align: center;
@@ -53,12 +54,12 @@ export default function YouDied() {
         You failed at your dilettantish attempt to rally up the villagers to
         kill their own mayoress, whom they have known for decades. Having grown
         tired of your idiotic annoyances, the village gather around you and put
-        an end to your scheming.
+        an end to you and your scheming.
       </div>
       <div css={text2Style}>
         In your last moments you look up to the night sky and see the mayoress
-        ridding a broom and flying through the air. As it turns out she has
-        really been a witch. Who would have thought?
+        riding a broom and flying through the air. As it turns out, she was a
+        real witch after all. Who would have thought?
       </div>
       {/* </div> */}
     </YouDiedLayout>
