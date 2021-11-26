@@ -22,7 +22,7 @@ export default async function loginHandler(
   req: NextApiRequest,
   res: NextApiResponse<LoginResponse>, // responses are allways of the ReigsterResponse type -> Errors types
 ) {
-  console.log(req.body.username); // what is req body
+  // console.log(req.body.username); // what is req body
 
   // checks if there are username and password
   if (!req.body.username || !req.body.password) {
@@ -104,7 +104,7 @@ export default async function loginHandler(
     res.status(200).setHeader('set-Cookie', cookie).send({ user: user });
     res.send({ user: user }); // sends the respone back to the browser - it's what I get in the parsed JSON
   } catch (err) {
-    res.status(500).send({ errors: [{ message: (err as Error).message }] });
+    res.status(500).send({ errors: [{ message: (err as Error).message }] }); // remove - cause of error?
     // Security problem! This message displays on the page to the user how my database is structured => use a querry to check if such an error message exists and send a more secure and more understandable message to the user
     // 500 means internal server error - something went wrong when it tried to do something
   }

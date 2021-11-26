@@ -30,9 +30,9 @@ export default async function markAnswerHandler(
 
   await insertAnswer(req.body.buttonId, req.body.dialogueId, session.userId);
 
-  endGame(session.userId);
+  await endGame(session.userId);
 
   res.status(200).json('status.correct_answer updated.');
-  res.send('status.correct_answer updated.');
+  // res.send('status.correct_answer updated.');
   // don't need any data sent back
 }

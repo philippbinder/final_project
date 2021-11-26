@@ -68,91 +68,87 @@ export default function DialogueTemplate(props: Props) {
 
   return (
     <GradientContainer>
-      <form>
-        {/* gibt es singleDIalogue und falls es das in props gibt, dann stelle folgenden Code dar. Verhindert, dass er versucht props dartzustellen, wenn es props noch nicht gibt. Props gibt es immer, aber singleDialogue gibt es noch nicht in props*/}
-        {/* <h1> Test </h1> */}
+      {/* <form> */}
+      {/* gibt es singleDIalogue und falls es das in props gibt, dann stelle folgenden Code dar. Verhindert, dass er versucht props dartzustellen, wenn es props noch nicht gibt. Props gibt es immer, aber singleDialogue gibt es noch nicht in props*/}
+      {/* <h1> Test </h1> */}
 
-        {'singleDialogue' in props && (
-          <p css={textStyling}> {props.singleDialogue.description_text}</p>
-        )}
+      {'singleDialogue' in props && (
+        <p css={textStyling}> {props.singleDialogue.description_text}</p>
+      )}
 
-        {'singleDialogue' in props && (
-          <p css={textStyling}>
-            {' '}
-            Villager: "{props.singleDialogue.question_text}"{' '}
-          </p>
-        )}
+      {'singleDialogue' in props && (
+        <p css={textStyling}>
+          {' '}
+          Villager: "{props.singleDialogue.question_text}"{' '}
+        </p>
+      )}
 
-        {'singleDialogue' in props && (
-          <button
-            css={buttonStyling}
-            onClick={async () => {
-              // console.log(
-              await fetch('/api/markAnswer', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  dialogueId: props.idFromUrlNumber,
-                  buttonId: button1,
-                }),
-              });
-              // );
-              router.push('/village');
-            }}
-          >
-            {' '}
-            {props.singleDialogue.answer1}
-          </button>
-        )}
+      {'singleDialogue' in props && (
+        <button
+          css={buttonStyling}
+          onClick={async () => {
+            await fetch('/api/markAnswer', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                dialogueId: props.idFromUrlNumber,
+                buttonId: button1,
+              }),
+            });
+            router.push('/village');
+          }}
+        >
+          {' '}
+          {props.singleDialogue.answer1}
+        </button>
+      )}
 
-        {'singleDialogue' in props && (
-          <button
-            css={buttonStyling}
-            onClick={async () =>
-              console.log(
-                await fetch('/api/markAnswer', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    dialogueId: props.idFromUrlNumber,
-                    buttonId: button2,
-                  }),
-                }),
-              )
-            }
-          >
-            {' '}
-            {props.singleDialogue.answer2}
-          </button>
-        )}
+      {'singleDialogue' in props && (
+        <button
+          css={buttonStyling}
+          onClick={async () => {
+            await fetch('/api/markAnswer', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                dialogueId: props.idFromUrlNumber,
+                buttonId: button2,
+              }),
+            });
+            router.push('/village');
+          }}
+        >
+          {' '}
+          {props.singleDialogue.answer2}
+        </button>
+      )}
 
-        {'singleDialogue' in props && (
-          <button
-            css={buttonStyling}
-            onClick={async () =>
-              console.log(
-                await fetch('/api/markAnswer', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({
-                    dialogueId: props.idFromUrlNumber,
-                    buttonId: button3,
-                  }),
-                }),
-              )
-            }
-          >
-            {' '}
-            {props.singleDialogue.answer3}
-          </button>
-        )}
-      </form>
+      {'singleDialogue' in props && (
+        <button
+          css={buttonStyling}
+          onClick={async () => {
+            await fetch('/api/markAnswer', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                dialogueId: props.idFromUrlNumber,
+                buttonId: button3,
+              }),
+            });
+            router.push('/village');
+          }}
+        >
+          {' '}
+          {props.singleDialogue.answer3}
+        </button>
+      )}
+      {/* </form> */}
     </GradientContainer>
   );
 }
