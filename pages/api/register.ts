@@ -9,6 +9,7 @@ import {
   deleteExpiredSessions,
   getSingleUserWithPasswordHashByUsername,
   insertUser,
+  setUpUserStatus,
   User,
 } from '../../util/database';
 import { Errors } from '../../util/types';
@@ -86,6 +87,9 @@ export default async function registerHandler(
       username: username,
       passwordHash: passwordHash,
     });
+
+    // set up the first 10 rows for the user with correct_answer = null in the status table
+    setUpUserStatus(user.id);
 
     // clean old session
     deleteExpiredSessions();

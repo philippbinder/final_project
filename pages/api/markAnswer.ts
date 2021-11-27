@@ -1,8 +1,9 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import {
   endGame,
+  getCurrentUserStatus,
   getValidSessionByToken,
-  insertAnswer,
+  updateAnswer,
 } from '../../util/database';
 
 // idFromUrlNumber: number;
@@ -28,9 +29,20 @@ export default async function markAnswerHandler(
   console.log('API typeof session.userId:', typeof session?.userId); // is a number
   console.log('API session.userId =', session?.userId);
 
-  await insertAnswer(req.body.buttonId, req.body.dialogueId, session.userId);
-
-  await endGame(session.userId);
+  // const updatedCurrentUserStatus = await updateCurrentUserStatus(
+  //   session.userId,
+  //   req.body.dialogueId,
+  // );
+  // console.log('updatedCurrentUserStatus=', updatedCurrentUserStatus);
+  const newStatus = await updateAnswer(
+    req.body.buttonId,
+    req.body.dialogueId,
+    session.userId,
+  );
+  console.log('markAnswer updateAnswer => newStatus =', newStatus);
+  const currentUserStatus = await getCurrentUserStatus(session.userId);
+  console.log('markAnswer.ts currentUserStatus=', currentUserStatus);
+  // await endGame(session.userId);
 
   res.status(200).json('status.correct_answer updated.');
   // res.send('status.correct_answer updated.');

@@ -3,7 +3,7 @@ import Cookies from 'js-cookie';
 
 // create function to serialize the new session
 // serialize is a function from the package cookie
-// this function allows us to create the cookie from the serve
+// this function allows us to create the cookie from the server
 export function createSerializedRegisterSessionTokenCookie(token) {
   // Secrue Cookies have a specific way to behave, usualy only work under https. In Heroku we want our cookie to be protected.
 

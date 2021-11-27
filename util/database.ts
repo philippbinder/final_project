@@ -1,5 +1,6 @@
 import camelcaseKeys from 'camelcase-keys';
 import dotenvSafe from 'dotenv-safe';
+import Router from 'next/router';
 import postgres from 'postgres';
 
 export type User = {
@@ -116,6 +117,79 @@ export async function insertUser({
   return camelcaseKeys(user); // Do I need to return users or anything at all?
 }
 
+// sets up 10 rows for each new user with a null for the correct_answer column
+export async function setUpUserStatus(userId: number) {
+  for (let rowNumber = 1; rowNumber < 11; rowNumber++) {
+    await sql`
+      INSERT INTO status
+        (user_id, dialogue_id, correct_answer)
+      VALUES
+        (${userId}, ${rowNumber}, null)
+        RETURNING
+      *
+    `;
+  }
+}
+
+// gets the current users status as an array
+export async function getCurrentUserStatus(userId: number) {
+  const currentUserStatusArray = await sql`
+      SELECT
+        *
+      FROM
+        status
+      WHERE
+        status.user_id = ${userId}
+    `;
+  return camelcaseKeys(currentUserStatusArray);
+}
+
+// selects the current dialogue for the status of the current user
+export async function getCurrenntUserStatusDialogue(
+  userId: number,
+  dialogueId: number,
+) {
+  const userStatusDialogue = await sql`
+    SELECT
+      dialogue_id
+    FROM
+      status
+    WHERE
+      status.dialogue_id = ${dialogueId} AND status.user_id = ${userId};
+  `;
+
+  return userStatusDialogue;
+}
+// updates the current users status
+// export async function updateCurrentUserStatus(
+//   userId: number,
+//   dialogueId: number,
+// ) {
+//   await sql`
+//   UPDATE status
+//   SET correct_answer =
+//   `
+//   // const currentUserStatusDialogueArray = await getCurrenntUserStatusDialogue(
+//   //   userId,
+//   //   dialogueId,
+//   // );
+//   // console.log(
+//   //   'updateCurrentUserStatus currentUserStatusDialogueArray=',
+//   //   currentUserStatusDialogueArray,
+//   );
+
+//   // get me the dialogue row
+//   // const currentUserDialogue = currentUserStatusDialogueArray.find(
+//   //   (i) => i.dialogueid === ${dialogueId},
+//   // );
+//   // console.log(
+//   //   'updateCurrentUserStatus currentUserDdialogue =',
+//   //   currentUserDialogue,
+//   // );
+//   return camelcaseKeys(currentUserStatusDialogueArray);
+//   // still have to update it
+// }
+
 // creates a session by user_id and token
 // This function recieves a token and a userId and inserts them into the database
 export async function createSession(token: string, userId: number) {
@@ -212,7 +286,8 @@ export async function getOneDialogue(dialogueId: number) {
 }
 
 // dialogue_id through API with dialogue_id
-export async function insertAnswer(
+// updates status for user and returns updated status
+export async function updateAnswer(
   buttonId: string,
   dialogueId: number,
   userId: number,
@@ -223,28 +298,36 @@ export async function insertAnswer(
   // gets only the one object in the array of objects
   if (oneDialogueObject.correct_answer === buttonId) {
     await sql`
-      INSERT INTO status
-        (user_id, dialogue_id, correct_answer)
-      /* DONT UPDATE since the row doesn't exists yet. Insert it? */
-      VALUES
-        (${userId}, ${dialogueId}, true)
+      UPDATE status
+      Set correct_answer = true
+      WHERE
+        user_id = ${userId} AND dialogue_id = ${dialogueId}
       RETURNING
         *
       /* REUTRNING unnecessary? */
         `;
   } else {
     await sql`
-      INSERT INTO status
-        (user_id, dialogue_id, correct_answer)
-      /* DONT UPDATE since the row doesn't exists yet. Insert it? */
-      VALUES
-        (${userId}, ${dialogueId}, false)
+       UPDATE status
+      Set correct_answer = false
+      WHERE
+        user_id = ${userId} AND dialogue_id = ${dialogueId}
       RETURNING
         *
     `;
   }
+  const newStatus = await sql`
+    SELECT
+    *
+    FROM
+    status
+    WHERE
+    user_id = ${userId}
+  `;
+  return camelcaseKeys(newStatus);
 }
 
+// select current answer of dialogue for current user as array
 export async function getSpecificStatus(userId: number) {
   const oneStatus = await sql`
     SELECT
@@ -258,22 +341,35 @@ export async function getSpecificStatus(userId: number) {
   return oneStatus;
 }
 
+// might have to rewrite this function accordingly to the new getStatusForCurrentUser function
 export async function endGame(userId: number) {
+  // const router = useRouter();
+  // const die = '/youDied/';
   const userStatusArray = await getSpecificStatus(userId);
-  console.log('userStatusArray:', userStatusArray);
-  console.log('userStatusArray.length:', userStatusArray.length);
+  console.log('endGame userStatusArray:', userStatusArray);
+  console.log('endGame userStatusArray.length:', userStatusArray.length);
   const trueAnswers = userStatusArray.filter(
     (i) => i.correct_answer === true,
   ).length;
   console.log('trueAnswers =', trueAnswers); // returns count of true answers
   if (userStatusArray.length === 10) {
     if (trueAnswers >= 6) {
-      // redirect/router.push youWin.tsx
       console.log('------------------- You win!!!');
-    } else if (trueAnswers < 6) {
-      // redirect/router.push youDied.tsx
-      console.log('------------------- You died!!!');
+      return {
+        redirect: {
+          destination: '/youWin/',
+          permanent: false,
+        },
+      };
     }
+  } else if (trueAnswers < 6) {
+    console.log('------------------- You died!!!');
+    return {
+      redirect: {
+        destination: '/youDied/  ',
+        permanent: false,
+      },
+    };
   }
   return;
 }
