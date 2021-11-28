@@ -20,7 +20,11 @@
 
 import '../styles/globals.css';
 
+// import { useState } from 'react';
+// import { getCurrentUserStatus } from '../util/database';
+
 function MyApp({ Component, pageProps }) {
+  // const [currentUserStatus, setCurrentUserStatur] = useState();
   return <Component {...pageProps} />;
 }
 export default MyApp;

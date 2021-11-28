@@ -1,11 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import {
-  endGame,
-  getCurrentUserStatus,
-  getValidSessionByToken,
-  Status,
-  updateUserState,
-} from '../../util/database';
+import { getCurrentUserStatus, updateUserState } from '../../util/database';
 
 // idFromUrlNumber: number;
 export type RegisterRequest = {

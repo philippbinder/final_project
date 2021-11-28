@@ -10,7 +10,7 @@ const dialogueArray = [
     succeed_text:
       "You are totally right. Deus vult indeed! It's time for some good, old-fashioned witch-hunting.",
     answer1:
-      "[INVOKE PPREJUDICE] Look at her hair! It's red! Everyone knows that gingers have no souls and make for excellent burning material. Better get that wood choopin' sir. Winter is coming. (Season 8 never happend)",
+      "[INVOKE PPREJUDICE] Look at her hair! It's red! Everyone knows that gingers have no souls and are henchmen of the devil. Better sent her back to him where she belongs",
     answer2:
       "[TALK DOWN] You know, it's not about what I want. It's about what you want. Deep in your heart, your deepest desires. And they tell you that you need someone to blame for your miserable lot in life. I offer you that opportunity, take it.",
     answer3: '[DEUS VULT!!!] Deus vult, infidel!',

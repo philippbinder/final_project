@@ -287,7 +287,7 @@ export async function getOneDialogue(dialogueId: number) {
 
 // dialogue_id through API with dialogue_id
 // updates status for user and returns updated status
-export async function updateAnswer(
+export async function updateUserState(
   buttonId: string,
   dialogueId: number,
   userId: number,
@@ -316,6 +316,7 @@ export async function updateAnswer(
         *
     `;
   }
+  // gets the newly updated status and returns it back to the page that called the function
   const newStatus = await sql`
     SELECT
     *
