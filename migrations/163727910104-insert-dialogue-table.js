@@ -61,13 +61,13 @@ const dialogueArray = [
     fail_text:
       "[VILLAGER] No, that's not how remember you. You wish to trick an eldery woman, but tricked I shall be not. What I shall is reamain here and contiune staring at the door until someone knocks again.",
     succeed_text:
-      '[VILLAGER] Attracchsldrat! It really is you. Do not worry, my dear. I have not forgotten how that mayoress wronged our house. Blood shall be spilled tonight, for our family name, for the sack race!',
+      '[VILLAGER] Attrachlsldrat! It really is you. Do not worry, my dear. I have not forgotten how that mayoress wronged our house. Blood shall be spilled tonight, for our family name, for the sack race!',
     answer1:
-      '[Pretend to be Griselbert, the Last Man of Honor] Fear no more, child. For I am Griselbert, the one who will restore honor to this village and cleanse it of the wicked evil that festers deep within. Rejoice, for all that is needed is your unconditional obedience.',
+      '[PRETEND TO BE GRISELBERT, THE LAST MAN OF HONOR] Fear no more, child. For I am Griselbert, the one who will restore honor to this village and cleanse it of the wicked evil that festers deep within. Rejoice, for all that is needed is your unconditional obedience.',
     answer2:
-      '[Be yourself - Attrachlsdrat, The Vengeful One] Ahhh, there you are! Long has it been since you last layed eyes on me. But worry not, for I have not forgotten your despair and wrath you share with me, your favorite nephew. But the time has finally come. Vengeance will be ours and we will restore glory to our house and reclaim the title of the fastet sack racer for our family. ',
+      '[BE YOURSELF - ATTRACHLSDRAT, THE VENGEFUL ONE] Ahhh, there you are! Long has it been since you last layed eyes on me. But worry not, for I have not forgotten your despair and wrath you share with me, your favorite nephew. But the time has finally come. Vengeance will be ours and we will restore glory to our house and reclaim the title of the fastet sack racer for our family. ',
     answer3:
-      '[Pretend to be Aetius, The Promised Savior] Yes, dearest. Worry no more thou shall, for I, Aetius, have returned. Returned, to bannish the darkness and bring back his Lords loving embrace to our village. If only thou heed my command once called upon.',
+      '[PRETEND TO BE AETIUS, THE PROMISED SAVIOR] Yes, dearest. Worry no more thou shall, for I, Aetius, have returned. Returned, to bannish the darkness and bring back his Lords loving embrace to our village. If only thou heed my command once called upon.',
     correct_answer: 'answer2',
   },
   {
