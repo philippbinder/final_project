@@ -77,10 +77,7 @@ export default function DialogueTemplate(props: Props) {
       )}
 
       {'singleDialogue' in props && (
-        <p css={textStyling}>
-          {' '}
-          Villager: "{props.singleDialogue.question_text}"{' '}
-        </p>
+        <p css={textStyling}>[Villager] {props.singleDialogue.question_text}</p>
       )}
 
       {'singleDialogue' in props && (

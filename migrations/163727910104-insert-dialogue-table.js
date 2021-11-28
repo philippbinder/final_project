@@ -6,9 +6,9 @@ const dialogueArray = [
     question_text:
       'I heard you the first time! Dancing brooms and making a fuss about the mayoress being a witch. Why would I listen to such nonsense?',
     fail_text:
-      'An idiot rambling on about such nonsense is a rare sight to behold in our lonely village. You would be well advised to leave our village by sunset.',
+      '[VILLAGER] An idiot rambling on about such nonsense is a rare sight to behold in our lonely village. You would be well advised to leave our village by sunset.',
     succeed_text:
-      "You are totally right. Deus vult indeed! It's time for some good, old-fashioned witch-hunting.",
+      "[VILLAGER] You are totally right. Deus vult indeed! It's time for some good, old-fashioned witch-hunting.",
     answer1:
       "[INVOKE PPREJUDICE] Look at her hair! It's red! Everyone knows that gingers have no souls and are henchmen of the devil. Better sent her back to him where she belongs",
     answer2:
@@ -54,35 +54,56 @@ const dialogueArray = [
   },
   {
     dialogue_id: 4,
-    description_text: '',
-    question_text: 'Placeholder',
-    fail_text: 'Placeholder',
-    succeed_text: 'Placeholder',
-    answer1: 'Placeholder,',
-    answer2: 'Placeholder,',
-    answer3: 'Placeholder,',
+    description_text:
+      "Arguments as sharp as the tip of a swords are prepared in your mind, ready to be used for deception. But as you knock on the door, a woman scarred by the years opens, obviously confused. Your recognize her as your aunt Gewndolin. Allthough your face looks familiar to her, she can't quite tell who you are.",
+    question_text:
+      'Is that you Griselbert, or my dear Attrachlsdrat? Or could it even be that our Aetius has returned?',
+    fail_text:
+      "[VILLAGER] No, that's not how remember you. You wish to trick an eldery woman, but tricked I shall be not. What I shall is reamain here and contiune staring at the door until someone knocks again.",
+    succeed_text:
+      '[VILLAGER] Attracchsldrat! It really is you. Do not worry, my dear. I have not forgotten how that mayoress wronged our house. Blood shall be spilled tonight, for our family name, for the sack race!',
+    answer1:
+      '[Pretend to be Griselbert, the Last Man of Honor] Fear no more, child. For I am Griselbert, the one who will restore honor to this village and cleanse it of the wicked evil that festers deep within. Rejoice, for all that is needed is your unconditional obedience.',
+    answer2:
+      '[Be yourself - Attrachlsdrat, The Vengeful One] Ahhh, there you are! Long has it been since you last layed eyes on me. But worry not, for I have not forgotten your despair and wrath you share with me, your favorite nephew. But the time has finally come. Vengeance will be ours and we will restore glory to our house and reclaim the title of the fastet sack racer for our family. ',
+    answer3:
+      '[Pretend to be Aetius, The Promised Savior] Yes, dearest. Worry no more thou shall, for I, Aetius, have returned. Returned, to bannish the darkness and bring back his Lords loving embrace to our village. If only thou heed my command once called upon.',
     correct_answer: 'answer2',
   },
   {
     dialogue_id: 5,
-    description_text: '',
-    question_text: 'Placeholder',
-    fail_text: 'Placeholder',
-    succeed_text: 'Placeholder',
-    answer1: 'Placeholder,',
-    answer2: 'Placeholder,',
-    answer3: 'Placeholder,',
-    correct_answer: 'answer1',
+    description_text:
+      "Ready to drag another soul down with you into damnation, you are ready to talk the next villager. But this time, the village doesn't live in ahouse, but something like a moving market. A bad omen? Ready to bring your whole rhetorical might crushing down on your vis-à-vis. But to your surpise, you hear knocking sounds coming from inside the house. Moments later the door gets knocked wide upon. Being denied the honor of knocking first, your face turns red and anger overwhelms you. You look the man in the eyes and out of principle your raise your first and knock his door, all the while keeping eye contact with him.",
+    question_text:
+      '[VILLAGER] yWho are you to think that YOU knock on MY door? Is there any sign on my door that says know if you want, whenever you want? Knocking is a privilges, a sacred act that attunes one with the archangels of knocking. And I have knocked on this door ever since I have been able to particapte in the holy ritual of knocking. As has my father and his father before him. And I will not have anyone knocking on MY door if I could be knock on it meyself!',
+    fail_text:
+      'Absolutely infuriated, the man loses his sh** as his eyes seem to almost pop out while his face turns red as blood. Without hestiation and any words, he reaches for his club and smashes it as hard as he can on your head. The moment you feel the pain you are already knocked out. You wake up a few minutes later infront of this likeable villagers house with a huge bulge on your forehead. Knowing better than to knock on his door again, you leave for the next house.',
+    succeed_text:
+      '[VILLAGER] Killing? Killing someone just because they might knock on my door? A splendid idea! And afterwards I will kill you for actually knocking on my door.',
+    answer1:
+      '[LOSE TEMPER] I knock on EVERY DOOR WHENEVER I want and WHEREVER I want! And I will not relinquish the freedom of knocking on doors because of some lunatic who spends his time knocking on his own door from the inside! And if I desire to knock on your door, I will do so anytime.',
+    answer2: '[KNOCK ON DOOR] Watch me.',
+    answer3:
+      "[DE-ESCALATE] Hold on, dear mister! I did not mean any offense, all I wanted is for you to join me in killing the mayoress. Nothing more, nothing less. Killing her makes for one less person to knock on your door. Sounds reasonable, doesn't it? Come, let's go and knock her out.",
+    correct_answer: 'answer3',
   },
   {
     dialogue_id: 6,
-    description_text: '',
-    question_text: 'Placeholder',
-    fail_text: 'Placeholder',
-    succeed_text: 'Placeholder',
-    answer1: 'Placeholder,',
-    answer2: 'Placeholder,',
-    answer3: 'Placeholder,',
+    description_text:
+      'Still bearing the burning fire of vengeance in your heart, you walk up to yet another house and decide to mix things up a little by smashing your head against the door instead of knocking with your fist. Why you do so does not matter to you, for you can not tell the reason for you doing so. Confused by our own thoughts written down in the description, you decide to question it no further and continue with your little game. The door gets answered by a woman in her twenties, roughly the same age as you.',
+    question_text:
+      'Are you alright? I know that there are people in this village that are not fond of people who knock on their doors, but smashing your head against it?... Anyway, why do I even bother? What do you want, head-smasher?',
+    fail_text:
+      "[VILLAGER] Ye, I'm sure I will. Wait for me until the time comes. I will give my head some smashing until than, following your examole, you know?",
+    succeed_text:
+      'Okay, okay. No need to take things too far. Here, have your right answer, I will log it in the database. Let us resume this little game of mine and speak of this 4th wall no more.',
+    answer1:
+      '[GO INSANE] HAHA! My dear lady, smashing it is not. Furthermore it is The Way of Maniae thou have bore witness! For it is through her, that the head and mind shall see stars and within these stars, a sea of dancing little lights, slowly snuffing out. Just as you will help me snuffing out the mayoress...',
+    answer2:
+      "[BREAK THE 4TH WALL] This doesn't make any sense. Why am I chosing a pre-scripted text if I am supposed to break the 4th wall? And why did my character smash his head against the door? You, the creator of this insanity, better log in a right answer for me, lest I open your code on GitHub and see what it's made of.",
+    /* Hello to everyone who actually took a look at the code :-) I hope you are liking the game so far. It's been a tough journey at times and it taught me a lot about the management side of projects . You always work under a time constraint, be it at the bootcamp or for your job with deadlines. You need to prioritize, because you have many idead but only limited time. Thank you UpLeveled for teacbing us in a way that simulates a real work environment. */
+    answer3:
+      "[MANIPULATE WITH HIDDEN MESSAGE] YOU are in luck today. For you WILL receive words today that touch your sould down to the core and MAKE you wholesome again. [You clear your throat] Roses are red, violets are blue, if it's not for HER, than it's neither for you. If that wasn't a rhyme to DIE for, I don't know what is.",
     correct_answer: 'answer2',
   },
   {
