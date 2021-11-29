@@ -74,3 +74,4 @@ button or link to go back
 - design Credits Links to be more recoginzeable as links and hover effect
 ? rearrange buttons of Credits to the left side
 - add text box design / make design for answers and question and description more cohesive
+- a clear function so that the user can play multiple rounds with the same account

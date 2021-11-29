@@ -75,7 +75,7 @@ const dialogueArray = [
     description_text:
       "Ready to drag another soul down with you into damnation, you prepare yourself to talk the next villager. But this time, the villagefr doesn't live in a house, but something like a moving market. A bad omen? Eager to bring your whole rhetorical might crushing down on your vis-à-vis. But to your cottage, you hear knocking sounds coming from inside the house. Moments later the door gets knocked wide upon. Being denied the honor of knocking first, your face turns red and anger overwhelms you. You look the man in the eyes and out of principle your raise your first and knock his door, all the while maintaining eye contact with him.",
     question_text:
-      '[VILLAGER] yWho are you to think that YOU knock on MY door? Is there any sign on my door that says know if you want, whenever you want? Knocking is a privilges, a sacred act that attunes one with the archangels of knocking. And I have knocked on this door ever since I have been able to particapte in the holy ritual of knocking. As has my father and his father before him. And I will not have anyone knocking on MY door if I could be knock on it meyself!',
+      '[VILLAGER] Who are you to think that YOU knock on MY door? Is there any sign on my door that says know if you want, whenever you want? Knocking is a privilges, a sacred act that attunes one with the archangels of knocking. And I have knocked on this door ever since I have been able to particapte in the holy ritual of knocking. As has my father and his father before him. And I will not have anyone knocking on MY door if I could be knock on it meyself!',
     fail_text:
       'Absolutely infuriated, the man loses his sh** as his eyes seem to almost pop out while his face turns red as blood. Without hestiation and additional any words, he reaches for his club and smashes it as hard as he can on your head. The moment you feel the pain you are already knocked out. You wake up a few minutes later infront of this likeable villagers cottage with a huge bulge on your forehead. Knowing better than to knock on his door again, you leave for the next house.',
     succeed_text:
@@ -90,9 +90,9 @@ const dialogueArray = [
   {
     dialogue_id: 6,
     description_text:
-      'Still bearing the burning fire of vengeance in your heart, you walk up to yet another house and decide to mix things up a little by smashing your head against the door instead of knocking with your fist. Why you do so does not matter to you, for you can not tell the reason for you doing so. Confused by our own thoughts written down in the description, you decide to question it no further and continue with your little game. The door gets answered by a woman in her twenties, roughly the same age as you.',
+      'Still bearing the burning fire of vengeance in your heart, you walk up to yet another house and decide to mix things up a little by smashing your head against the door instead of knocking with your fist. Why you do so does not matter to you, for you can not tell the reason. Confused by your own thoughts written down in the description, you decide to question it no further and continue with your little game. The door gets answered by a woman in her twenties, roughly the same age as you.',
     question_text:
-      'Are you alright? I know that there are people in this village that are not fond of people who knock on their doors, but smashing your head against it?... Anyway, why do I even bother? What do you want, head-smasher?',
+      'Are you alright? I know that there are people in this village that are not fond of other to knock on their door, but smashing your head against it?... Anyway, why do I even bother? What do you want, head-smasher?',
     fail_text:
       "[VILLAGER] Ye, I'm sure I will. Wait for me until the time comes. I will give my head some smashing until than, following your examole, you know?",
     succeed_text:
@@ -111,7 +111,7 @@ const dialogueArray = [
     description_text:
       'You think to yourself: Everyone in this village will follow you lead and do your bidding. Everyone! No matter where they are or who they are. And so it comes that you stand before the public toilet of the village, because there is no excuse for not listening to your reasoning and heed your command. With utter conviction you knock on the toilett door. Louder. Harder. No matter the angry shouts coming from within. You will not stop, until the gentleman gets out, only to hear your nonsense.',
     question_text:
-      "What in the world is it with you?! Don't you know what a closed door on a public toilet means?",
+      "What in the world is it with you?! Don't you know what the closed door of a public toilet means?",
     fail_text:
       "[VILLAGER] What on earth are you even talking about you idiot? Hammering the door of the toilet when someone's using it and then babbling nonsense. Get out of my toilet and my village! This room ain't big enough for both of us. Neither this toilet, nor the villge!",
     succeed_text:
