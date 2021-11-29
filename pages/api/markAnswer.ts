@@ -1,9 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import {
-  endGame,
   getCurrentUserStatus,
   getValidSessionByToken,
-  Status,
   updateUserState,
 } from '../../util/database';
 
@@ -22,13 +20,13 @@ export type NewStatus = {
 
 // respond with the new status
 // export type StatusResponse = { newStatus: NewStatus };
-export type StatusResponse = { Status: Status };
-
+// export type StatusResponse = { newStatus: NewStatus };
+export type MarkAnswerResponse = { valid: boolean };
 // export type LoginResponse = { user: User };
 
 export default async function markAnswerHandler(
   req: NextApiRequest, // is the thing that is coming from the user
-  res: NextApiResponse<StatusResponse>, // is the response
+  res: NextApiResponse<MarkAnswerResponse>, // is the response
 ) {
   console.log('API req.body =', req.body);
   console.log('API req.cookies =', req.cookies);
@@ -67,8 +65,8 @@ export default async function markAnswerHandler(
   console.log('markAnswer.ts currentUserStatus=', currentUserStatus);
   // await endGame(session.userId);
 
-  // res.status(200).json('status.correct_answer updated.');
-  res.status(200);
+  res.status(200).json({ valid: true });
+  // res.status(200);
   // res.status(200).json({ newStatus: newStatus });
   // res.send('status.correct_answer updated.');
   // don't need any data sent back
