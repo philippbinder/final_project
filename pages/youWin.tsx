@@ -4,7 +4,8 @@ import YouWinLayout from '../components/YouWinLayout';
 const youWinStyle = css`
   padding-top: 6px;
   letter-spacing: 0.65vw;
-  color: red;
+  color: #ff7b00;
+  /* color: red; */
   font-size: 72px;
   text-align: center;
   text-shadow: 0 0 18px #000000, 0 0 8px #000000, 0 0 8px #000000,

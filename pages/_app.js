@@ -20,10 +20,13 @@
 
 import '../styles/globals.css';
 
+// import { useCallback, useEffect, useState } from 'react';
+
 // import { useState } from 'react';
 // import { getCurrentUserStatus } from '../util/database';
 
 function MyApp({ Component, pageProps }) {
+  // const [userStatus, setUserStatus] = useState();
   // const [currentUserStatus, setCurrentUserStatur] = useState();
   return <Component {...pageProps} />;
 }

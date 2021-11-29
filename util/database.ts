@@ -33,8 +33,37 @@ export type Status = {
 
 dotenvSafe.config(); // will read the environment variables in the .env file and this line needs to before any lines related to postgres, if not, the database will not be connected
 
-// connect one time to database
-const sql = postgres();
+// Type needed for the connection function below - fixes error with c
+declare module globalThis {
+  let postgresSqlClient: ReturnType<typeof postgres> | undefined;
+}
+
+// Connect only once to the database
+// https://github.com/vercel/next.js/issues/7811#issuecomment-715259370
+function connectOneTimeToDatabase() {
+  let sql;
+
+  if (process.env.NODE_ENV === 'production' && process.env.DATABASE_URL) {
+    // Heroku needs SSL connections but
+    // has an "unauthorized" certificate
+    // https://devcenter.heroku.com/changelog-items/852
+    sql = postgres({ ssl: { rejectUnauthorized: false } });
+  } else {
+    // When we're in development, make sure that we connect only
+    // once to the database
+    if (!globalThis.postgresSqlClient) {
+      globalThis.postgresSqlClient = postgres();
+    }
+    sql = globalThis.postgresSqlClient;
+  }
+  return sql;
+}
+
+// Connect to PostgreSQL
+const sql = connectOneTimeToDatabase();
+
+// connect to PostgreSQL
+// const sql = postgres();
 
 // for the   const [user] = await sql<[User]>` in the insertUser function down below
 
@@ -350,27 +379,21 @@ export async function endGame(userId: number) {
   console.log('endGame userStatusArray:', userStatusArray);
   console.log('endGame userStatusArray.length:', userStatusArray.length);
   const trueAnswers = userStatusArray.filter(
-    (i) => i.correct_answer === true,
+    (answer) => answer.correct_answer === true,
   ).length;
   console.log('trueAnswers =', trueAnswers); // returns count of true answers
-  if (userStatusArray.length === 10) {
+  const falseAnswers = userStatusArray.filter(
+    (answer) => answer.correct_answer === false,
+  ).length;
+  if (trueAnswers + falseAnswers === 10) {
     if (trueAnswers >= 6) {
       console.log('------------------- You win!!!');
-      return {
-        redirect: {
-          destination: '/youWin/',
-          permanent: false,
-        },
-      };
+      return 'win';
+    } else if (trueAnswers < 6) {
+      console.log('------------------- You died!!!');
+      return 'lose';
     }
-  } else if (trueAnswers < 6) {
-    console.log('------------------- You died!!!');
-    return {
-      redirect: {
-        destination: '/youDied/  ',
-        permanent: false,
-      },
-    };
   }
+  console.log('The game goes on');
   return;
 }

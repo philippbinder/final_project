@@ -13,10 +13,16 @@ export type RegisterRequest = {
   buttonId: string;
 };
 
-// respond with the new status
-export type StatusResponse = { status: Status };
+export type NewStatus = {
+  id: number;
+  userId: number;
+  dialogueId: number;
+  answeredCorrectly: boolean;
+};
 
-// export const response: string = 'status.correct_answer updated.';
+// respond with the new status
+// export type StatusResponse = { newStatus: NewStatus };
+export type StatusResponse = { Status: Status };
 
 // export type LoginResponse = { user: User };
 
@@ -51,6 +57,7 @@ export default async function markAnswerHandler(
   // await endGame(session.userId);
 
   res.status(200).json('status.correct_answer updated.');
+  // res.status(200).json({ newStatus: newStatus });
   // res.send('status.correct_answer updated.');
   // don't need any data sent back
 }

@@ -1,7 +1,7 @@
 import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import Link from 'next/link';
-import { getValidSessionByToken } from '../util/database';
+import { endGame, getValidSessionByToken } from '../util/database';
 
 const mainContainer = css`
   width: 100vw;
@@ -317,6 +317,7 @@ export default function VillagePage() {
 
 // makes this page only reachable if user / admin is logged in
 export async function getServerSideProps(context: GetServerSidePropsContext) {
+  // const { endGame } = await import('../util/database');
   // const sessionToken = context.req.cookies.sessionTokenRegister;
   const sessionToken = context.req.cookies.sessionToken;
   // console.log('village.tsx context.req.cookies:', context.req.cookies);
@@ -332,6 +333,22 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     return {
       redirect: {
         destination: '/?returnTo=/village',
+        permanent: false,
+      },
+    };
+  }
+  const result = await endGame(session.userId);
+  if (result === 'win') {
+    return {
+      redirect: {
+        destination: '/youWin/',
+        permanent: false,
+      },
+    };
+  } else if (result === 'lose') {
+    return {
+      redirect: {
+        destination: '/youDied/',
         permanent: false,
       },
     };
