@@ -544,6 +544,11 @@
   dependencies:
     dotenv "^8.2.0"
 
+"@types/js-cookie@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@types/js-cookie/-/js-cookie-3.0.1.tgz#04aa743e2e0a85a22ee9aa61f6591a8bc19b5d68"
+  integrity sha512-7wg/8gfHltklehP+oyJnZrz9XBuX5ZPP4zB6UsI84utdlkRYLnOm2HfpLXazTwZA+fpGn0ir8tGNgVnMEleBGQ==
+
 "@types/json-schema@^7.0.9":
   version "7.0.9"
   resolved "https://registry.npmjs.org/@types/json-schema/-/json-schema-7.0.9.tgz"
@@ -608,6 +613,13 @@
   version "0.16.2"
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+
+"@types/sharp@^0.29.4":
+  version "0.29.4"
+  resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.29.4.tgz#e47d8677befc9944d4b9d76ed837452814166de0"
+  integrity sha512-asrPef2LYenr76zBzyy+Fw40yGzq/q/CY77mUP5n43DnuWjQoOB+8vxnzFcqccz+LF+A7mbnknGCfpVWSG82Bw==
+  dependencies:
+    "@types/node" "*"
 
 "@typescript-eslint/eslint-plugin@5.2.0":
   version "5.2.0"
@@ -769,10 +781,10 @@
     "@typescript-eslint/types" "5.3.1"
     eslint-visitor-keys "^3.0.0"
 
-"@upleveled/eslint-config-upleveled@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-2.0.0.tgz#eb00002c3b29c307b9f784c6b87546ca779f1d1d"
-  integrity sha512-LS84zjUtvK3V8VEImGDHijjTL+r0hnhGb3ADsNlaYD7ef0sitJ8PMXlZXMbIdrkzSLrBiJn53TQ1x40d2wYuRw==
+"@upleveled/eslint-config-upleveled@2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@upleveled/eslint-config-upleveled/-/eslint-config-upleveled-2.0.1.tgz#f638d591927939735cd4f23f3d9468cd3c7d097d"
+  integrity sha512-ettrcVje2sIP9de5q21ICQEN2vS8FQYc8YtnnQAtqyJsJhEv83V2wAZJePwa2vRqoL0axzHYt3dqN2V3Ca9S8g==
 
 "@upleveled/eslint-plugin-upleveled@2.0.0":
   version "2.0.0"
