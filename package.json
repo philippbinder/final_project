@@ -10,6 +10,9 @@
     "migrate": "dotenv ley",
     "heroku-postbuild": "yarn migrate up && yarn build"
   },
+  "engines": {
+    "node": "16.13.0"
+  },
   "dependencies": {
     "@emotion/babel-plugin": "^11.3.0",
     "@emotion/react": "^11.5.0",
@@ -22,6 +25,7 @@
     "js-cookie": "^3.0.1",
     "ley": "^0.7.1",
     "next": "11.1.2",
+    "pg-connection-string": "^2.5.0",
     "postgres": "2.0.0-beta.10",
     "react": "17.0.2",
     "react-dom": "17.0.2",
