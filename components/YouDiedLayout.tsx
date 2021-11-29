@@ -17,9 +17,9 @@ const mainContainer = css`
     rgba(138, 41, 52, 0.858) 30%,
     rgba(6, 0, 2, 1) 74%
   ); */
-  background: radial-gradient(
-    rgba(172, 41, 1, 0.94) 46.4%,
-    rgba(6, 0, 2, 1) 74%
+  background: linear-gradient(
+    rgba(6, 0, 2, 1) 64.4%,
+    rgba(172, 41, 1, 0.94) 74%
   );
   display: grid;
   grid-template-columns: 1fr 0.5fr 8fr 0.5fr 1fr;

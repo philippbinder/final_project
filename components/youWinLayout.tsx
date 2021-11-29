@@ -12,7 +12,7 @@ const mainContainer = css`
   height: 100vh;
   font-weight: 600;
   font-family: MedievalSharp;
-  background: radial-gradient(
+  background: linear-gradient(
     rgba(172, 41, 1, 0.94) 46.4%,
     rgba(6, 0, 2, 1) 74%
   );

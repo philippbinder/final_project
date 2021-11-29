@@ -52,8 +52,8 @@ export default function YouWin() {
       <div css={text2Style}>
         Once your pack of blood-hungry creatures arrives at the mayoress' house,
         it all goes down quickly. They storm the house, drag her out on the
-        street and bring her life to an end. As you relish in your vengance, a
-        silent chill falls on the village as the wind starts blowing.{' '}
+        street and bring her life to an end. You As you relish in your vengance,
+        a silent chill falls on the village as the wind starts blowing.{' '}
       </div>
       {/* </div> */}
     </YouWinLayout>
