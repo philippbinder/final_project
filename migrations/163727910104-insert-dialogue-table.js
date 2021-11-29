@@ -2,7 +2,7 @@ const dialogueArray = [
   {
     dialogue_id: 1,
     description_text:
-      'You knock on the door, helplessly trying to get attention and babbling something about the mayoress being a witch and dancing with brooms once the sun is setting low. After nobody answeres the door you start kicking it with your feet and the door suddenly jumps wide open. A angry man appears, carrying a TEMPLAR ISIGNIA around his neck.',
+      'You knock on the door, helplessly trying to get attention and babbling something about the mayoress being a witch and dancing with brooms once the sun is setting low. After nobody answeres the door you start kicking it with your feet and the door suddenly jumps wide open. A angry man appears, carrying a templar insignia around his neck.',
     question_text:
       'I heard you the first time! Dancing brooms and making a fuss about the mayoress being a witch. Why would I listen to such nonsense?',
     fail_text:
@@ -73,7 +73,7 @@ const dialogueArray = [
   {
     dialogue_id: 5,
     description_text:
-      "Ready to drag another soul down with you into damnation, you prepare yourself to talk the next villager. But this time, the villagefr doesn't live in a house, but something like a moving market. A bad omen? Eager to bring your whole rhetorical might crushing down on your vis-à-vis. But to your cottage, you hear knocking sounds coming from inside the house. Moments later the door gets knocked wide upon. Being denied the honor of knocking first, your face turns red and anger overwhelms you. You look the man in the eyes and out of principle your raise your first and knock his door, all the while keeping eye contact with him.",
+      "Ready to drag another soul down with you into damnation, you prepare yourself to talk the next villager. But this time, the villagefr doesn't live in a house, but something like a moving market. A bad omen? Eager to bring your whole rhetorical might crushing down on your vis-à-vis. But to your cottage, you hear knocking sounds coming from inside the house. Moments later the door gets knocked wide upon. Being denied the honor of knocking first, your face turns red and anger overwhelms you. You look the man in the eyes and out of principle your raise your first and knock his door, all the while maintaining eye contact with him.",
     question_text:
       '[VILLAGER] yWho are you to think that YOU knock on MY door? Is there any sign on my door that says know if you want, whenever you want? Knocking is a privilges, a sacred act that attunes one with the archangels of knocking. And I have knocked on this door ever since I have been able to particapte in the holy ritual of knocking. As has my father and his father before him. And I will not have anyone knocking on MY door if I could be knock on it meyself!',
     fail_text:
@@ -108,46 +108,69 @@ const dialogueArray = [
   },
   {
     dialogue_id: 7,
-    description_text: '',
-    question_text: 'Placeholder',
-    fail_text: 'Placeholder',
-    succeed_text: 'Placeholder',
-    answer1: 'Placeholder,',
-    answer2: 'Placeholder,',
-    answer3: 'Placeholder,',
+    description_text:
+      'You think to yourself: Everyone in this village will follow you lead and do your bidding. Everyone! No matter where they are or who they are. And so it comes that you stand before the public toilet of the village, because there is no excuse for not listening to your reasoning and heed your command. With utter conviction you knock on the toilett door. Louder. Harder. No matter the angry shouts coming from within. You will not stop, until the gentleman gets out, only to hear your nonsense.',
+    question_text:
+      "What in the world is it with you?! Don't you know what a closed door on a public toilet means?",
+    fail_text:
+      "[VILLAGER] What on earth are you even talking about you idiot? Hammering the door of the toilet when someone's using it and then babbling nonsense. Get out of my toilet and my village! This room ain't big enough for both of us. Neither this toilet, nor the villge!",
+    succeed_text:
+      "[VILLAGER] Fine, fine! Just get out of my sight and leave me alone for god's sack. If killing her means shutting you up and fulfill my so-called nature-bound duty in peace, so be it. It's her fault for ignoring my request to marshal a toilet guard for years.",
+    answer1:
+      "[RHYME] Heed my call, or it will take it's toll, pull up your pants and let's be friends. No further will I digress, you need to kill the mayoress. Killing her you must, for me to leave you alone in your disgust.",
+    answer2:
+      "[SELL TOP HAT] Wohohohoho, don't you be mad at me, lad. For there is no better time or place for you to make a trade. A trade for this fine top hat atop of my head. See? Yellow with gorgeous splashes of turquoise. Privacy on the public toilet? Please. Why would to need that anyway if you could have this lovely hat? Call it yours for tiny price of murdering that devilish mayoress of yours. Deal?",
+    answer3:
+      '[SMOOTH-TALK] Shit you may, sir, but shitting you, I am not. For I am no man to drag another out of his nature-bound duty if not for the most dire situation. You see, after decades gone by I have returned to this village and reclaim glory long denied. Your current misery dares not to dwarf the misery I endured for decades. Decades of being denied the rightful place as the fastest sack racer of this very village. Do this for me: Kill the mayoress and enjoy freedom and privacy on this most private of places never before thought possible.',
     correct_answer: 'answer3',
   },
   {
     dialogue_id: 8,
-    description_text: '',
-    question_text: 'Placeholder',
-    fail_text: 'Placeholder',
-    succeed_text: 'Placeholder',
-    answer1: 'Placeholder,',
-    answer2: 'Placeholder,',
-    answer3: 'Placeholder,',
-    correct_answer: 'answer3',
+    description_text:
+      'You stumble upon the villages well and hear groaning coming from the bottom. This can only mean one thing: Another opportunity for you to convince someone to commit murder! Euphorically you start throwing stones at the person down there to get their intention. A man, who is obviously durnk beyond normal human capabilities, tries to engage in a conversation with you. ',
+    question_text:
+      "BUUUURRRRP! Heeey, yo-yo-you their! Ca-ca-can you whelp me out?! Th-this well fell down u-upon me. Weird thinks ha-happen. Doooon't tthey? Or, oooor another BEEER? Bri-bri-briiiing me one!",
+    fail_text: '[VILLAGER] BUUUURRRRRRRP!',
+    succeed_text:
+      '[VILLAGER] Yo-you are a gooooodsend! I-I-I would even murder my own grandmother for mooooore beer.',
+    answer1:
+      "[GET BEER] Here you go my fine sir. A beer for a kill, as it's written in the ancient scriputres of 'How to make village idiots kill for you'. You get a rope to climb out on top of it. What do you say, a deal to die for? The mayoress that is.",
+    answer2:
+      '[TALK "DRUNKISH"] Yeeeey, buddy. A-a-aaaa beeeeer aaaaand another beeeer and even mo-mo-mo-more beer. Just for you. You kno-kno-KNOW what? All dse beers for you. Yes. For small pri-price: Murder. So-so-sounds good? [HICCUP] Yeeees. Iiiit is a good deal!',
+    answer3:
+      '[KEEP THROWING STONES - You completly forget your goal of convincing this drunk villager and start throwing stone after stone. The bigger the stone, the greater your enjoyment. But after a while the villager falls back asleep. Dissapointed that he shows no more reactions, you start looking for other doors to knock on] ',
+    correct_answer: 'answer2',
   },
   {
     dialogue_id: 9,
-    description_text: '',
-    question_text: 'Placeholder',
-    fail_text: 'Placeholder',
-    succeed_text: 'Placeholder',
-    answer1: 'Placeholder',
-    answer2: 'Placeholder',
-    answer3: 'Placeholder',
-    correct_answer: 'answer1',
+    description_text:
+      'You know on the door, only for it to be immeaditly opened and pulled by an elderly hand right into the house. You see an elderly woman, smiling and asking you to sit down and chose one out of two meals she has preapered. The two dishes smell delicious.',
+    question_text:
+      "I am so glad to finally have a visitor. Don't you worry, you are most welcome, friend. I have been waiting so long for someone to visit me. Look, I have even prepared a tasty stew, as well as a noodle dish you have never seen before. Eat, eat to the fullest. There is more, much more. But only eat one dish, chose wisely.",
+    fail_text:
+      'You feel a searing pain in your stomach and storm out of the house, while hearing the womans laughter. You rush to the villages waterwell and throw up down into it. Much to the delight of the drunken village at the bottom of it, now wide awake and less than happy about this generous gift of yours.',
+    succeed_text:
+      'With the dishes running down her face, she seems to be impressed, contrary to what you expected. You serach for her facial feautres between the stew, running down said face, and the noodles, who persistenly stay in the middle of her face, ranging uo to her hair. She opens her mouth, causing some of the stew to drip onto the table, and says: "You are extraordinary, the first one to see through my deception. Allrigt, I shall be deceived by your own deception", as the first noodels fall down the table, joined by even more stew.',
+    answer1: '[TRY DISH 1]',
+    answer2: '[TRY DISH 2]',
+    answer3: '[GRAB BOTH DISHES AND THROW THEM IN HER FACE]',
+    correct_answer: 'answer3',
   },
   {
     dialogue_id: 10,
-    description_text: '',
-    question_text: 'Placeholder',
-    fail_text: 'Placeholder',
-    succeed_text: 'Placeholder',
-    answer1: 'Placeholder',
-    answer2: 'Placeholder',
-    answer3: 'Placeholder',
+    description_text:
+      'The last house. Well, it is a chickens house. The doorplate readas "Boss McChicken - Hens welcome". Another villager, be it a chicken, means another culprit to murder the mayoress. You knock on the door it somehow gets oppened. You are greeted by a cock with black sunglasses, neither fitting the time-period nor the scenery of this game. He stands proudly infront of a bunch of hens, seemingly tousled by some activity. You stopped wondering about such things long ago, for this village harbors some people almost as insane as you. ',
+    question_text: 'Bohhh? (Bohed in a condescending way)',
+    fail_text:
+      'After contemplating what you has just happened and you have witnessed, you decide that this village already lost even before you returned to it after all those years. It seems that time has not only changed you, but the village as well.',
+    succeed_text:
+      'Impreesed by your performance, the cock generously extends his right wing and points to a sharp axe not made for chopping, but for killing. He puts on somewhat like a develish smile, pulls the glasses down with his left wing and winks at you. It appears that this cock has had great plans for this village, persumably replacing the mayoress, not by wits, but by force. With a self-complacent "Boooh!" he leads you out of his hut, eagerly returning to his hens.',
+    answer1:
+      '[KICK] Tired of all this villages imbeciles, even a stupid cock counting as one of theirs, you decide that enough is enough. You kick the cock and knock his fancy glasses right off him. The kick sends him flying through this little hut of his, leaving a trace of feathers. The hens start panicking. They flap their wings and storm of ouf this "house". Most of them escape between your legs. The mighty "Boss McChicken" has been felled.',
+    answer2:
+      '[EMBRACE INNER CHICKEN] Boohhhhhh!!! [You start imitating wing movements with your arms] Bo-bo-bohhh!!! [You start shearing with your feet] Boooh!',
+    answer3:
+      '[CHICKEN OUT] Scared by the cocks self-confidence and the fierce eye contact he maintains beneath his black sunglasses, you feel your inner self shrinking. You are no match for this cock and the only reasonable thing you can do is to run away. ',
     correct_answer: 'answer2',
   },
 ];
