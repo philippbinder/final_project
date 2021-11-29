@@ -1,4 +1,3 @@
-import { css } from '@emotion/react';
 import { GetServerSidePropsContext } from 'next';
 import { useRouter } from 'next/router';
 
@@ -17,8 +16,8 @@ type Props = {
 };
 
 export default function ResponseTemplate(props: Props) {
-  const router = useRouter(); // under useRouter and router.push https://nextjs.org/docs/api-reference/next/router
-  const handleOnClick = await router.push('/village');
+  // const router = useRouter(); // under useRouter and router.push https://nextjs.org/docs/api-reference/next/router
+  // const handleOnClick = router.push('/village');
   console.log('props.singleDialogue:', props.singleDialogue);
   return (
     // <GradientContainer>
@@ -30,7 +29,7 @@ export default function ResponseTemplate(props: Props) {
       {'singleDialogue' in props && (
         <p> Response is: {props.singleDialogue.failed_text} </p>
       )}
-      <button onClick={handleOnClick}>Back to village</button>)
+      {/* <button onClick={handleOnClick}>Back to village</button>) */}
     </div>
     // </GradientContainer>
   );
