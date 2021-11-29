@@ -38,7 +38,18 @@ export default async function markAnswerHandler(
   const session = await getValidSessionByToken(sessionToken);
   console.log('API typeof session.userId:', typeof session?.userId); // is a number
   console.log('API session.userId =', session?.userId);
-
+  if (!session) {
+    // Redirect the user when they have a session
+    // token by returning an object with the `redirect` prop
+    // https://nextjs.org/docs/basic-features/data-fetching#getserversideprops-server-side-rendering
+    // next step: set 2 possible destinations: if !session is true: send the user to the landing page / if !session is false: send the user to the village page (stay on the opened page)
+    return {
+      redirect: {
+        destination: '/?returnTo=/village',
+        permanent: false,
+      },
+    };
+  }
   // const updatedCurrentUserStatus = await updateCurrentUserStatus(
   //   session.userId,
   //   req.body.dialogueId,
@@ -56,7 +67,8 @@ export default async function markAnswerHandler(
   console.log('markAnswer.ts currentUserStatus=', currentUserStatus);
   // await endGame(session.userId);
 
-  res.status(200).json('status.correct_answer updated.');
+  // res.status(200).json('status.correct_answer updated.');
+  res.status(200);
   // res.status(200).json({ newStatus: newStatus });
   // res.send('status.correct_answer updated.');
   // don't need any data sent back
