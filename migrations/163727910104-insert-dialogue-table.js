@@ -75,17 +75,17 @@ const dialogueArray = [
     description_text:
       "Ready to drag another soul down with you into damnation, you prepare yourself to talk the next villager. But this time, the villagefr doesn't live in a house, but something like a moving market. A bad omen? Eager to bring your whole rhetorical might crushing down on your vis-à-vis. But to your cottage, you hear knocking sounds coming from inside the house. Moments later the door gets knocked wide upon. Being denied the honor of knocking first, your face turns red and anger overwhelms you. You look the man in the eyes and out of principle your raise your first and knock his door, all the while maintaining eye contact with him.",
     question_text:
-      '[VILLAGER] Who are you to think that YOU knock on MY door? Is there any sign on my door that says know if you want, whenever you want? Knocking is a privilges, a sacred act that attunes one with the archangels of knocking. And I have knocked on this door ever since I have been able to particapte in the holy ritual of knocking. As has my father and his father before him. And I will not have anyone knocking on MY door if I could be knock on it meyself!',
+      '[VILLAGER] Who are you to think that YOU knock on MY door? Is there any sign on my door that says know if you want, whenever you want? Knocking is a privilge, a sacred act that attunes one with the archangels of knocking. And I have knocked on this door ever since I have been able to particapte in the holy ritual of knocking. As has my father and his father before him. And I will not have anyone knocking on MY door if I could be knocking on it meself!',
     fail_text:
       'Absolutely infuriated, the man loses his sh** as his eyes seem to almost pop out while his face turns red as blood. Without hestiation and additional any words, he reaches for his club and smashes it as hard as he can on your head. The moment you feel the pain you are already knocked out. You wake up a few minutes later infront of this likeable villagers cottage with a huge bulge on your forehead. Knowing better than to knock on his door again, you leave for the next house.',
     succeed_text:
       '[VILLAGER] Killing? Killing someone just because they might knock on my door? A splendid idea! And afterwards I will kill you for actually knocking on my door.',
     answer1:
-      '[LOSE TEMPER] I knock on ANY DOOR WHENEVER I want and WHEREVER I want! And I will not relinquish the freedom of knocking on doors because of some lunatic who spends his time knocking on his own door from the inside! And if I desire to knock on your door, I will do so anytime.',
-    answer2: '[KNOCK ON DOOR] Watch me.',
-    answer3:
       "[DE-ESCALATE] Hold on, dear mister! I did not mean any offense, all I wanted is for you to join me in killing the mayoress. Nothing more, nothing less. Killing her makes for one less person to knock on your door. Sounds reasonable, doesn't it? Come, let's go and knock her out.",
-    correct_answer: 'answer3',
+    answer2:
+      '[LOSE TEMPER] I knock on ANY DOOR WHENEVER and WHEREVER I want! And I will not relinquish the freedom of knocking on doors because of some lunatic who spends his time knocking on his own door from the inside of his sorry excuse for a house! And if I desire to knock on your door, I will do so. Anytime.',
+    answer3: '[KNOCK ON DOOR] Watch me.',
+    correct_answer: 'answer1',
   },
   {
     dialogue_id: 6,
@@ -98,7 +98,7 @@ const dialogueArray = [
     succeed_text:
       'Okay, okay. No need to take things too far. Here, have your right answer, I will log it in the database. Let us resume this little game of mine and speak of this 4th wall no more.',
     answer1:
-      '[GO INSANE] HAHA! My dear lady, smashing it was not. Furthermore it is The Way of Maniae thou have bore witness! For it is through her, that the head and mind shall see stars and within these stars, a sea of dancing little lights, slowly snuffing out. Just as you will help me snuffing out the mayoress...',
+      "[GO INSANE] HAHA! My dear lady, smashing, it was not. Furthermore it is 'The Way of Maniae' thou have bore witness! For it is through her, that the head and mind shall see stars and within these stars, a sea of dancing little lights, slowly snuffing out. Just as you will help me snuffing out the mayoress...",
     answer2:
       "[BREAK THE 4TH WALL] This doesn't make any sense. Why am I chosing a pre-scripted text if I am supposed to break the 4th wall? And why did my character smash his head against the door? You, the creator of this insanity, better log in a right answer for me, lest I open your code on GitHub and see what it's made of.",
     /* Hello to everyone who actually took a look at the code :-) I hope you are liking the game so far. It's been a tough journey at times and it taught me a lot about the management side of projects . You always work under a time constraint, be it at the bootcamp or for your job with deadlines. You need to prioritize, because you have many idead but only limited time. Thank you UpLeveled for teacbing us in a way that simulates a real work environment. */
@@ -159,18 +159,18 @@ const dialogueArray = [
   {
     dialogue_id: 10,
     description_text:
-      'The last house. Well, it is a chickens house. The doorplate readas "Boss McChicken - Hens welcome". Another villager, be it a chicken, means another culprit to murder the mayoress. You knock on the door it somehow gets oppened. You are greeted by a cock with black sunglasses, neither fitting the time-period nor the scenery of this game. He stands proudly infront of a bunch of hens, seemingly tousled by some activity. You stopped wondering about such things long ago, for this village harbors some people almost as insane as you. ',
+      'The last house. Well, it is a chickens house. The doorplate reads "Boss McChicken - Hens welcome". Another villager, be it a chicken, means another culprit to murder the mayoress. Or does it? The absurdity of this villages has taken a toll on your mental health and reasoning. Nonetheless you knock on the door and it somehow gets oppened. You are greeted by a cock with black sunglasses, neither fitting the time-period, nor the scenery of this game. He stands proudly infront of a bunch of hens, seemingly tousled by some activity. But you stopped wondering about such things long ago, for this village harbors people almost as insane as you. ',
     question_text: 'Bohhh? (Bohed in a condescending way)',
     fail_text:
-      'After contemplating what you has just happened and you have witnessed, you decide that this village already lost even before you returned to it after all those years. It seems that time has not only changed you, but the village as well.',
+      'After contemplating what has just happened and what you have witnessed, you decide that this village is already lost. Even before you returned to it after all those years. It appears that time has not only changed you, but the village as well.',
     succeed_text:
-      'Impreesed by your performance, the cock generously extends his right wing and points to a sharp axe not made for chopping, but for killing. He puts on somewhat like a develish smile, pulls the glasses down with his left wing and winks at you. It appears that this cock has had great plans for this village, persumably replacing the mayoress, not by wits, but by force. With a self-complacent "Boooh!" he leads you out of his hut, eagerly returning to his hens.',
+      'Impreesed by your performance, the cock generously extends his right wing and points to a sharp axe. Not made for chopping, but for killing. He puts on something like a develish smile, pulls the glasses down with his left wing and winks at you. It appears that this cock has had great plans for this village, persumably replacing the mayoress, not by wits, but by force. With a self-complacent "Boooh!" he leads you out of his hut, eagerly returning to his hens.',
     answer1:
-      '[KICK] Tired of all this villages imbeciles, even a stupid cock counting as one of theirs, you decide that enough is enough. You kick the cock and knock his fancy glasses right off him. The kick sends him flying through this little hut of his, leaving a trace of feathers. The hens start panicking. They flap their wings and storm of ouf this "house". Most of them escape between your legs. The mighty "Boss McChicken" has been felled.',
+      '[KICK] Tired of all this villages imbeciles, now counting even a stupid cock among them, you decide that enough is enough. You kick the cock and knock his fancy glasses right off him. The kick sends him flying through this little hut of his, leaving a trace of feathers. The hens start panicking. They flap their wings and storm of ouf this "house". Most of them escape between your legs. The mighty "Boss McChicken" has been felled.',
     answer2:
       '[EMBRACE INNER CHICKEN] Boohhhhhh!!! [You start imitating wing movements with your arms] Bo-bo-bohhh!!! [You start shearing with your feet] Boooh!',
     answer3:
-      '[CHICKEN OUT] Scared by the cocks self-confidence and the fierce eye contact he maintains beneath his black sunglasses, you feel your inner self shrinking. You are no match for this cock and the only reasonable thing you can do is to run away. ',
+      '[CHICKEN OUT] Scared by the cocks self-confidence and the fierce eye contact he maintains beneath his black sunglasses, you feel your inner self shrinking. You are no match for this cock and the only reasonable thing to do is to run away. ',
     correct_answer: 'answer2',
   },
 ];
