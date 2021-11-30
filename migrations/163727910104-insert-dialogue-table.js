@@ -138,7 +138,7 @@ const dialogueArray = [
     answer2:
       '[TALK "DRUNKISH"] Yeeeey, buddy. A-a-aaaa beeeeer aaaaand another beeeer and even mo-mo-mo-more beer. Just for you. You kno-kno-KNOW what? All dse beers for you. Yes. For small pri-price: Murder. So-so-sounds good? [HICCUP] Yeeees. Iiiit is a good deal!',
     answer3:
-      '[KEEP THROWING STONES - You completly forget your goal of convincing this drunk villager and start throwing stone after stone. The bigger the stone, the greater your enjoyment. But after a while the villager falls back asleep. Dissapointed that he shows no more reactions, you start looking for other doors to knock on] ',
+      '[KEEP THROWING STONES] - You completly forget your goal of convincing this drunk villager and start throwing stone after stone. The bigger the stone, the greater your enjoyment. But after a while the villager falls back asleep. Dissapointed that he shows no more reactions, you start looking for other doors to knock on.',
     correct_answer: 'answer2',
   },
   {
