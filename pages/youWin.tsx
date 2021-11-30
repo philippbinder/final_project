@@ -1,5 +1,5 @@
 import { css } from '@emotion/react';
-import YouWinLayout from '../components/YouWinLayout1';
+import YouWinLayout from '../components/YouWinLayout';
 
 const youWinStyle = css`
   padding-top: 6px;
