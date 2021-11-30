@@ -129,14 +129,15 @@ const dialogueArray = [
     description_text:
       'You stumble upon the villages well and hear groaning coming from the bottom. This can only mean one thing: Another opportunity for you to convince someone to commit murder! Euphorically you start throwing stones at the person down there to get their intention. A man, who is obviously durnk beyond normal human capabilities, tries to engage in a conversation with you. ',
     question_text:
-      "BUUUURRRRP! Heeey, yo-yo-you their! Ca-ca-can you whelp me out?! Th-this well fell down u-upon me. Weird thinks ha-happen. Doooon't tthey? Or, oooor another BEEER? Bri-bri-briiiing me one!",
-    fail_text: '[VILLAGER] BUUUURRRRRRRP!',
+      "[HICCUP] Heeey, yo-yo-you their! Ca-ca-can you whelp me out?! Th-this well fell down u-upon me. Weird thinks ha-happen. Doooon't th-they? One sec... secooond you stand upright, next youuu go-go-got [HICCUP] a well on your heaaaad. Bu-but as I always say [HE LETS OUT A LOUD BELCH] Wha-what doesn't kill me, ma-ma-ma-makes me drink!",
+    fail_text:
+      'Upwords the well a lovely sound travels. It reaches your ear only to be recognized as an unsatisfied belch. It appears that this fellow was tougher to convince that you thought.',
     succeed_text:
-      '[VILLAGER] Yo-you are a gooooodsend! I-I-I would even murder my own grandmother for mooooore beer.',
+      '[VILLAGER] Yo-you are a gooooodsend! I-I-I would even murder my own grandmother for mooooore beer [HICCUP].',
     answer1:
       "[GET BEER] Here you go my fine sir. A beer for a kill, as it's written in the ancient scriputres of 'How to make village idiots kill for you'. You get a rope to climb out on top of it. What do you say, a deal to die for? The mayoress that is.",
     answer2:
-      '[TALK "DRUNKISH"] Yeeeey, buddy. A-a-aaaa beeeeer aaaaand another beeeer and even mo-mo-mo-more beer. Just for you. You kno-kno-KNOW what? All dse beers for you. Yes. For small pri-price: Murder. So-so-sounds good? [HICCUP] Yeeees. Iiiit is a good deal!',
+      '[TALK "DRUNKISH"] Yeeeey, buddy. A-a-aaaa beeeeer [HICCUP] aaaaand another beeeer and even mo-mo-mo-more beer. Just for you. You kno-kno-KNOW what? All dse beers in the vi-vi-vi-village for you. Yeeeees! [HICCUP] For a small pri-price: Murder. So-so-sounds good? [HICCUP] Yeeees. Iiiit is a good deal!',
     answer3:
       '[KEEP THROWING STONES] - You completly forget your goal of convincing this drunk villager and start throwing stone after stone. The bigger the stone, the greater your enjoyment. But after a while the villager falls back asleep. Dissapointed that he shows no more reactions, you start looking for other doors to knock on.',
     correct_answer: 'answer2',
