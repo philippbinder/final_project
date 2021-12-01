@@ -11,7 +11,7 @@ The application also features a registration and login, encrypting the password 
 
 ## Heroku
 
-The application is also deployed and publically available under "...".
+The application is also deployed and publically available under https://darkdeeds.herokuapp.com/village.
 
 ## Development proces
 
