@@ -131,7 +131,7 @@ const dialogueArray = [
     question_text:
       "[HICCUP] Heeey, yo-yo-you their! Ca-ca-can you whelp me out?! Th-this well fell down u-upon me. Weird thinks ha-happen. Doooon't th-they? One sec... secooond you stand upright, next youuu go-go-got [HICCUP] a well on your heaaaad. Bu-but as I always say [HE LETS OUT A LOUD BELCH] Wha-what doesn't kill me, ma-ma-ma-makes me drink!",
     fail_text:
-      'Upwords the well a lovely sound travels. It reaches your ear only to be recognized as an unsatisfied belch. It appears that this fellow was tougher to convince that you thought.',
+      'Upwords the well a lovely sound travels, eager to engulf your ear with the message it brings. But as soon as it reaches your ear, your enthusiasm fades, for the sound is only to be recognized as an unsatisfied belch. It appears that this fellow was tougher to convince that you thought.',
     succeed_text:
       '[VILLAGER] Yo-you are a gooooodsend! I-I-I would even murder my own grandmother for mooooore beer [HICCUP].',
     answer1:
